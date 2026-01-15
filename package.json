@@ -1,0 +1,17 @@
+{
+  "name": "qti-3-player",
+  "version": "0.1.0",
+  "private": true,
+  "description": "QTI 3.x renderer proof of concept",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "dev": "npm run dev --workspace=apps/react-demo"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
