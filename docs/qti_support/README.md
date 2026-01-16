@@ -7,9 +7,6 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 ## Table of Contents
 
 - [QTI-Specific Elements](#qti-specific-elements)
-- [Custom Types](#custom-types)
-  - [Simple Types](#simple-types)
-  - [Complex Types](#complex-types)
 
 <a name="qti-specific-elements"></a>
 
@@ -17,7 +14,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-and"></a>
 
-### [ ] `qti-and`
+### `qti-and`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -25,7 +24,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-any-n"></a>
 
-### [ ] `qti-any-n`
+### `qti-any-n`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `max`
@@ -40,7 +41,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-area-map-entry"></a>
 
-### [ ] `qti-area-map-entry`
+### `qti-area-map-entry`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `coords`
@@ -61,7 +64,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-area-mapping"></a>
 
-### [ ] `qti-area-mapping`
+### `qti-area-mapping`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `default-value`
@@ -81,7 +86,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-assessment-item"></a>
 
-### [ ] `qti-assessment-item`
+### `qti-assessment-item`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `adaptive`
@@ -117,7 +124,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-assessment-stimulus-ref"></a>
 
-### [ ] `qti-assessment-stimulus-ref`
+### `qti-assessment-stimulus-ref`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `href`
@@ -136,7 +145,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-associable-hotspot"></a>
 
-### [ ] `qti-associable-hotspot`
+### `qti-associable-hotspot`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `coords`
@@ -184,7 +195,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-associate-interaction"></a>
 
-### [ ] `qti-associate-interaction`
+### `qti-associate-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `max-associations`
@@ -206,7 +219,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-base-value"></a>
 
-### [ ] `qti-base-value`
+### `qti-base-value`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `base-type`
@@ -218,7 +233,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-calculator"></a>
 
-### [ ] `qti-calculator`
+### `qti-calculator`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -226,7 +243,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-calculator-info"></a>
 
-### [ ] `qti-calculator-info`
+### `qti-calculator-info`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `label`
@@ -242,7 +261,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-calculator-type"></a>
 
-### [ ] `qti-calculator-type`
+### `qti-calculator-type`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -250,7 +271,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-card"></a>
 
-### [ ] `qti-card`
+### `qti-card`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `support`
@@ -261,7 +284,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-card-entry"></a>
 
-### [ ] `qti-card-entry`
+### `qti-card-entry`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `default`
@@ -273,7 +298,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-catalog"></a>
 
-### [ ] `qti-catalog`
+### `qti-catalog`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `id`
@@ -284,7 +311,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-catalog-info"></a>
 
-### [ ] `qti-catalog-info`
+### `qti-catalog-info`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -292,7 +321,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-choice-interaction"></a>
 
-### [ ] `qti-choice-interaction`
+### `qti-choice-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -585,7 +616,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-companion-materials-info"></a>
 
-### [ ] `qti-companion-materials-info`
+### `qti-companion-materials-info`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -593,7 +626,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-container-size"></a>
 
-### [ ] `qti-container-size`
+### `qti-container-size`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -601,7 +636,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-contains"></a>
 
-### [ ] `qti-contains`
+### `qti-contains`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -609,7 +646,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-content-body"></a>
 
-### [ ] `qti-content-body`
+### `qti-content-body`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -617,7 +656,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-context-declaration"></a>
 
-### [ ] `qti-context-declaration`
+### `qti-context-declaration`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `base-type`
@@ -638,7 +679,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-context-variable"></a>
 
-### [ ] `qti-context-variable`
+### `qti-context-variable`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -649,7 +692,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-correct"></a>
 
-### [ ] `qti-correct`
+### `qti-correct`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -660,7 +705,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-correct-response"></a>
 
-### [ ] `qti-correct-response`
+### `qti-correct-response`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `interpretation`
@@ -671,7 +718,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-custom-interaction"></a>
 
-### [ ] `qti-custom-interaction`
+### `qti-custom-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -935,7 +984,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-custom-operator"></a>
 
-### [ ] `qti-custom-operator`
+### `qti-custom-operator`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `class`
@@ -950,7 +1001,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-default"></a>
 
-### [ ] `qti-default`
+### `qti-default`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -961,7 +1014,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-default-value"></a>
 
-### [ ] `qti-default-value`
+### `qti-default-value`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `interpretation`
@@ -972,7 +1027,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-delete"></a>
 
-### [ ] `qti-delete`
+### `qti-delete`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -980,7 +1037,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-description"></a>
 
-### [ ] `qti-description`
+### `qti-description`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -988,7 +1047,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-digital-material"></a>
 
-### [ ] `qti-digital-material`
+### `qti-digital-material`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `label`
@@ -1004,7 +1065,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-divide"></a>
 
-### [ ] `qti-divide`
+### `qti-divide`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -1012,7 +1075,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-drawing-interaction"></a>
 
-### [ ] `qti-drawing-interaction`
+### `qti-drawing-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -1276,7 +1341,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-duration-gte"></a>
 
-### [ ] `qti-duration-gte`
+### `qti-duration-gte`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -1284,7 +1351,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-duration-lt"></a>
 
-### [ ] `qti-duration-lt`
+### `qti-duration-lt`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -1292,7 +1361,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-end-attempt-interaction"></a>
 
-### [ ] `qti-end-attempt-interaction`
+### `qti-end-attempt-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `class`
@@ -1342,7 +1413,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-equal"></a>
 
-### [ ] `qti-equal`
+### `qti-equal`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `include-lower-bound`
@@ -1369,7 +1442,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-equal-rounded"></a>
 
-### [ ] `qti-equal-rounded`
+### `qti-equal-rounded`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `figures`
@@ -1386,7 +1461,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-exit-response"></a>
 
-### [ ] `qti-exit-response`
+### `qti-exit-response`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -1394,7 +1471,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-exit-template"></a>
 
-### [ ] `qti-exit-template`
+### `qti-exit-template`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -1402,7 +1481,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-extended-text-interaction"></a>
 
-### [ ] `qti-extended-text-interaction`
+### `qti-extended-text-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -1710,7 +1791,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-feedback-block"></a>
 
-### [ ] `qti-feedback-block`
+### `qti-feedback-block`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -1988,7 +2071,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-feedback-inline"></a>
 
-### [ ] `qti-feedback-inline`
+### `qti-feedback-inline`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -2266,7 +2351,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-field-value"></a>
 
-### [ ] `qti-field-value`
+### `qti-field-value`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `field-identifier`
@@ -2277,7 +2364,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-file-href"></a>
 
-### [ ] `qti-file-href`
+### `qti-file-href`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -2285,7 +2374,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-gap"></a>
 
-### [ ] `qti-gap`
+### `qti-gap`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `class`
@@ -2346,7 +2437,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-gap-img"></a>
 
-### [ ] `qti-gap-img`
+### `qti-gap-img`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -2645,7 +2738,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-gap-match-interaction"></a>
 
-### [ ] `qti-gap-match-interaction`
+### `qti-gap-match-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -2935,7 +3030,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-gap-text"></a>
 
-### [ ] `qti-gap-text`
+### `qti-gap-text`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -3222,7 +3319,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-gcd"></a>
 
-### [ ] `qti-gcd`
+### `qti-gcd`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -3230,7 +3329,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-graphic-associate-interaction"></a>
 
-### [ ] `qti-graphic-associate-interaction`
+### `qti-graphic-associate-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -3503,7 +3604,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-graphic-gap-match-interaction"></a>
 
-### [ ] `qti-graphic-gap-match-interaction`
+### `qti-graphic-gap-match-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -3788,7 +3891,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-graphic-order-interaction"></a>
 
-### [ ] `qti-graphic-order-interaction`
+### `qti-graphic-order-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -4060,7 +4165,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-gt"></a>
 
-### [ ] `qti-gt`
+### `qti-gt`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -4068,7 +4175,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-gte"></a>
 
-### [ ] `qti-gte`
+### `qti-gte`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -4076,7 +4185,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-hotspot-choice"></a>
 
-### [ ] `qti-hotspot-choice`
+### `qti-hotspot-choice`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `class`
@@ -4142,7 +4253,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-hotspot-interaction"></a>
 
-### [ ] `qti-hotspot-interaction`
+### `qti-hotspot-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -4424,7 +4537,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-hottext"></a>
 
-### [ ] `qti-hottext`
+### `qti-hottext`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -4702,7 +4817,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-hottext-interaction"></a>
 
-### [ ] `qti-hottext-interaction`
+### `qti-hottext-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -4984,7 +5101,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-html-content"></a>
 
-### [ ] `qti-html-content`
+### `qti-html-content`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -4992,7 +5111,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-increment-si"></a>
 
-### [ ] `qti-increment-si`
+### `qti-increment-si`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -5000,7 +5121,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-increment-us"></a>
 
-### [ ] `qti-increment-us`
+### `qti-increment-us`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -5008,7 +5131,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-index"></a>
 
-### [ ] `qti-index`
+### `qti-index`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `n`
@@ -5019,7 +5144,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-inline-choice"></a>
 
-### [ ] `qti-inline-choice`
+### `qti-inline-choice`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -5298,7 +5425,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-inline-choice-interaction"></a>
 
-### [ ] `qti-inline-choice-interaction`
+### `qti-inline-choice-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -5585,7 +5714,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-inside"></a>
 
-### [ ] `qti-inside`
+### `qti-inside`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `coords`
@@ -5602,7 +5733,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-integer-divide"></a>
 
-### [ ] `qti-integer-divide`
+### `qti-integer-divide`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -5610,7 +5743,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-integer-modulus"></a>
 
-### [ ] `qti-integer-modulus`
+### `qti-integer-modulus`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -5618,7 +5753,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-integer-to-float"></a>
 
-### [ ] `qti-integer-to-float`
+### `qti-integer-to-float`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -5626,7 +5763,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-interaction-markup"></a>
 
-### [ ] `qti-interaction-markup`
+### `qti-interaction-markup`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -5634,7 +5773,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-interaction-module"></a>
 
-### [ ] `qti-interaction-module`
+### `qti-interaction-module`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `fallback-path`
@@ -5653,7 +5794,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-interaction-modules"></a>
 
-### [ ] `qti-interaction-modules`
+### `qti-interaction-modules`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `primary-configuration`
@@ -5670,7 +5813,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-interpolation-table"></a>
 
-### [ ] `qti-interpolation-table`
+### `qti-interpolation-table`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `default-value`
@@ -5681,7 +5826,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-interpolation-table-entry"></a>
 
-### [ ] `qti-interpolation-table-entry`
+### `qti-interpolation-table-entry`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `include-boundary`
@@ -5701,7 +5848,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-is-null"></a>
 
-### [ ] `qti-is-null`
+### `qti-is-null`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -5709,7 +5858,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-item-body"></a>
 
-### [ ] `qti-item-body`
+### `qti-item-body`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `class`
@@ -5738,7 +5889,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-label"></a>
 
-### [ ] `qti-label`
+### `qti-label`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -6002,7 +6155,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-lcm"></a>
 
-### [ ] `qti-lcm`
+### `qti-lcm`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6010,7 +6165,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-lookup-outcome-value"></a>
 
-### [ ] `qti-lookup-outcome-value`
+### `qti-lookup-outcome-value`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -6021,7 +6178,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-lt"></a>
 
-### [ ] `qti-lt`
+### `qti-lt`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6029,7 +6188,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-lte"></a>
 
-### [ ] `qti-lte`
+### `qti-lte`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6037,7 +6198,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-major-increment"></a>
 
-### [ ] `qti-major-increment`
+### `qti-major-increment`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `unit`
@@ -6049,7 +6212,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-map-entry"></a>
 
-### [ ] `qti-map-entry`
+### `qti-map-entry`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `case-sensitive`
@@ -6069,7 +6234,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-map-response"></a>
 
-### [ ] `qti-map-response`
+### `qti-map-response`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -6080,7 +6247,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-map-response-point"></a>
 
-### [ ] `qti-map-response-point`
+### `qti-map-response-point`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -6091,7 +6260,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-mapping"></a>
 
-### [ ] `qti-mapping`
+### `qti-mapping`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `default-value`
@@ -6111,7 +6282,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-match"></a>
 
-### [ ] `qti-match`
+### `qti-match`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6119,7 +6292,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-match-interaction"></a>
 
-### [ ] `qti-match-interaction`
+### `qti-match-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -6410,7 +6585,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-match-table"></a>
 
-### [ ] `qti-match-table`
+### `qti-match-table`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `default-value`
@@ -6421,7 +6598,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-match-table-entry"></a>
 
-### [ ] `qti-match-table-entry`
+### `qti-match-table-entry`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `source-value`
@@ -6437,7 +6616,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-math-constant"></a>
 
-### [ ] `qti-math-constant`
+### `qti-math-constant`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `name`
@@ -6449,7 +6630,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-math-operator"></a>
 
-### [ ] `qti-math-operator`
+### `qti-math-operator`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `name`
@@ -6461,7 +6644,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-max"></a>
 
-### [ ] `qti-max`
+### `qti-max`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6469,7 +6654,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-media-interaction"></a>
 
-### [ ] `qti-media-interaction`
+### `qti-media-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -6757,7 +6944,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-member"></a>
 
-### [ ] `qti-member`
+### `qti-member`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6765,7 +6954,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-min"></a>
 
-### [ ] `qti-min`
+### `qti-min`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6773,7 +6964,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-minimum-length"></a>
 
-### [ ] `qti-minimum-length`
+### `qti-minimum-length`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6781,7 +6974,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-minor-increment"></a>
 
-### [ ] `qti-minor-increment`
+### `qti-minor-increment`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `unit`
@@ -6793,7 +6988,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-modal-feedback"></a>
 
-### [ ] `qti-modal-feedback`
+### `qti-modal-feedback`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -6817,7 +7014,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-multiple"></a>
 
-### [ ] `qti-multiple`
+### `qti-multiple`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6825,7 +7024,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-not"></a>
 
-### [ ] `qti-not`
+### `qti-not`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6833,7 +7034,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-null"></a>
 
-### [ ] `qti-null`
+### `qti-null`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6841,7 +7044,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-number-correct"></a>
 
-### [ ] `qti-number-correct`
+### `qti-number-correct`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `exclude-category`
@@ -6860,7 +7065,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-number-incorrect"></a>
 
-### [ ] `qti-number-incorrect`
+### `qti-number-incorrect`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `exclude-category`
@@ -6879,7 +7086,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-number-presented"></a>
 
-### [ ] `qti-number-presented`
+### `qti-number-presented`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `exclude-category`
@@ -6898,7 +7107,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-number-responded"></a>
 
-### [ ] `qti-number-responded`
+### `qti-number-responded`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `exclude-category`
@@ -6917,7 +7128,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-number-selected"></a>
 
-### [ ] `qti-number-selected`
+### `qti-number-selected`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `exclude-category`
@@ -6936,7 +7149,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-or"></a>
 
-### [ ] `qti-or`
+### `qti-or`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -6944,7 +7159,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-order-interaction"></a>
 
-### [ ] `qti-order-interaction`
+### `qti-order-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -7238,7 +7455,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-ordered"></a>
 
-### [ ] `qti-ordered`
+### `qti-ordered`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -7246,7 +7465,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-outcome-declaration"></a>
 
-### [ ] `qti-outcome-declaration`
+### `qti-outcome-declaration`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `base-type`
@@ -7302,7 +7523,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-outcome-maximum"></a>
 
-### [ ] `qti-outcome-maximum`
+### `qti-outcome-maximum`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `exclude-category`
@@ -7329,7 +7552,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-outcome-minimum"></a>
 
-### [ ] `qti-outcome-minimum`
+### `qti-outcome-minimum`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `exclude-category`
@@ -7356,7 +7581,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-pattern-match"></a>
 
-### [ ] `qti-pattern-match`
+### `qti-pattern-match`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `pattern`
@@ -7367,7 +7594,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-physical-material"></a>
 
-### [ ] `qti-physical-material`
+### `qti-physical-material`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -7375,7 +7604,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-portable-custom-interaction"></a>
 
-### [ ] `qti-portable-custom-interaction`
+### `qti-portable-custom-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -7647,7 +7878,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-position-object-interaction"></a>
 
-### [ ] `qti-position-object-interaction`
+### `qti-position-object-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -7924,7 +8157,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-position-object-stage"></a>
 
-### [ ] `qti-position-object-stage`
+### `qti-position-object-stage`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `id`
@@ -7935,7 +8170,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-power"></a>
 
-### [ ] `qti-power`
+### `qti-power`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -7943,7 +8180,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-printed-variable"></a>
 
-### [ ] `qti-printed-variable`
+### `qti-printed-variable`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `base`
@@ -7998,7 +8237,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-product"></a>
 
-### [ ] `qti-product`
+### `qti-product`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8006,7 +8247,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-prompt"></a>
 
-### [ ] `qti-prompt`
+### `qti-prompt`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -8266,7 +8509,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-protractor"></a>
 
-### [ ] `qti-protractor`
+### `qti-protractor`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8274,7 +8519,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-random"></a>
 
-### [ ] `qti-random`
+### `qti-random`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8282,7 +8529,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-random-float"></a>
 
-### [ ] `qti-random-float`
+### `qti-random-float`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `max`
@@ -8298,7 +8547,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-random-integer"></a>
 
-### [ ] `qti-random-integer`
+### `qti-random-integer`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `max`
@@ -8319,7 +8570,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-repeat"></a>
 
-### [ ] `qti-repeat`
+### `qti-repeat`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `number-repeats`
@@ -8330,7 +8583,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-resource-icon"></a>
 
-### [ ] `qti-resource-icon`
+### `qti-resource-icon`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8338,7 +8593,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-response-condition"></a>
 
-### [ ] `qti-response-condition`
+### `qti-response-condition`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8346,7 +8603,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-response-declaration"></a>
 
-### [ ] `qti-response-declaration`
+### `qti-response-declaration`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `base-type`
@@ -8367,7 +8626,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-response-else"></a>
 
-### [ ] `qti-response-else`
+### `qti-response-else`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8375,7 +8636,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-response-else-if"></a>
 
-### [ ] `qti-response-else-if`
+### `qti-response-else-if`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8383,7 +8646,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-response-if"></a>
 
-### [ ] `qti-response-if`
+### `qti-response-if`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8391,7 +8656,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-response-processing"></a>
 
-### [ ] `qti-response-processing`
+### `qti-response-processing`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `template`
@@ -8406,7 +8673,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-response-processing-fragment"></a>
 
-### [ ] `qti-response-processing-fragment`
+### `qti-response-processing-fragment`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8414,7 +8683,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-round"></a>
 
-### [ ] `qti-round`
+### `qti-round`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8422,7 +8693,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-round-to"></a>
 
-### [ ] `qti-round-to`
+### `qti-round-to`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `figures`
@@ -8438,7 +8711,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-rubric-block"></a>
 
-### [ ] `qti-rubric-block`
+### `qti-rubric-block`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -8710,7 +8985,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-rule"></a>
 
-### [ ] `qti-rule`
+### `qti-rule`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8718,7 +8995,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-rule-system-si"></a>
 
-### [ ] `qti-rule-system-si`
+### `qti-rule-system-si`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8726,7 +9005,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-rule-system-us"></a>
 
-### [ ] `qti-rule-system-us`
+### `qti-rule-system-us`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -8734,7 +9015,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-select-point-interaction"></a>
 
-### [ ] `qti-select-point-interaction`
+### `qti-select-point-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -9008,7 +9291,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-set-correct-response"></a>
 
-### [ ] `qti-set-correct-response`
+### `qti-set-correct-response`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -9019,7 +9304,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-set-default-value"></a>
 
-### [ ] `qti-set-default-value`
+### `qti-set-default-value`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -9030,7 +9317,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-set-outcome-value"></a>
 
-### [ ] `qti-set-outcome-value`
+### `qti-set-outcome-value`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -9041,7 +9330,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-set-template-value"></a>
 
-### [ ] `qti-set-template-value`
+### `qti-set-template-value`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -9052,7 +9343,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-simple-associable-choice"></a>
 
-### [ ] `qti-simple-associable-choice`
+### `qti-simple-associable-choice`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -9342,7 +9635,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-simple-choice"></a>
 
-### [ ] `qti-simple-choice`
+### `qti-simple-choice`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -9621,7 +9916,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-simple-match-set"></a>
 
-### [ ] `qti-simple-match-set`
+### `qti-simple-match-set`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `id`
@@ -9632,7 +9929,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-slider-interaction"></a>
 
-### [ ] `qti-slider-interaction`
+### `qti-slider-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -9926,7 +10225,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-stats-operator"></a>
 
-### [ ] `qti-stats-operator`
+### `qti-stats-operator`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `name`
@@ -9938,7 +10239,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-string-match"></a>
 
-### [ ] `qti-string-match`
+### `qti-string-match`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `case-sensitive`
@@ -9954,7 +10257,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-stylesheet"></a>
 
-### [ ] `qti-stylesheet`
+### `qti-stylesheet`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `href`
@@ -9978,7 +10283,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-substring"></a>
 
-### [ ] `qti-substring`
+### `qti-substring`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `case-sensitive`
@@ -9989,7 +10296,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-subtract"></a>
 
-### [ ] `qti-subtract`
+### `qti-subtract`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -9997,7 +10306,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-sum"></a>
 
-### [ ] `qti-sum`
+### `qti-sum`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -10005,7 +10316,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-template-block"></a>
 
-### [ ] `qti-template-block`
+### `qti-template-block`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
@@ -10026,7 +10339,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-template-condition"></a>
 
-### [ ] `qti-template-condition`
+### `qti-template-condition`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -10034,7 +10349,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-template-constraint"></a>
 
-### [ ] `qti-template-constraint`
+### `qti-template-constraint`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -10042,7 +10359,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-template-declaration"></a>
 
-### [ ] `qti-template-declaration`
+### `qti-template-declaration`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `base-type`
@@ -10073,7 +10392,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-template-else"></a>
 
-### [ ] `qti-template-else`
+### `qti-template-else`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -10081,7 +10402,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-template-else-if"></a>
 
-### [ ] `qti-template-else-if`
+### `qti-template-else-if`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -10089,7 +10412,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-template-if"></a>
 
-### [ ] `qti-template-if`
+### `qti-template-if`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -10097,7 +10422,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-template-inline"></a>
 
-### [ ] `qti-template-inline`
+### `qti-template-inline`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -10375,7 +10702,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-template-processing"></a>
 
-### [ ] `qti-template-processing`
+### `qti-template-processing`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -10383,7 +10712,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-template-variable"></a>
 
-### [ ] `qti-template-variable`
+### `qti-template-variable`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `template-identifier`
@@ -10394,7 +10725,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-text-entry-interaction"></a>
 
-### [ ] `qti-text-entry-interaction`
+### `qti-text-entry-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `base`
@@ -10465,7 +10798,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-truncate"></a>
 
-### [ ] `qti-truncate`
+### `qti-truncate`
+
+- [ ] Supported
 
   **Attributes:** None
 
@@ -10473,7 +10808,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-upload-interaction"></a>
 
-### [ ] `qti-upload-interaction`
+### `qti-upload-interaction`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `aria-activedescendant`
@@ -10741,7 +11078,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-value"></a>
 
-### [ ] `qti-value`
+### `qti-value`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `base-type`
@@ -10757,7 +11096,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 <a name="el-qti-variable"></a>
 
-### [ ] `qti-variable`
+### `qti-variable`
+
+- [ ] Supported
 
   **Attributes:**
   - [ ] `identifier`
