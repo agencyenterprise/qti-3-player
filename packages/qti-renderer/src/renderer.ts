@@ -31,6 +31,10 @@ export class QtiRenderer {
   private options: QtiRendererOptions;
   private feedbackCallbacks: Set<() => void> = new Set();
   private feedbackContainer: HTMLElement | null = null;
+  private submitButtonContainer: HTMLElement | null = null;
+  private submissionCountContainer: HTMLElement | null = null;
+  private submissionCount: number = 0;
+  private maxAttempts: number | null = null;
 
   /**
    * Internal registry mapping QTI element names to render functions
@@ -58,6 +62,7 @@ export class QtiRenderer {
     this.parseXml(qtiXml);
     this.parseResponseDeclarations();
     this.parseFeedbackBlocks();
+    this.parseMaxAttempts();
   }
 
   /**
@@ -193,6 +198,28 @@ export class QtiRenderer {
   }
 
   /**
+   * Parse max attempts from QTI XML
+   */
+  private parseMaxAttempts(): void {
+    if (!this.xmlDoc) return;
+
+    // Find assessment item root element
+    const assessmentItem = this.querySelectorLocal(this.xmlDoc, 'assessmentItem') ||
+                          this.querySelectorLocal(this.xmlDoc, 'qti-assessment-item');
+    
+    if (assessmentItem) {
+      const maxAttemptsAttr = assessmentItem.getAttribute('max-attempts') ||
+                              assessmentItem.getAttribute('maxAttempts');
+      if (maxAttemptsAttr) {
+        const parsed = parseInt(maxAttemptsAttr, 10);
+        if (!isNaN(parsed) && parsed > 0) {
+          this.maxAttempts = parsed;
+        }
+      }
+    }
+  }
+
+  /**
    * Mount the rendered QTI item into a container element
    */
   mount(container: HTMLElement): void {
@@ -213,9 +240,31 @@ export class QtiRenderer {
     const rendered = this.renderElement(assessmentItem);
     container.appendChild(rendered);
 
+    // Create submission count display
+    this.submissionCountContainer = document.createElement('div');
+    this.submissionCountContainer.className = 'qti-submission-count';
+    this.updateSubmissionCountDisplay();
+    container.appendChild(this.submissionCountContainer);
+
+    // Create submit button container (always visible)
+    this.submitButtonContainer = document.createElement('div');
+    this.submitButtonContainer.className = 'qti-submit-container';
+    
+    const submitButton = document.createElement('button');
+    submitButton.type = 'button';
+    submitButton.className = 'qti-submit-button';
+    submitButton.textContent = 'Submit';
+    submitButton.addEventListener('click', () => {
+      this.handleSubmit();
+    });
+    
+    this.submitButtonContainer.appendChild(submitButton);
+    container.appendChild(this.submitButtonContainer);
+
     // Create feedback container
     this.feedbackContainer = document.createElement('div');
     this.feedbackContainer.className = 'qti-feedback-container';
+    this.feedbackContainer.style.display = 'none';
     container.appendChild(this.feedbackContainer);
   }
 
@@ -476,12 +525,13 @@ export class QtiRenderer {
     input.value = choiceId;
     input.setAttribute('data-choice-identifier', choiceId);
 
-    // Handle change events to update response state and show feedback
+    // Handle change events to update response state
     input.addEventListener('change', () => {
+      // Clear previous feedback when user changes selection
+      this.clearFeedback();
+      
       this.updateResponse(interactionId, choiceId, input.checked, isMultiple || false);
-      if (this.options.showFeedback) {
-        this.updateFeedback(interactionId, choiceId, input.checked);
-      }
+      
       this.triggerFeedbackUpdate();
     });
 
@@ -538,59 +588,142 @@ export class QtiRenderer {
   }
 
   /**
-   * Update visual feedback for a choice based on correctness
+   * Update submission count display - shows remaining attempts
    */
-  private updateFeedback(interactionId: string, choiceId: string, isSelected: boolean): void {
+  private updateSubmissionCountDisplay(): void {
+    if (!this.submissionCountContainer) return;
+    
+    if (this.maxAttempts !== null) {
+      const remaining = Math.max(0, this.maxAttempts - this.submissionCount);
+      this.submissionCountContainer.textContent = `Submissions remaining: ${remaining}`;
+    } else {
+      // No limit set - show unlimited
+      this.submissionCountContainer.textContent = `Submissions remaining: unlimited`;
+    }
+  }
+
+  /**
+   * Clear feedback and visual indicators
+   */
+  private clearFeedback(): void {
     if (!this.container) return;
 
-    const correctResponse = this.correctResponses.get(interactionId);
-    if (correctResponse === undefined) return;
+    // Clear all visual feedback classes
+    const labels = this.container.querySelectorAll('.qti-simple-choice');
+    labels.forEach((label) => {
+      label.classList.remove('qti-correct', 'qti-incorrect');
+    });
 
-    // Find the choice label element
+    // Clear feedback message
+    if (this.feedbackContainer) {
+      this.feedbackContainer.innerHTML = '';
+      this.feedbackContainer.style.display = 'none';
+    }
+
+    // Re-enable all inputs
+    const inputs = this.container.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+    inputs.forEach((input) => {
+      (input as HTMLInputElement).disabled = false;
+    });
+  }
+
+  /**
+   * Handle submit button click - show feedback
+   */
+  private handleSubmit(): void {
+    if (!this.container) return;
+
+    // Check if max attempts reached
+    if (this.maxAttempts !== null && this.submissionCount >= this.maxAttempts) {
+      return; // Don't allow more submissions
+    }
+
+    // Check if there's a response to submit
+    let hasResponse = false;
+    this.responses.forEach((response) => {
+      if (response && (typeof response === 'string' ? response !== '' : response.length > 0)) {
+        hasResponse = true;
+      }
+    });
+
+    if (!hasResponse) {
+      return; // No response to submit
+    }
+
+    // Increment submission count
+    this.submissionCount++;
+    this.updateSubmissionCountDisplay();
+
+    // Disable submit button if max attempts reached
+    if (this.maxAttempts !== null && this.submissionCount >= this.maxAttempts) {
+      const submitButton = this.submitButtonContainer?.querySelector('.qti-submit-button') as HTMLButtonElement;
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+      // Also disable inputs if max attempts reached
+      const inputs = this.container.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+      inputs.forEach((input) => {
+        (input as HTMLInputElement).disabled = true;
+      });
+    }
+    // Note: If max attempts not reached, inputs remain enabled for next submission
+
+    // Show visual feedback for all interactions
+    this.responses.forEach((response, interactionId) => {
+      if (!response || (Array.isArray(response) && response.length === 0)) {
+        return;
+      }
+
+      const correctResponse = this.correctResponses.get(interactionId);
+      if (correctResponse === undefined) return;
+
+      // Determine correctness
+      const isCorrect = this.compareResponses(response, correctResponse);
+
+      // Update visual feedback
+      if (typeof response === 'string') {
+        this.updateChoiceVisualFeedback(interactionId, response, isCorrect, correctResponse);
+      } else if (Array.isArray(response)) {
+        response.forEach(choiceId => {
+          const choiceCorrect = this.isChoiceCorrect(choiceId, correctResponse);
+          this.updateChoiceVisualFeedback(interactionId, choiceId, choiceCorrect, correctResponse);
+        });
+      }
+
+      // Show feedback message
+      if (isCorrect) {
+        this.showFeedback('CORRECT');
+      } else {
+        this.showFeedback('INCORRECT');
+      }
+    });
+
+    this.triggerFeedbackUpdate();
+  }
+
+
+  /**
+   * Update visual feedback for a single choice
+   */
+  private updateChoiceVisualFeedback(
+    interactionId: string,
+    choiceId: string,
+    isCorrect: boolean,
+    correctResponse: ResponseValue
+  ): void {
+    if (!this.container) return;
+
     const choiceLabel = this.container.querySelector(
       `label[for="${interactionId}-${choiceId}"]`
     ) as HTMLElement;
     if (!choiceLabel) return;
 
-    // Remove existing feedback classes
     choiceLabel.classList.remove('qti-correct', 'qti-incorrect');
-
-    if (!isSelected) {
-      // If deselected, remove feedback
-      return;
-    }
-
-    // Determine if this choice is correct
-    const isCorrect = this.isChoiceCorrect(choiceId, correctResponse);
     
     if (isCorrect) {
       choiceLabel.classList.add('qti-correct');
-      this.showFeedback('CORRECT');
     } else {
       choiceLabel.classList.add('qti-incorrect');
-      this.showFeedback('INCORRECT');
-    }
-
-    // Also highlight correct answer if user selected wrong one
-    if (!isCorrect && this.container) {
-      const container = this.container; // Store in local variable for TypeScript
-      if (typeof correctResponse === 'string') {
-        const correctLabel = container.querySelector(
-          `label[for="${interactionId}-${correctResponse}"]`
-        ) as HTMLElement;
-        if (correctLabel && !correctLabel.classList.contains('qti-correct')) {
-          correctLabel.classList.add('qti-correct');
-        }
-      } else if (Array.isArray(correctResponse)) {
-        correctResponse.forEach(correctId => {
-          const correctLabel = container.querySelector(
-            `label[for="${interactionId}-${correctId}"]`
-          ) as HTMLElement;
-          if (correctLabel && !correctLabel.classList.contains('qti-correct')) {
-            correctLabel.classList.add('qti-correct');
-          }
-        });
-      }
     }
   }
 
@@ -615,8 +748,10 @@ export class QtiRenderer {
     const feedbackBlock = this.feedbackBlocks.get(identifier);
     if (!feedbackBlock) return;
 
-    // Clear existing feedback
-    this.feedbackContainer.innerHTML = '';
+    // Don't overwrite if feedback already shown (for multiple interactions)
+    if (this.feedbackContainer.innerHTML.trim() !== '') {
+      return;
+    }
 
     // Render feedback block
     const rendered = this.renderElement(feedbackBlock);

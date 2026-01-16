@@ -19,7 +19,8 @@ export const exampleQtiXml = `<?xml version="1.0" encoding="UTF-8"?>
   identifier="SC_001"
   title="Simple Single Choice"
   adaptive="false"
-  time-dependent="false">
+  time-dependent="false"
+  max-attempts="3">
   <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
     <qti-correct-response>
       <qti-value>CHOICE_B</qti-value>
@@ -43,7 +44,7 @@ export const exampleQtiXml = `<?xml version="1.0" encoding="UTF-8"?>
   <qti-modal-feedback outcome-identifier="FEEDBACK" show-hide="show" identifier="INCORRECT">
     <qti-feedback-block>
       <p><strong>Incorrect.</strong></p>
-      <p>The correct answer is Mars. It's called the Red Planet because of iron oxide on its surface.</p>
+      <p>Please try again.</p>
     </qti-feedback-block>
   </qti-modal-feedback>
 </qti-assessment-item>`;
