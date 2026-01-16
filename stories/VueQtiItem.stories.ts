@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { VueQtiItemWrapper } from "@qti-renderer/vue";
+import { VueQtiItemWrapper } from "./components/vue/VueQtiItemWrapper";
 import { docsExample, mathQuestion, planetsQuestion } from "./shared/examples";
 
 const meta = {

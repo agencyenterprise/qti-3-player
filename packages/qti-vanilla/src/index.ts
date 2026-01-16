@@ -1,2 +1,2 @@
-export { VanillaQtiItem } from './QtiItem';
-export type { VanillaQtiItemProps } from './QtiItem';
+export { VanillaQtiItem, mountQtiItem } from './QtiItem';
+export type { VanillaQtiItemOptions } from './QtiItem';

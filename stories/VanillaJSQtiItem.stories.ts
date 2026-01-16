@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { VanillaQtiItem } from "@qti-renderer/vanilla";
+import { VanillaQtiItemWrapper } from "./components/vanilla/VanillaQtiItemWrapper";
 import { docsExample, mathQuestion, planetsQuestion } from "./shared/examples";
 
 const meta = {
   title: "Vanilla JS/QtiItem",
-  component: VanillaQtiItem,
+  component: VanillaQtiItemWrapper,
   parameters: {
     layout: "centered",
   },
@@ -23,7 +23,7 @@ const meta = {
       description: "Callback fired when assessment is processed",
     },
   },
-} satisfies Meta<typeof VanillaQtiItem>;
+} satisfies Meta<typeof VanillaQtiItemWrapper>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

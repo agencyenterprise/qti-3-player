@@ -1,18 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import { createApp } from "vue";
-import QtiItemVue from "./QtiItem.vue";
+import { QtiItem as QtiItemVue } from "@qti-renderer/vue";
 import type { AssessmentResult } from "@qti-renderer/core";
 
+/**
+ * React wrapper for Vue QtiItem component
+ * This is ONLY used in Storybook to display Vue components in React-based Storybook
+ * The actual Vue package does not include this wrapper
+ */
 export interface VueQtiItemWrapperProps {
   xml: string;
   onResponseChange?: (responses: Record<string, string | string[]>) => void;
   onAssessmentResult?: (result: AssessmentResult) => void;
 }
 
-/**
- * React wrapper for Vue QtiItem component
- * This allows using the Vue component in React-based Storybook
- */
 export function VueQtiItemWrapper({
   xml,
   onResponseChange,

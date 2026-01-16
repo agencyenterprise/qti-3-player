@@ -1,25 +1,26 @@
 {
   "name": "@qti-renderer/vanilla",
   "version": "0.1.0",
-  "description": "Vanilla JS wrapper for QTI 3.x renderer",
+  "description": "Vanilla JS wrapper for QTI 3.x renderer - truly framework-agnostic",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
   },
-  "keywords": ["qti", "assessment", "renderer", "vanilla"],
+  "keywords": [
+    "qti",
+    "assessment",
+    "renderer",
+    "vanilla",
+    "framework-agnostic"
+  ],
   "author": "",
   "license": "MIT",
-  "peerDependencies": {
-    "react": "^18.0.0"
-  },
   "dependencies": {
     "@qti-renderer/core": "file:../qti-renderer"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
-    "react": "^18.2.0",
     "typescript": "^5.0.0"
   }
 }

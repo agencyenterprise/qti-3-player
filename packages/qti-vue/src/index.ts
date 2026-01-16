@@ -1,6 +1,8 @@
-// Export React wrapper (for React-based Storybook)
-export { VueQtiItemWrapper } from './QtiItemWrapper';
-export type { VueQtiItemWrapperProps } from './QtiItemWrapper';
+// Export Vue component (for Vue projects)
+export { default as QtiItem } from './QtiItem.vue';
 
-// Note: Vue component (QtiItem.vue) is available in src/ for direct import in Vue projects
-// It cannot be exported from compiled dist due to TypeScript limitations with .vue files
+// Also export as default for convenience
+export { default } from './QtiItem.vue';
+
+// Export types separately (TypeScript can't extract types from .vue files)
+export type { QtiItemProps } from './types';

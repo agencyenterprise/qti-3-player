@@ -5,12 +5,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import { QtiRenderer, type AssessmentResult } from '@qti-renderer/core';
-
-export interface QtiItemProps {
-  xml: string;
-  onResponseChange?: (responses: Record<string, string | string[]>) => void;
-  onAssessmentResult?: (result: AssessmentResult) => void;
-}
+import type { QtiItemProps } from './types';
 
 const props = defineProps<QtiItemProps>();
 

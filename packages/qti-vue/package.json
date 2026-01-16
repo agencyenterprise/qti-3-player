@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && cp src/QtiItem.vue dist/QtiItem.vue",
+    "build": "tsc && cp src/QtiItem.vue dist/QtiItem.vue && cp src/vue-shims.d.ts dist/vue-shims.d.ts",
     "dev": "tsc --watch"
   },
   "keywords": ["qti", "assessment", "renderer", "vue"],
@@ -18,9 +18,7 @@
     "@qti-renderer/core": "file:../qti-renderer"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
     "@vitejs/plugin-vue": "^5.0.0",
-    "react": "^18.2.0",
     "typescript": "^5.0.0",
     "vue": "^3.4.0"
   }
