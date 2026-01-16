@@ -4,6 +4,7 @@ import {
   ResponseResult,
   AssessmentResult,
 } from "./types";
+import { registerAllElements } from "./qti-elements/register";
 
 /**
  * Registry of QTI element names to their render functions
@@ -45,25 +46,11 @@ export class QtiRenderer {
    * Internal registry mapping QTI element names to render functions
    * Supports both standard and qti- prefixed element names
    */
-  private renderRegistry: Map<string, RenderFunction> = new Map([
-    // Standard element names
-    ["assessmentItem", this.renderAssessmentItem.bind(this)],
-    ["itemBody", this.renderItemBody.bind(this)],
-    ["choiceInteraction", this.renderChoiceInteraction.bind(this)],
-    ["prompt", this.renderPrompt.bind(this)],
-    ["simpleChoice", this.renderSimpleChoice.bind(this)],
-    // QTI 3.x prefixed element names
-    ["qti-assessment-item", this.renderAssessmentItem.bind(this)],
-    ["qti-item-body", this.renderItemBody.bind(this)],
-    ["qti-choice-interaction", this.renderChoiceInteraction.bind(this)],
-    ["qti-prompt", this.renderPrompt.bind(this)],
-    ["qti-simple-choice", this.renderSimpleChoice.bind(this)],
-    ["qti-modal-feedback", this.renderModalFeedback.bind(this)],
-    ["qti-feedback-block", this.renderFeedbackBlock.bind(this)],
-  ]);
+  private renderRegistry: Map<string, RenderFunction> = new Map();
 
   constructor(qtiXml: string, options: QtiRendererOptions = {}) {
     this.options = { showFeedback: true, ...options };
+    registerAllElements(this.renderRegistry);
     this.parseXml(qtiXml);
     this.parseResponseDeclarations();
     this.parseFeedbackBlocks();
@@ -87,7 +74,7 @@ export class QtiRenderer {
   /**
    * Helper to find elements by local name (handles namespaces)
    */
-  private findElementByLocalName(
+  findElementByLocalName(
     parent: Document | Element,
     localName: string
   ): Element | null {
@@ -98,7 +85,7 @@ export class QtiRenderer {
   /**
    * Helper to query selector that works with or without namespaces
    */
-  private querySelectorLocal(
+  querySelectorLocal(
     element: Element | Document,
     localName: string
   ): Element | null {
@@ -114,7 +101,7 @@ export class QtiRenderer {
    * Helper to query all elements by local name
    * Returns an array for consistent iteration
    */
-  private querySelectorAllLocal(
+  querySelectorAllLocal(
     element: Element | Document,
     localName: string
   ): Element[] {
@@ -382,14 +369,14 @@ export class QtiRenderer {
   /**
    * Trigger feedback update callbacks
    */
-  private triggerFeedbackUpdate(): void {
+  triggerFeedbackUpdate(): void {
     this.feedbackCallbacks.forEach((callback) => callback());
   }
 
   /**
    * Generic element renderer that dispatches to registered render functions
    */
-  private renderElement(element: Element): HTMLElement {
+  renderElement(element: Element): HTMLElement {
     const tagName = element.localName || element.tagName.toLowerCase();
     const renderFn = this.renderRegistry.get(tagName);
 
@@ -401,231 +388,18 @@ export class QtiRenderer {
     return this.renderGenericElement(element);
   }
 
-  /**
-   * Render assessmentItem - the root element
-   * Creates a container div with the itemBody content
-   */
-  private renderAssessmentItem(
-    element: Element,
-    renderer: QtiRenderer
-  ): HTMLElement {
-    const container = document.createElement("div");
-    container.className = "qti-assessment-item";
-    container.setAttribute("role", "article");
-    container.setAttribute("aria-label", "Assessment item");
-
-    // Find and render itemBody (handles namespaces and qti- prefix)
-    const itemBody =
-      renderer.querySelectorLocal(element, "itemBody") ||
-      renderer.querySelectorLocal(element, "qti-item-body");
-    if (itemBody) {
-      const rendered = renderer.renderElement(itemBody);
-      container.appendChild(rendered);
-    }
-
-    return container;
-  }
 
   /**
-   * Render itemBody - contains the question content
-   * Acts as a container for interactions
+   * Initialize response state for an interaction
    */
-  private renderItemBody(element: Element, renderer: QtiRenderer): HTMLElement {
-    const container = document.createElement("div");
-    container.className = "qti-item-body";
-
-    // Render all child elements
-    Array.from(element.children).forEach((child) => {
-      const rendered = renderer.renderElement(child);
-      container.appendChild(rendered);
-    });
-
-    return container;
-  }
-
-  /**
-   * Render choiceInteraction - multiple choice question
-   * Creates a fieldset with radio buttons for each choice
-   */
-  private renderChoiceInteraction(
-    element: Element,
-    renderer: QtiRenderer
-  ): HTMLElement {
-    const identifier =
-      element.getAttribute("responseIdentifier") ||
-      element.getAttribute("response-identifier") ||
-      element.getAttribute("identifier") ||
-      `choice-${Math.random().toString(36).substr(2, 9)}`;
-
-    const maxChoices = parseInt(
-      element.getAttribute("maxChoices") ||
-        element.getAttribute("max-choices") ||
-        "1",
-      10
-    );
-    const isMultiple = maxChoices > 1;
-
-    const fieldset = document.createElement("fieldset");
-    fieldset.className = "qti-choice-interaction";
-    fieldset.setAttribute("data-response-identifier", identifier);
-
-    // Render prompt if present (handles namespaces and qti- prefix)
-    const prompt =
-      renderer.querySelectorLocal(element, "prompt") ||
-      renderer.querySelectorLocal(element, "qti-prompt");
-    if (prompt) {
-      const promptElement = renderer.renderElement(prompt);
-      const legend = document.createElement("legend");
-      legend.className = "qti-prompt";
-      // Move prompt content into legend
-      while (promptElement.firstChild) {
-        legend.appendChild(promptElement.firstChild);
-      }
-      fieldset.appendChild(legend);
-    }
-
-    // Render choices (handles namespaces and qti- prefix)
-    const choices = [
-      ...renderer.querySelectorAllLocal(element, "simpleChoice"),
-      ...renderer.querySelectorAllLocal(element, "qti-simple-choice"),
-    ];
-    choices.forEach((choice, index) => {
-      const choiceId = choice.getAttribute("identifier") || `choice-${index}`;
-      const renderedChoice = renderer.renderSimpleChoice(
-        choice,
-        renderer,
-        identifier,
-        choiceId,
-        isMultiple
-      );
-      fieldset.appendChild(renderedChoice);
-    });
-
-    // Initialize response state
-    this.responses.set(identifier, isMultiple ? [] : "");
-
-    return fieldset;
-  }
-
-  /**
-   * Render prompt - question text
-   * Returns a container div (content will be moved to legend by parent)
-   */
-  private renderPrompt(element: Element, renderer: QtiRenderer): HTMLElement {
-    const container = document.createElement("div");
-    container.className = "qti-prompt";
-
-    // Render text content and any nested elements
-    Array.from(element.childNodes).forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        container.appendChild(document.createTextNode(node.textContent || ""));
-      } else if (node.nodeType === Node.ELEMENT_NODE) {
-        const rendered = renderer.renderElement(node as Element);
-        container.appendChild(rendered);
-      }
-    });
-
-    return container;
-  }
-
-  /**
-   * Render simpleChoice - individual choice option
-   * Creates a label with radio/checkbox input
-   */
-  private renderSimpleChoice(
-    element: Element,
-    renderer: QtiRenderer,
-    interactionId?: string,
-    choiceId?: string,
-    isMultiple?: boolean
-  ): HTMLElement {
-    // If called from registry, extract context from element
-    if (!interactionId || !choiceId) {
-      const fieldset = element.closest("fieldset[data-response-identifier]");
-      interactionId =
-        fieldset?.getAttribute("data-response-identifier") || "unknown";
-
-      // Try to find parent choiceInteraction (handles namespaces)
-      let parentInteraction: Element | null = null;
-      let current: Element | null = element.parentElement;
-      while (current && !parentInteraction) {
-        const localName = current.localName || current.tagName.toLowerCase();
-        if (
-          localName === "choiceinteraction" ||
-          localName === "choiceInteraction"
-        ) {
-          parentInteraction = current;
-        }
-        current = current.parentElement;
-      }
-
-      if (parentInteraction) {
-        interactionId =
-          parentInteraction.getAttribute("responseIdentifier") || interactionId;
-        const maxChoices = parseInt(
-          parentInteraction.getAttribute("maxChoices") || "1",
-          10
-        );
-        isMultiple = maxChoices > 1;
-      }
-
-      choiceId =
-        element.getAttribute("identifier") ||
-        `choice-${Math.random().toString(36).substr(2, 9)}`;
-    }
-
-    const label = document.createElement("label");
-    label.className = "qti-simple-choice";
-    label.setAttribute("for", `${interactionId}-${choiceId}`);
-
-    // Create input element
-    const input = document.createElement("input");
-    input.type = isMultiple ? "checkbox" : "radio";
-    input.name = interactionId;
-    input.id = `${interactionId}-${choiceId}`;
-    input.value = choiceId;
-    input.setAttribute("data-choice-identifier", choiceId);
-
-    // Handle change events to update response state
-    input.addEventListener("change", () => {
-      // Clear previous feedback when user changes selection
-      this.clearFeedback();
-
-      this.updateResponse(
-        interactionId,
-        choiceId,
-        input.checked,
-        isMultiple || false
-      );
-
-      this.triggerFeedbackUpdate();
-    });
-
-    label.appendChild(input);
-
-    // Render choice content
-    const content = document.createElement("span");
-    content.className = "qti-choice-content";
-
-    // Process child nodes (text and elements)
-    Array.from(element.childNodes).forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        content.appendChild(document.createTextNode(node.textContent || ""));
-      } else if (node.nodeType === Node.ELEMENT_NODE) {
-        const rendered = renderer.renderElement(node as Element);
-        content.appendChild(rendered);
-      }
-    });
-
-    label.appendChild(content);
-
-    return label;
+  initializeResponse(interactionId: string, initialValue: ResponseValue): void {
+    this.responses.set(interactionId, initialValue);
   }
 
   /**
    * Update response state when user selects/deselects a choice
    */
-  private updateResponse(
+  updateResponse(
     interactionId: string,
     choiceId: string,
     isSelected: boolean,
@@ -671,7 +445,7 @@ export class QtiRenderer {
   /**
    * Clear feedback and visual indicators
    */
-  private clearFeedback(): void {
+  clearFeedback(): void {
     if (!this.container) return;
 
     // Clear all visual feedback classes
@@ -846,66 +620,6 @@ export class QtiRenderer {
     this.feedbackContainer.style.display = "block";
   }
 
-  /**
-   * Render modal feedback element
-   */
-  private renderModalFeedback(
-    element: Element,
-    renderer: QtiRenderer
-  ): HTMLElement {
-    const container = document.createElement("div");
-    container.className = "qti-modal-feedback";
-
-    // Render all child elements (typically feedback-block)
-    Array.from(element.children).forEach((child) => {
-      const rendered = renderer.renderElement(child);
-      container.appendChild(rendered);
-    });
-
-    return container;
-  }
-
-  /**
-   * Render feedback block element
-   */
-  private renderFeedbackBlock(
-    element: Element,
-    renderer: QtiRenderer
-  ): HTMLElement {
-    const container = document.createElement("div");
-    container.className = "qti-feedback-block";
-
-    // Render all child nodes (text and elements like <p>)
-    Array.from(element.childNodes).forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        const text = node.textContent?.trim();
-        if (text) {
-          container.appendChild(document.createTextNode(text));
-        }
-      } else if (node.nodeType === Node.ELEMENT_NODE) {
-        const nodeEl = node as Element;
-        const tagName = nodeEl.localName || nodeEl.tagName.toLowerCase();
-
-        // Create appropriate HTML element
-        let htmlEl: HTMLElement;
-        if (tagName === "p") {
-          htmlEl = document.createElement("p");
-        } else if (tagName === "strong" || tagName === "b") {
-          htmlEl = document.createElement("strong");
-        } else if (tagName === "em" || tagName === "i") {
-          htmlEl = document.createElement("em");
-        } else {
-          htmlEl = document.createElement("div");
-        }
-
-        // Copy text content and attributes
-        htmlEl.textContent = nodeEl.textContent || "";
-        container.appendChild(htmlEl);
-      }
-    });
-
-    return container;
-  }
 
   /**
    * Fallback renderer for unsupported elements

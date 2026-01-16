@@ -88,7 +88,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-assessment-item`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
   - [ ] `adaptive`
@@ -323,9 +323,13 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-choice-interaction`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
+  - [x] `response-identifier`
+    - Type: `xs:NCName`
+    - Use: `required`
+
   - [ ] `aria-activedescendant`
     - Type: `IDREF`
     - Use: `optional`
@@ -598,10 +602,6 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
     - Default: `vertical`
     - Allowed values: `horizontal`, `vertical`
 
-  - [ ] `response-identifier`
-    - Type: `xs:NCName`
-    - Use: `required`
-
   - [ ] `role`
     - Type: `string`
     - Use: `optional`
@@ -707,7 +707,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-correct-response`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
   - [ ] `interpretation`
@@ -5860,7 +5860,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-item-body`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
   - [ ] `class`
@@ -8605,9 +8605,13 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-response-declaration`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
+  - [x] `identifier`
+    - Type: `xs:ID`
+    - Use: `required`
+
   - [ ] `base-type`
     - Type: `string`
     - Use: `optional`
@@ -8617,10 +8621,6 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
     - Type: `string`
     - Use: `required`
     - Allowed values: `multiple`, `ordered`, `record`, `single`
-
-  - [ ] `identifier`
-    - Type: `xs:ID`
-    - Use: `required`
 
 ---
 
@@ -9637,9 +9637,13 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-simple-choice`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
+  - [x] `identifier`
+    - Type: `xs:NCName`
+    - Use: `required`
+
   - [ ] `aria-activedescendant`
     - Type: `IDREF`
     - Use: `optional`
@@ -9884,10 +9888,6 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
   - [ ] `id`
     - Type: `xs:ID`
     - Use: `optional`
-
-  - [ ] `identifier`
-    - Type: `xs:NCName`
-    - Use: `required`
 
   - [ ] `label`
     - Type: `normalizedString`
@@ -11080,7 +11080,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-value`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
   - [ ] `base-type`
