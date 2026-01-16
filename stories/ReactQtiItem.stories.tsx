@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { QtiItem } from "./components/react/QtiItem";
-import { exampleQtiXml } from "./shared/example-qti";
+import { docsExample, mathQuestion, planetsQuestion } from "./shared/examples";
 
 const meta = {
   title: "React/QtiItem",
@@ -28,20 +28,20 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Docs: Story = {
   args: {
-    xml: exampleQtiXml,
+    xml: docsExample,
   },
 };
 
-export const WithCallbacks: Story = {
+export const MathQuestion: Story = {
   args: {
-    xml: exampleQtiXml,
-    onResponseChange: (responses) => {
-      console.log("Responses changed:", responses);
-    },
-    onAssessmentResult: (result) => {
-      console.log("Assessment result:", result);
-    },
+    xml: mathQuestion,
+  },
+};
+
+export const PlanetsQuestion: Story = {
+  args: {
+    xml: planetsQuestion,
   },
 };
