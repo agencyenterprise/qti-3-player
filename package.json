@@ -4,14 +4,38 @@
   "private": true,
   "description": "QTI 3.x renderer proof of concept",
   "workspaces": [
-    "packages/*",
-    "apps/*"
+    "packages/*"
   ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "dev": "npm run dev --workspace=apps/react-demo"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "overrides": {
+    "esbuild": "^0.25.12"
   },
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "@storybook/addon-essentials": "^8.1.0",
+    "@storybook/addon-interactions": "^8.1.0",
+    "@storybook/addon-links": "^8.1.0",
+    "@storybook/blocks": "^8.1.0",
+    "@storybook/html": "^8.1.0",
+    "@storybook/html-vite": "^8.1.0",
+    "@storybook/react": "^8.1.0",
+    "@storybook/react-vite": "^8.1.0",
+    "@storybook/test": "^8.1.0",
+    "@storybook/vue3": "^8.1.0",
+    "@storybook/vue3-vite": "^8.1.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@rollup/rollup-darwin-arm64": "^4.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "esbuild": "^0.25.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^8.1.0",
+    "typescript": "^5.0.0",
+    "vue": "^3.4.0"
   }
 }
