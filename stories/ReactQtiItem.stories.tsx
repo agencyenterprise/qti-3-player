@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { QtiItem } from "./components/react/QtiItem";
+import { QtiItem } from "@qti-renderer/react";
 import { docsExample, mathQuestion, planetsQuestion } from "./shared/examples";
 
 const meta = {

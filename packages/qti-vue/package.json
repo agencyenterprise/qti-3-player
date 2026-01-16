@@ -1,0 +1,27 @@
+{
+  "name": "@qti-renderer/vue",
+  "version": "0.1.0",
+  "description": "Vue wrapper for QTI 3.x renderer",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && cp src/QtiItem.vue dist/QtiItem.vue",
+    "dev": "tsc --watch"
+  },
+  "keywords": ["qti", "assessment", "renderer", "vue"],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "@qti-renderer/core": "file:../qti-renderer"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "react": "^18.2.0",
+    "typescript": "^5.0.0",
+    "vue": "^3.4.0"
+  }
+}
