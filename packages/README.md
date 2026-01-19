@@ -12,7 +12,7 @@ Framework-agnostic QTI 3.x renderer library. This is the core rendering engine t
 import { QtiRenderer } from '@qti-renderer/core';
 
 const renderer = new QtiRenderer(xml, options);
-renderer.mount(containerElement);
+await renderer.render(containerElement);
 ```
 
 ### `@qti-renderer/react`

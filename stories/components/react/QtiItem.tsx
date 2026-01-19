@@ -33,15 +33,25 @@ export function QtiItem({
     }
 
     try {
-      // Create new renderer instance with feedback enabled
+      // Create new renderer instance with feedback and validation enabled
       const renderer = new QtiRenderer(xml, {
         debug: false,
         showFeedback: true,
+        validateXml: true,
       });
       rendererRef.current = renderer;
 
-      // Mount to container
-      renderer.mount(containerRef.current);
+      // Render to container (async)
+      renderer.render(containerRef.current).catch((error) => {
+        console.error("Failed to render QTI item:", error);
+        if (containerRef.current) {
+          containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
+            Error rendering QTI item: ${
+              error instanceof Error ? error.message : "Unknown error"
+            }
+          </div>`;
+        }
+      });
 
       // Set up feedback callback to trigger re-render
       renderer.onFeedbackUpdate(() => {
@@ -54,10 +64,10 @@ export function QtiItem({
         }
       });
     } catch (error) {
-      console.error("Failed to render QTI item:", error);
+      console.error("Failed to create QTI renderer:", error);
       if (containerRef.current) {
         containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
-          Error rendering QTI item: ${
+          Error creating QTI renderer: ${
             error instanceof Error ? error.message : "Unknown error"
           }
         </div>`;

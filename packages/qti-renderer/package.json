@@ -5,13 +5,25 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch"
+    "build": "tsc && cp src/xmlschema-no-annotations.xml dist/xmlschema-no-annotations.xml",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
-  "keywords": ["qti", "assessment", "renderer"],
+  "keywords": [
+    "qti",
+    "assessment",
+    "renderer"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "@vitest/ui": "^4.0.17",
+    "jsdom": "^27.4.0",
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.17"
+  },
+  "dependencies": {
+    "xmllint-wasm": "^5.1.0"
   }
 }
