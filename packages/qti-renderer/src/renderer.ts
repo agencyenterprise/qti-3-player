@@ -5,6 +5,7 @@ import {
   AssessmentResult,
 } from "./types";
 import { registerAllElements } from "./qti-elements/register";
+import { validateXml, type ValidationResult, type ValidationOptions } from "./validation";
 
 /**
  * Registry of QTI element names to their render functions
@@ -30,6 +31,7 @@ type RenderFunction = (element: Element, renderer: QtiRenderer) => HTMLElement;
  */
 export class QtiRenderer {
   private xmlDoc: Document | null = null;
+  private xmlString: string;
   private container: HTMLElement | null = null;
   private responses: Map<string, ResponseValue> = new Map();
   private correctResponses: Map<string, ResponseValue> = new Map();
@@ -41,6 +43,9 @@ export class QtiRenderer {
   private submissionCountContainer: HTMLElement | null = null;
   private submissionCount: number = 0;
   private maxAttempts: number | null = null;
+  private validationResult: ValidationResult | null = null;
+  private validationPromise: Promise<ValidationResult> | null = null;
+  private isValidated: boolean = false;
 
   /**
    * Internal registry mapping QTI element names to render functions
@@ -49,12 +54,100 @@ export class QtiRenderer {
   private renderRegistry: Map<string, RenderFunction> = new Map();
 
   constructor(qtiXml: string, options: QtiRendererOptions = {}) {
-    this.options = { showFeedback: true, ...options };
+    this.xmlString = qtiXml;
+    this.options = { 
+      showFeedback: true, 
+      validateXml: true, // Validation enabled by default
+      ...options 
+    };
     registerAllElements(this.renderRegistry);
     this.parseXml(qtiXml);
     this.parseResponseDeclarations();
     this.parseFeedbackBlocks();
     this.parseMaxAttempts();
+  }
+
+  /**
+   * Validate the XML against the QTI schema
+   * This is a separate async method that can be called independently
+   * By default, uses the cached local schema for faster validation
+   * 
+   * @returns Promise resolving to validation result
+   */
+  async validateXml(): Promise<ValidationResult> {
+    // Default: use local cached schema (fast, no network request)
+    // User can override via validationOptions to use custom schema or fetch from URL
+    const validationOptions: ValidationOptions = {
+      // Default: use cached local schema (fetchSchema defaults to false/undefined)
+      // This means loadLocalSchema() will be used, which uses the cached schema
+      ...this.options.validationOptions,
+      // If user explicitly provided a schema URL, allow fetching
+      // Otherwise, fetchSchema remains false/undefined to use local cached schema
+      fetchSchema: this.options.validationOptions?.schema?.startsWith('http') 
+        ? (this.options.validationOptions.fetchSchema ?? true)
+        : (this.options.validationOptions?.fetchSchema ?? false),
+    };
+
+    this.validationPromise = validateXml(this.xmlString, validationOptions);
+    this.validationResult = await this.validationPromise;
+    this.isValidated = true;
+
+    if (!this.validationResult.valid) {
+      const errorMessages = this.validationResult.errors
+        .map((err) => {
+          const location = err.line
+            ? ` (line ${err.line}${err.fileName ? ` in ${err.fileName}` : ''})`
+            : '';
+          return `${err.message}${location}`;
+        })
+        .join('\n');
+      
+      if (this.options.debug) {
+        console.warn('QTI XML validation failed:', errorMessages);
+      }
+    }
+
+    return this.validationResult;
+  }
+
+  /**
+   * Invalidate the validation state
+   * Call this when the XML changes to force re-validation
+   */
+  invalidateValidation(): void {
+    this.isValidated = false;
+    this.validationResult = null;
+    this.validationPromise = null;
+  }
+
+  /**
+   * Update the XML content
+   * This will invalidate validation and re-parse the XML
+   * 
+   * @param qtiXml - New QTI XML string
+   */
+  updateXml(qtiXml: string): void {
+    this.xmlString = qtiXml;
+    this.invalidateValidation();
+    this.parseXml(qtiXml);
+    this.parseResponseDeclarations();
+    this.parseFeedbackBlocks();
+    this.parseMaxAttempts();
+  }
+
+  /**
+   * Get validation result (if validation was performed)
+   * Returns null if validation was not performed
+   */
+  getValidationResult(): ValidationResult | null {
+    return this.validationResult;
+  }
+
+  /**
+   * Check if XML has been validated
+   */
+  isXmlValidated(): boolean {
+    return this.isValidated;
   }
 
   /**
@@ -229,9 +322,33 @@ export class QtiRenderer {
   }
 
   /**
-   * Mount the rendered QTI item into a container element
+   * Render the QTI item into a container element
+   * If validation is enabled, it will validate the XML first if not already validated
+   * 
+   * @param container - Container element to render into
    */
-  mount(container: HTMLElement): void {
+  async render(container: HTMLElement): Promise<void> {
+    if (!this.xmlDoc) {
+      throw new Error("QTI XML not parsed. Check constructor.");
+    }
+
+    // Check if validation is enabled
+    if (this.options.validateXml !== false) {
+      // Check if validation was already performed
+      if (!this.isValidated) {
+        // Wait for validation to complete
+        await this.validateXml();
+      }
+    }
+
+    // Proceed with rendering
+    this.renderContent(container);
+  }
+
+  /**
+   * Internal method to render the content into container
+   */
+  private renderContent(container: HTMLElement): void {
     if (!this.xmlDoc) {
       throw new Error("QTI XML not parsed. Check constructor.");
     }

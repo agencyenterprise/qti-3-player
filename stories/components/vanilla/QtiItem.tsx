@@ -24,9 +24,19 @@ export function VanillaQtiItem({
       const renderer = new QtiRenderer(xml, {
         debug: false,
         showFeedback: true,
+        validateXml: true,
       });
       rendererRef.current = renderer;
-      renderer.mount(containerRef.current);
+      renderer.render(containerRef.current).catch((error) => {
+        console.error("Failed to render QTI item:", error);
+        if (containerRef.current) {
+          containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
+            Error rendering QTI item: ${
+              error instanceof Error ? error.message : "Unknown error"
+            }
+          </div>`;
+        }
+      });
 
       // Set up feedback callback
       renderer.onFeedbackUpdate(() => {
@@ -42,10 +52,10 @@ export function VanillaQtiItem({
         rendererRef.current = null;
       };
     } catch (error) {
-      console.error("Failed to render QTI item:", error);
+      console.error("Failed to create QTI renderer:", error);
       if (containerRef.current) {
         containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
-          Error rendering QTI item: ${
+          Error creating QTI renderer: ${
             error instanceof Error ? error.message : "Unknown error"
           }
         </div>`;
