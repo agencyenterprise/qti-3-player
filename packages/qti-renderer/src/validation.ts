@@ -74,9 +74,9 @@ export const DEFAULT_QTI_SCHEMA_URL =
  * Paths to try for local schema file
  */
 const LOCAL_SCHEMA_PATHS = [
-  './xmlschema-no-annotations.xml',
-  '/node_modules/@qti-renderer/core/dist/xmlschema-no-annotations.xml',
-  './dist/xmlschema-no-annotations.xml',
+  './imsqti_asiv3p0_v1p0.xsd',
+  '/node_modules/@qti-renderer/core/dist/imsqti_asiv3p0_v1p0.xsd',
+  './dist/imsqti_asiv3p0_v1p0.xsd',
 ];
 
 /**
@@ -106,9 +106,9 @@ async function loadLocalSchema(): Promise<string> {
       const path = require('path') as typeof import('path');
       // Try multiple possible locations
       const possiblePaths = [
-        path.join(__dirname, 'xmlschema-no-annotations.xml'),
-        path.join(process.cwd(), 'packages/qti-renderer/src/xmlschema-no-annotations.xml'),
-        path.join(process.cwd(), 'packages/qti-renderer/dist/xmlschema-no-annotations.xml'),
+        path.join(__dirname, 'imsqti_asiv3p0_v1p0.xsd'),
+        path.join(process.cwd(), 'packages/qti-renderer/src/imsqti_asiv3p0_v1p0.xsd'),
+        path.join(process.cwd(), 'packages/qti-renderer/dist/imsqti_asiv3p0_v1p0.xsd'),
       ];
       
       for (const schemaPath of possiblePaths) {

@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && cp src/xmlschema-no-annotations.xml dist/xmlschema-no-annotations.xml",
+    "build": "tsc && cp src/imsqti_asiv3p0_v1p0.xsd dist/imsqti_asiv3p0_v1p0.xsd",
     "dev": "tsc --watch",
     "test": "vitest",
     "test:run": "vitest run"
