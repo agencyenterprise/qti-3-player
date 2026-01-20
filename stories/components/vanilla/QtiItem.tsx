@@ -1,16 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import { QtiRenderer, type AssessmentResult } from "@qti-renderer/core";
+import { QtiRenderer } from "@qti-renderer/core";
 
 interface VanillaQtiItemProps {
   xml: string;
-  onResponseChange?: (responses: Record<string, string | string[]>) => void;
-  onAssessmentResult?: (result: AssessmentResult) => void;
 }
 
 export function VanillaQtiItem({
   xml,
-  onResponseChange,
-  onAssessmentResult,
 }: VanillaQtiItemProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<QtiRenderer | null>(null);
@@ -27,17 +23,6 @@ export function VanillaQtiItem({
       });
       rendererRef.current = renderer;
       renderer.mount(containerRef.current);
-
-      // Set up feedback callback
-      renderer.onFeedbackUpdate(() => {
-        if (onResponseChange && rendererRef.current) {
-          onResponseChange(rendererRef.current.getResponses());
-        }
-        if (onAssessmentResult && rendererRef.current) {
-          onAssessmentResult(rendererRef.current.processResponses());
-        }
-      });
-
       return () => {
         rendererRef.current = null;
       };
@@ -51,7 +36,7 @@ export function VanillaQtiItem({
         </div>`;
       }
     }
-  }, [xml, onResponseChange, onAssessmentResult]);
+  }, [xml]);
 
   return (
     <div

@@ -1,8 +1,6 @@
-import { QtiRenderer, type AssessmentResult } from "@qti-renderer/core";
+import { QtiRenderer } from "@qti-renderer/core";
 
 export interface VanillaQtiItemOptions {
-  onResponseChange?: (responses: Record<string, string | string[]>) => void;
-  onAssessmentResult?: (result: AssessmentResult) => void;
   debug?: boolean;
   showFeedback?: boolean;
 }
@@ -16,10 +14,7 @@ export interface VanillaQtiItemOptions {
  * @example
  * ```typescript
  * const container = document.getElementById('qti-container');
- * const qtiItem = new VanillaQtiItem(container, xmlString, {
- *   onResponseChange: (responses) => console.log(responses),
- *   onAssessmentResult: (result) => console.log(result)
- * });
+ * const qtiItem = new VanillaQtiItem(container, xmlString, {});
  * 
  * // Update XML
  * qtiItem.updateXml(newXmlString);
@@ -62,16 +57,6 @@ export class VanillaQtiItem {
 
       // Mount to container
       this.renderer.mount(this.container);
-
-      // Set up feedback callback
-      this.renderer.onFeedbackUpdate(() => {
-        if (this.options.onResponseChange && this.renderer) {
-          this.options.onResponseChange(this.renderer.getResponses());
-        }
-        if (this.options.onAssessmentResult && this.renderer) {
-          this.options.onAssessmentResult(this.renderer.processResponses());
-        }
-      });
     } catch (error) {
       console.error("Failed to render QTI item:", error);
       this.container.innerHTML = `<div style="color: red; padding: 1rem;">
@@ -87,20 +72,6 @@ export class VanillaQtiItem {
    */
   updateXml(xml: string): void {
     this.mount(xml);
-  }
-
-  /**
-   * Get current responses
-   */
-  getResponses(): Record<string, string | string[]> {
-    return this.renderer?.getResponses() ?? {};
-  }
-
-  /**
-   * Process responses and get assessment result
-   */
-  processResponses(): AssessmentResult | null {
-    return this.renderer?.processResponses() ?? null;
   }
 
   /**
@@ -121,9 +92,7 @@ export class VanillaQtiItem {
  * @example
  * ```typescript
  * const container = document.getElementById('qti-container');
- * const qtiItem = mountQtiItem(container, xmlString, {
- *   onResponseChange: (responses) => console.log(responses)
- * });
+ * const qtiItem = mountQtiItem(container, xmlString, {});
  * ```
  */
 export function mountQtiItem(

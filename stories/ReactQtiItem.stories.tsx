@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { QtiItem } from "@qti-renderer/react";
-import { docsExample, mathQuestion, planetsQuestion } from "./shared/examples";
+import { docsExample, mathQuestion, planetsQuestion, modalFeedbackQuestion } from "./shared/examples";
 
 const meta = {
   title: "React/QtiItem",
@@ -13,15 +13,7 @@ const meta = {
     xml: {
       control: "text",
       description: "QTI 3.x XML string",
-    },
-    onResponseChange: {
-      action: "responseChanged",
-      description: "Callback fired when user responses change",
-    },
-    onAssessmentResult: {
-      action: "assessmentResult",
-      description: "Callback fired when assessment is processed",
-    },
+    }
   },
 } satisfies Meta<typeof QtiItem>;
 
@@ -43,5 +35,11 @@ export const MathQuestion: Story = {
 export const PlanetsQuestion: Story = {
   args: {
     xml: planetsQuestion,
+  },
+};
+
+export const ModalFeedbackQuestion: Story = {
+  args: {
+    xml: modalFeedbackQuestion,
   },
 };

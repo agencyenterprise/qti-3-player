@@ -10,8 +10,7 @@ export const planetsQuestion = `<?xml version="1.0" encoding="UTF-8"?>
   identifier="SC_001"
   title="Planets Question"
   adaptive="false"
-  time-dependent="false"
-  max-attempts="3">
+  time-dependent="false">
   <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
     <qti-correct-response>
       <qti-value>CHOICE_B</qti-value>
@@ -27,15 +26,15 @@ export const planetsQuestion = `<?xml version="1.0" encoding="UTF-8"?>
     </qti-choice-interaction>
   </qti-item-body>
   <qti-modal-feedback outcome-identifier="FEEDBACK" show-hide="show" identifier="CORRECT">
-    <qti-feedback-block>
+    <qti-content-body>
       <p><strong>Correct!</strong></p>
       <p>Mars is indeed known as the Red Planet due to iron oxide (rust) on its surface giving it a reddish appearance.</p>
-    </qti-feedback-block>
+    </qti-content-body>
   </qti-modal-feedback>
   <qti-modal-feedback outcome-identifier="FEEDBACK" show-hide="show" identifier="INCORRECT">
-    <qti-feedback-block>
+    <qti-content-body>
       <p><strong>Incorrect.</strong></p>
       <p>Please try again.</p>
-    </qti-feedback-block>
+    </qti-content-body>
   </qti-modal-feedback>
 </qti-assessment-item>`;

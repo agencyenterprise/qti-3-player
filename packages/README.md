@@ -29,8 +29,6 @@ import { QtiItem } from '@qti-renderer/react';
 
 <QtiItem 
   xml={qtiXml}
-  onResponseChange={(responses) => console.log(responses)}
-  onAssessmentResult={(result) => console.log(result)}
 />
 ```
 
@@ -47,8 +45,6 @@ npm install @qti-renderer/vue @qti-renderer/core
 <template>
   <QtiItem 
     :xml="qtiXml"
-    @response-change="handleResponseChange"
-    @assessment-result="handleAssessmentResult"
   />
 </template>
 
