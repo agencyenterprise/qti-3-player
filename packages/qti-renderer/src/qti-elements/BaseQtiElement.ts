@@ -1,5 +1,5 @@
 import { QtiRenderer } from '../renderer';
-import { ProcessResult } from '../types';
+import { BaseValueType, CardinalityType, ProcessResult } from '../types';
 
 /**
  * Helper type that defines the required static properties for QTI element classes.
@@ -76,5 +76,21 @@ export abstract class BaseQtiElement {
     elementNames.forEach((name: string) => {
       rendererClassRegistry.set(name, this as unknown as new (element: Element) => BaseQtiElement);
     });
+  }
+
+  getIdentifier(): string {
+    return this.element.getAttribute('identifier') || '';
+  }
+
+  getResponseIdentifier(): string {
+    return this.element.getAttribute('response-identifier') || '';
+  }
+
+  getCardinality(): CardinalityType {
+    return (this.element.getAttribute('cardinality') || 'single') as CardinalityType;
+  }
+
+  getBaseType(): BaseValueType {
+    return (this.element.getAttribute('base-type') || 'string') as BaseValueType;
   }
 }

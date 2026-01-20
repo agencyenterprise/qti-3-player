@@ -11,21 +11,47 @@ export class SimpleChoice extends BaseQtiElement {
   static readonly elementNames = ['qti-simple-choice'];
   static readonly canBeRoot = false;
 
-  isMultiple: boolean = false;
+  maxChoices: number = 1;
   groupName: string = '';
 
   process(renderer: QtiRenderer): VisualElement {
-    const identifier = this.element.getAttribute('identifier') || `choice-${Math.random().toString(36).substr(2, 9)}`;
-
+    const identifier = this.getIdentifier();
     const label = document.createElement('label');
     label.className = 'qti-simple-choice';
     label.setAttribute('for', identifier);
 
     const input = document.createElement('input');
-    input.type = this.isMultiple ? 'checkbox' : 'radio';
+    input.type = this.maxChoices > 1 ? 'checkbox' : 'radio';
     input.name = this.groupName;
     input.id = identifier;
     input.value = identifier;
+    if (this.maxChoices > 1) {
+      input.addEventListener('click', (event: MouseEvent) => {
+        const clickingCheckbox = event.target as HTMLInputElement;
+        if (clickingCheckbox.checked) {
+          const fieldset = input.closest('fieldset');
+          const checkboxes = fieldset?.querySelectorAll(
+            'input[type="checkbox"][name="' + this.groupName + '"]'
+          );
+          if (checkboxes && checkboxes.length > 0) {
+            const values = [];
+
+            for (let i = 0; i < checkboxes.length; i++) {
+              const checkboxElement = checkboxes[i] as HTMLInputElement;
+
+              if (checkboxElement.checked) {
+                values.push(checkboxElement.value);
+              }
+            }
+            if (values.length > this.maxChoices) {
+              event.preventDefault();
+              event.stopPropagation();
+              return false;
+            }
+          }
+        }
+      });
+    }
 
     label.appendChild(input);
 
@@ -42,8 +68,8 @@ export class SimpleChoice extends BaseQtiElement {
     };
   }
 
-  setIsMultiple(isMultiple: boolean): void {
-    this.isMultiple = isMultiple;
+  setMaxChoices(maxChoices: number): void {
+    this.maxChoices = maxChoices;
   }
 
   setGroupName(groupName: string): void {

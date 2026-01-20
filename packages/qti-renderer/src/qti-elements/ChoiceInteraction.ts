@@ -16,7 +16,7 @@ export class ChoiceInteraction extends BaseQtiElement {
 
   process(renderer: QtiRenderer): VisualElement {
     const responseIdentifier = this.getResponseIdentifier();
-    const isMultiple = this.isMultipleChoice();
+    const isMultiple = this.getMaxChoices() > 1;
     const fieldset = document.createElement('fieldset');
     fieldset.className = 'qti-choice-interaction';
     fieldset.setAttribute('data-response-identifier', responseIdentifier);
@@ -33,7 +33,10 @@ export class ChoiceInteraction extends BaseQtiElement {
       for (let i = 0; i < checkboxes.length; i++) {
         const checkboxElement = checkboxes[i] as HTMLInputElement;
         const closestFieldset = checkboxElement.closest('fieldset[data-response-identifier]');
-        if (closestFieldset && closestFieldset.getAttribute('data-response-identifier') === responseIdentifier) {
+        if (
+          closestFieldset &&
+          closestFieldset.getAttribute('data-response-identifier') === responseIdentifier
+        ) {
           if (checkboxElement.checked) {
             values.push(checkboxElement.value);
           }
@@ -53,17 +56,8 @@ export class ChoiceInteraction extends BaseQtiElement {
     };
   }
 
-  getResponseIdentifier(): string {
-    return (
-      this.element.getAttribute('response-identifier') ||
-      this.element.getAttribute('identifier') ||
-      `choice-${Math.random().toString(36).substr(2, 9)}`
-    );
-  }
-
-  isMultipleChoice(): boolean {
-    const maxChoices = parseInt(this.element.getAttribute('max-choices') || '1', 10);
-    return maxChoices > 1;
+  getMaxChoices(): number {
+    return parseInt(this.element.getAttribute('max-choices') || '1', 10);
   }
 
   processPrompt(renderer: QtiRenderer, fieldset: HTMLFieldSetElement) {
@@ -84,7 +78,7 @@ export class ChoiceInteraction extends BaseQtiElement {
 
     choices.forEach((choice) => {
       const simpleChoiceRenderer = new SimpleChoice(choice);
-      simpleChoiceRenderer.setIsMultiple(this.isMultipleChoice());
+      simpleChoiceRenderer.setMaxChoices(this.getMaxChoices());
       simpleChoiceRenderer.setGroupName(this.getResponseIdentifier());
       const renderedChoice = simpleChoiceRenderer.process(renderer);
       if (renderedChoice.type === 'visual') {

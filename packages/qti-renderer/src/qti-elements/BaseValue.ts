@@ -12,7 +12,7 @@ export class BaseValue extends BaseQtiElement {
   static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): ValueElement {
-    const baseType = this.element.getAttribute('base-type') as BaseValueType;
+    const baseType = this.getBaseType();
     const value = this.element.textContent;
 
     return {

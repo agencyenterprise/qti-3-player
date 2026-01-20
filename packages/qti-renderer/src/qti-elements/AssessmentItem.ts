@@ -19,7 +19,9 @@ export class AssessmentItem extends BaseQtiElement {
 
   process(renderer: QtiRenderer): VisualElement {
     const container = document.createElement('div');
+    const identifier = this.getIdentifier();
     container.className = 'qti-assessment-item';
+    container.setAttribute('data-identifier', identifier);
 
     renderer.processElementChildren(this.element, container);
 

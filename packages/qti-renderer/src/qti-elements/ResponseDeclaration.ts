@@ -23,9 +23,9 @@ export class ResponseDeclaration extends BaseQtiElement {
   static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): EmptyElement {
-    const identifier = this.element.getAttribute('identifier') || '';
-    const cardinality = this.element.getAttribute('cardinality') as CardinalityType;
-    const baseType = (this.element.getAttribute('base-type') || 'string') as BaseValueType;
+    const identifier = this.getIdentifier();
+    const cardinality = this.getCardinality();
+    const baseType = this.getBaseType();
 
     const correctResponse = renderer.querySelectorLocal(this.element, 'qti-correct-response');
     if (correctResponse) {
@@ -42,7 +42,8 @@ export class ResponseDeclaration extends BaseQtiElement {
         // TODO: handle all the cases
         if (
           (cardinality === 'single' && correctValue.cardinality === 'single') ||
-          ((cardinality === 'multiple' || cardinality === 'ordered') && correctValue.cardinality === 'multiple')
+          ((cardinality === 'multiple' || cardinality === 'ordered') &&
+            correctValue.cardinality === 'multiple')
         ) {
           renderer.setCorrectResponse(identifier, {
             type: 'value',

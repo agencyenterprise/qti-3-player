@@ -17,7 +17,7 @@ export class SetOutcomeValue extends BaseQtiElement {
   static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): EmptyElement {
-    const identifier = this.element.getAttribute('identifier') || '';
+    const identifier = this.getIdentifier();
     const value = renderer.processElement(this.element.children[0] as Element);
     if (value.type === 'value') {
       renderer.setOutcomeValue(identifier, value);

@@ -31,7 +31,7 @@ export class Variable extends BaseQtiElement {
   static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): ValueElement | EmptyElement {
-    const identifier = this.element.getAttribute('identifier') || '';
+    const identifier = this.getIdentifier();
     return renderer.getVariable(identifier);
   }
 }

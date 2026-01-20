@@ -16,7 +16,7 @@ export class ModalFeedback extends BaseQtiElement {
   process(renderer: QtiRenderer): VisualElement {
     const container = document.createElement('div');
     const outcomeIdentifier = this.element.getAttribute('outcome-identifier') || '';
-    const identifier = this.element.getAttribute('identifier') || '';
+    const identifier = this.getIdentifier();
 
     container.className = 'qti-modal-feedback';
     container.setAttribute('data-outcome-identifier', outcomeIdentifier);
@@ -36,7 +36,7 @@ export class ModalFeedback extends BaseQtiElement {
 
   innerRender(renderer: QtiRenderer, container: HTMLElement): void {
     const outcomeIdentifier = this.element.getAttribute('outcome-identifier') || '';
-    const identifier = this.element.getAttribute('identifier') || '';
+    const identifier = this.getIdentifier();
     const showHide = this.element.getAttribute('show-hide');
 
     const outcomeValue = renderer.getOutcomeValue(outcomeIdentifier);

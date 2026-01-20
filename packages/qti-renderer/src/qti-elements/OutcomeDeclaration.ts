@@ -24,9 +24,9 @@ export class OutcomeDeclaration extends BaseQtiElement {
   static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): EmptyElement {
-    const identifier = this.element.getAttribute('identifier') || '';
-    const cardinality = this.element.getAttribute('cardinality') as CardinalityType;
-    const baseType = this.element.getAttribute('base-type') || ('string' as BaseValueType);
+    const identifier = this.getIdentifier();
+    const cardinality = this.getCardinality();
+    const baseType = this.getBaseType();
     // TODO: Implement the logic to set the outcome value?
     return {
       type: 'empty',

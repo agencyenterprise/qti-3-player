@@ -29,7 +29,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `max`
+
     - Type: `integer`
     - Use: `required`
 
@@ -46,12 +48,15 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `coords`
+
     - Type: `xs:normalizedString`
     - Use: `required`
     - Pattern: `(([0-9]+%?[,]){2}([0-9]+%?))|(([0-9]+%?[,]){3}([0-9]+%?))|(([0-9]+%?[,]){2}(([0-9]+%?[,]){2})+([0-9]+%?[,])([0-9]+%?))`
 
   - [ ] `mapped-value`
+
     - Type: `double`
     - Use: `required`
 
@@ -69,12 +74,15 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `default-value`
+
     - Type: `double`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `lower-bound`
+
     - Type: `double`
     - Use: `optional`
 
@@ -91,28 +99,35 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [x] Supported
 
   **Attributes:**
-  - [ ] `adaptive`
-    - Type: `boolean`
-    - Use: `optional`
-    - Default: `false`
 
-  - [ ] `identifier`
+  - [x] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
-  - [ ] `label`
-    - Type: `normalizedString`
-    - Use: `optional`
-
   - [ ] `time-dependent`
+
     - Type: `boolean`
     - Use: `required`
 
   - [ ] `title`
+
     - Type: `normalizedString`
     - Use: `required`
 
+  - [ ] `adaptive`
+
+    - Type: `boolean`
+    - Use: `optional`
+    - Default: `false`
+
+  - [ ] `label`
+
+    - Type: `normalizedString`
+    - Use: `optional`
+
   - [ ] `tool-name`
+
     - Type: `normalizedString`
     - Use: `optional`
 
@@ -129,11 +144,14 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `href`
+
     - Type: `anyURI`
     - Use: `required`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -150,38 +168,47 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `coords`
+
     - Type: `xs:normalizedString`
     - Use: `required`
     - Pattern: `(([0-9]+%?[,]){2}([0-9]+%?))|(([0-9]+%?[,]){3}([0-9]+%?))|(([0-9]+%?[,]){2}(([0-9]+%?[,]){2})+([0-9]+%?[,])([0-9]+%?))`
 
   - [ ] `hotspot-label`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `match-group`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `match-max`
+
     - Type: `nonNegativeInteger`
     - Use: `required`
 
   - [ ] `match-min`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `shape`
+
     - Type: `string`
     - Use: `required`
     - Allowed values: `circle`, `default`, `ellipse`, `poly`, `rect`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Default: `show`
@@ -200,12 +227,15 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `max-associations`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `1`
 
   - [ ] `min-associations`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
@@ -221,10 +251,11 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-base-value`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
-  - [ ] `base-type`
+
+  - [x] `base-type`
     - Type: `string`
     - Use: `required`
     - Allowed values: `boolean`, `directedPair`, `duration`, `file`, `float`, `identifier`, `integer`, `pair`, `point`, `string`, `uri`
@@ -248,7 +279,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
@@ -276,6 +309,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `support`
     - Type: [`SupportExtStringDType`](#type-supportextstringdtype)
     - Use: `required`
@@ -289,6 +323,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `default`
     - Type: `boolean`
     - Use: `optional`
@@ -303,6 +338,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `id`
     - Type: `xs:ID`
     - Use: `required`
@@ -326,291 +362,353 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [x] Supported
 
   **Attributes:**
+
   - [x] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
+  - [ ] `shuffle`
+
+    - Type: `boolean`
+    - Use: `optional`
+    - Default: `false`
+
+  - [x] `max-choices`
+
+    - Type: `nonNegativeInteger`
+    - Use: `optional`
+    - Default: `1`
+
+  - [ ] `min-choices`
+
+    - Type: `nonNegativeInteger`
+    - Use: `optional`
+    - Default: `0`
+
+  - [ ] `orientation`
+
+    - Type: `string`
+    - Use: `optional`
+    - Default: `vertical`
+    - Allowed values: `horizontal`, `vertical`
+
+  - [ ] `data-min-selections-message`
+
+    - Type: `normalizedString`
+    - Use: `optional`
+
+  - [ ] `data-max-selections-message`
+
+    - Type: `normalizedString`
+    - Use: `optional`
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
-  - [ ] `data-max-selections-message`
-    - Type: `normalizedString`
-    - Use: `optional`
-
-  - [ ] `data-min-selections-message`
-    - Type: `normalizedString`
-    - Use: `optional`
-
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
-  - [ ] `max-choices`
-    - Type: `nonNegativeInteger`
-    - Use: `optional`
-    - Default: `1`
-
-  - [ ] `min-choices`
-    - Type: `nonNegativeInteger`
-    - Use: `optional`
-    - Default: `0`
-
-  - [ ] `orientation`
-    - Type: `string`
-    - Use: `optional`
-    - Default: `vertical`
-    - Allowed values: `horizontal`, `vertical`
-
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
-
-  - [ ] `shuffle`
-    - Type: `boolean`
-    - Use: `optional`
-    - Default: `false`
 
 ---
 
@@ -648,7 +746,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-content-body`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:** None
 
@@ -661,12 +759,15 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `base-type`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `boolean`, `directedPair`, `duration`, `file`, `float`, `identifier`, `integer`, `pair`, `point`, `string`, `uri`
 
   - [ ] `cardinality`
+
     - Type: `string`
     - Use: `required`
     - Allowed values: `multiple`, `ordered`, `record`, `single`
@@ -684,6 +785,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
@@ -694,10 +796,11 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-correct`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
-  - [ ] `identifier`
+
+  - [x] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -710,6 +813,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [x] Supported
 
   **Attributes:**
+
   - [ ] `interpretation`
     - Type: `string`
     - Use: `optional`
@@ -723,255 +827,310 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -989,7 +1148,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `class`
+
     - Type: `xs:NCName`
     - Use: `optional`
 
@@ -1006,6 +1167,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
@@ -1019,6 +1181,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `interpretation`
     - Type: `normalizedString`
     - Use: `optional`
@@ -1052,7 +1215,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
@@ -1080,255 +1245,310 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -1366,42 +1586,52 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `count-attempt`
+
     - Type: `boolean`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -1418,17 +1648,21 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `include-lower-bound`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `true`
 
   - [ ] `include-upper-bound`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `true`
 
   - [ ] `tolerance`
+
     - Type: `unknown`
     - Use: `optional`
 
@@ -1447,7 +1681,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `figures`
+
     - Type: `integer`
     - Use: `required`
 
@@ -1486,299 +1722,364 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `base`
+
     - Type: `int`
     - Use: `optional`
     - Default: `10`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-patternmask-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `expected-length`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `expected-lines`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `format`
+
     - Type: `string`
     - Use: `optional`
     - Default: `plain`
     - Allowed values: `plain`, `preformatted`, `xhtml`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-strings`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `min-strings`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `pattern-mask`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `placeholder-text`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
@@ -1796,267 +2097,325 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `data-ssml`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `outcome-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
@@ -2076,267 +2435,325 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `data-ssml`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `outcome-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
@@ -2356,6 +2773,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `field-identifier`
     - Type: `xs:NCName`
     - Use: `required`
@@ -2379,51 +2797,63 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `match-group`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Default: `show`
@@ -2442,291 +2872,354 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `left`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `match-group`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `match-max`
+
     - Type: `nonNegativeInteger`
     - Use: `required`
 
   - [ ] `match-min`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `object-label`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Default: `show`
     - Allowed values: `show`, `hide`
 
   - [ ] `template-identifier`
+
     - Type: `xs:NCName`
     - Use: `optional`
 
@@ -2743,280 +3236,341 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-choices-container-width`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `data-max-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-min-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-associations`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `1`
 
   - [ ] `min-associations`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
@@ -3035,277 +3589,337 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `match-group`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `match-max`
+
     - Type: `nonNegativeInteger`
     - Use: `required`
 
   - [ ] `match-min`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Default: `show`
@@ -3334,264 +3948,321 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-associations`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `1`
 
   - [ ] `min-associations`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -3609,276 +4280,336 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-choices-container-width`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `data-max-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-min-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-associations`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `1`
 
   - [ ] `min-associations`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -3896,263 +4627,320 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `min-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -4190,56 +4978,69 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `coords`
+
     - Type: `xs:normalizedString`
     - Use: `required`
     - Pattern: `(([0-9]+%?[,]){2}([0-9]+%?))|(([0-9]+%?[,]){3}([0-9]+%?))|(([0-9]+%?[,]){2}(([0-9]+%?[,]){2})+([0-9]+%?[,])([0-9]+%?))`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `hotspot-label`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `shape`
+
     - Type: `string`
     - Use: `required`
     - Allowed values: `circle`, `default`, `ellipse`, `poly`, `rect`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Default: `show`
@@ -4258,273 +5059,332 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-max-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-min-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `1`
 
   - [ ] `min-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -4542,268 +5402,326 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `data-ssml`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Default: `show`
@@ -4822,273 +5740,332 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-max-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-min-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `1`
 
   - [ ] `min-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -5136,6 +6113,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `n`
     - Type: `NCName`
     - Use: `required`
@@ -5149,269 +6127,327 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `fixed`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Default: `show`
@@ -5430,277 +6466,337 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-min-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-prompt`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `min-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
@@ -5719,7 +6815,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `coords`
+
     - Type: `xs:normalizedString`
     - Use: `required`
     - Pattern: `(([0-9]+%?[,]){2}([0-9]+%?))|(([0-9]+%?[,]){3}([0-9]+%?))|(([0-9]+%?[,]){2}(([0-9]+%?[,]){2})+([0-9]+%?[,])([0-9]+%?))`
@@ -5778,11 +6876,14 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `fallback-path`
+
     - Type: `anyURI`
     - Use: `optional`
 
   - [ ] `id`
+
     - Type: `NCName`
     - Use: `required`
 
@@ -5799,7 +6900,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `primary-configuration`
+
     - Type: `anyURI`
     - Use: `optional`
     - Default: `modules/module_resolution.js`
@@ -5818,6 +6921,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `default-value`
     - Type: `string`
     - Use: `optional`
@@ -5831,12 +6935,15 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `include-boundary`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `true`
 
   - [ ] `source-value`
+
     - Type: `double`
     - Use: `required`
 
@@ -5863,21 +6970,26 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [x] Supported
 
   **Attributes:**
+
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
@@ -5894,255 +7006,310 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `data-ssml`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
@@ -6170,6 +7337,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
@@ -6203,6 +7371,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `unit`
     - Type: `string`
     - Use: `required`
@@ -6217,12 +7386,15 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `case-sensitive`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `map-key`
+
     - Type: `normalizedString`
     - Use: `required`
 
@@ -6239,6 +7411,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
@@ -6252,6 +7425,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
@@ -6265,12 +7439,15 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `default-value`
+
     - Type: `double`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `lower-bound`
+
     - Type: `double`
     - Use: `optional`
 
@@ -6284,7 +7461,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-match`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:** None
 
@@ -6297,281 +7474,342 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-first-column-header`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-max-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-min-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-associations`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `1`
 
   - [ ] `min-associations`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
@@ -6590,6 +7828,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `default-value`
     - Type: `string`
     - Use: `optional`
@@ -6603,7 +7842,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `source-value`
+
     - Type: `int`
     - Use: `required`
 
@@ -6621,6 +7862,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `name`
     - Type: `string`
     - Use: `required`
@@ -6635,6 +7877,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `name`
     - Type: `string`
     - Use: `required`
@@ -6659,279 +7902,339 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `autostart`
+
     - Type: `boolean`
     - Use: `required`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `coords`
+
     - Type: `xs:normalizedString`
     - Use: `optional`
     - Pattern: `(([0-9]+%?[,]){2}([0-9]+%?))|(([0-9]+%?[,]){3}([0-9]+%?))|(([0-9]+%?[,]){2}(([0-9]+%?[,]){2})+([0-9]+%?[,])([0-9]+%?))`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `loop`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `max-plays`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `min-plays`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -6979,6 +8282,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `unit`
     - Type: `string`
     - Use: `required`
@@ -6990,18 +8294,22 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-modal-feedback`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
-  - [ ] `identifier`
+
+  - [x] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
-  - [ ] `outcome-identifier`
+  - [x] `outcome-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `required`
     - Allowed values: `show`, `hide`
@@ -7049,11 +8357,14 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `exclude-category`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `include-category`
+
     - Type: `unknown`
     - Use: `optional`
 
@@ -7070,11 +8381,14 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `exclude-category`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `include-category`
+
     - Type: `unknown`
     - Use: `optional`
 
@@ -7091,11 +8405,14 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `exclude-category`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `include-category`
+
     - Type: `unknown`
     - Use: `optional`
 
@@ -7112,11 +8429,14 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `exclude-category`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `include-category`
+
     - Type: `unknown`
     - Use: `optional`
 
@@ -7133,11 +8453,14 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `exclude-category`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `include-category`
+
     - Type: `unknown`
     - Use: `optional`
 
@@ -7164,284 +8487,346 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-choices-container-width`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `data-max-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-min-selections-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `min-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `orientation`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `horizontal`, `vertical`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
@@ -7470,48 +8855,59 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
-  - [ ] `base-type`
-    - Type: `string`
-    - Use: `optional`
-    - Allowed values: `boolean`, `directedPair`, `duration`, `file`, `float`, `identifier`, `integer`, `pair`, `point`, `string`, `uri`
 
   - [ ] `cardinality`
+
     - Type: `string`
     - Use: `required`
     - Allowed values: `multiple`, `ordered`, `record`, `single`
 
+  - [ ] `identifier`
+
+    - Type: `xs:NCName`
+    - Use: `required`
+
+  - [ ] `base-type`
+
+    - Type: `string`
+    - Use: `optional`
+    - Allowed values: `boolean`, `directedPair`, `duration`, `file`, `float`, `identifier`, `integer`, `pair`, `point`, `string`, `uri`
+
   - [ ] `external-scored`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `externalMachine`, `human`
 
-  - [ ] `identifier`
-    - Type: `xs:NCName`
-    - Use: `required`
-
   - [ ] `interpretation`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `long-interpretation`
+
     - Type: `anyURI`
     - Use: `optional`
 
   - [ ] `mastery-value`
+
     - Type: `double`
     - Use: `optional`
 
   - [ ] `normal-maximum`
+
     - Type: `xs:double`
     - Use: `optional`
     - minInclusive: `0.0`
 
   - [ ] `normal-minimum`
+
     - Type: `double`
     - Use: `optional`
     - Default: `0.0`
 
   - [ ] `variable-identifier-ref`
+
     - Type: `xs:IDREF`
     - Use: `optional`
 
@@ -7528,19 +8924,24 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `exclude-category`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `include-category`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `outcome-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `section-identifier`
+
     - Type: `xs:NCName`
     - Use: `optional`
 
@@ -7557,19 +8958,24 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `exclude-category`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `include-category`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `outcome-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `section-identifier`
+
     - Type: `xs:NCName`
     - Use: `optional`
 
@@ -7586,6 +8992,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `pattern`
     - Type: `string`
     - Use: `required`
@@ -7609,263 +9016,320 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `custom-interaction-type-identifier`
+
     - Type: `anyURI`
     - Use: `required`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `module`
+
     - Type: `NCName`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -7883,268 +9347,326 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `center-point`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `1`
 
   - [ ] `min-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -8162,6 +9684,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `id`
     - Type: `xs:ID`
     - Use: `optional`
@@ -8185,45 +9708,56 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `base`
+
     - Type: `integer`
     - Use: `optional`
     - Default: `10`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `delimiter`
+
     - Type: `normalizedString`
     - Use: `optional`
     - Default: `;`
 
   - [ ] `field`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `format`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `index`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `mapping-indicator`
+
     - Type: `normalizedString`
     - Use: `optional`
     - Default: `=`
@@ -8249,254 +9783,308 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-prompt`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
@@ -8534,7 +10122,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `max`
+
     - Type: `double`
     - Use: `required`
 
@@ -8552,11 +10142,14 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `max`
+
     - Type: `integer`
     - Use: `required`
 
   - [ ] `min`
+
     - Type: `integer`
     - Use: `optional`
     - Default: `0`
@@ -8575,6 +10168,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `number-repeats`
     - Type: `NCName`
     - Use: `required`
@@ -8595,7 +10189,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-response-condition`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:** None
 
@@ -8608,19 +10202,23 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [x] Supported
 
   **Attributes:**
+
   - [x] `identifier`
+
     - Type: `xs:ID`
     - Use: `required`
 
-  - [ ] `base-type`
-    - Type: `string`
-    - Use: `optional`
-    - Allowed values: `boolean`, `directedPair`, `duration`, `file`, `float`, `identifier`, `integer`, `pair`, `point`, `string`, `uri`
+  - [x] `cardinality`
 
-  - [ ] `cardinality`
     - Type: `string`
     - Use: `required`
     - Allowed values: `multiple`, `ordered`, `record`, `single`
+
+  - [x] `base-type`
+
+    - Type: `string`
+    - Use: `optional`
+    - Allowed values: `boolean`, `directedPair`, `duration`, `file`, `float`, `identifier`, `integer`, `pair`, `point`, `string`, `uri`
 
 ---
 
@@ -8628,7 +10226,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-response-else`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:** None
 
@@ -8638,7 +10236,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-response-else-if`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:** None
 
@@ -8648,7 +10246,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-response-if`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:** None
 
@@ -8658,10 +10256,12 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-response-processing`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
+
   - [ ] `template`
+
     - Type: `anyURI`
     - Use: `optional`
 
@@ -8698,7 +10298,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `figures`
+
     - Type: `integer`
     - Use: `required`
 
@@ -8716,264 +10318,321 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `data-ssml`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
 
   - [ ] `use`
+
     - Type: [`UseExtensionStringDType`](#type-useextensionstringdtype)
     - Use: `required`
 
@@ -9020,265 +10679,322 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `max-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `min-choices`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -9296,6 +11012,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
@@ -9309,6 +11026,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
@@ -9319,10 +11037,11 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-set-outcome-value`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
-  - [ ] `identifier`
+
+  - [x] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -9335,6 +11054,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
@@ -9348,281 +11068,342 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `fixed`
+
     - Type: `boolean`
     - Use: `optional`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `match-group`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `match-max`
+
     - Type: `nonNegativeInteger`
     - Use: `required`
 
   - [ ] `match-min`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
     - Default: `0`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `show`, `hide`
@@ -9640,269 +11421,327 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [x] Supported
 
   **Attributes:**
+
   - [x] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `fixed`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Default: `show`
@@ -9921,6 +11760,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `id`
     - Type: `xs:ID`
     - Use: `optional`
@@ -9934,284 +11774,345 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lower-bound`
+
     - Type: `xs:double`
     - Use: `required`
     - minInclusive: `0.0`
 
   - [ ] `orientation`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `horizontal`, `vertical`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `reverse`
+
     - Type: `boolean`
     - Use: `optional`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
 
   - [ ] `step`
+
     - Type: `xs:double`
     - Use: `optional`
     - Default: `1.0`
     - minInclusive: `0.0`
 
   - [ ] `step-label`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
@@ -10230,6 +12131,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `name`
     - Type: `string`
     - Use: `required`
@@ -10244,7 +12146,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `case-sensitive`
+
     - Type: `boolean`
     - Use: `required`
 
@@ -10262,15 +12166,19 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `href`
+
     - Type: `anyURI`
     - Use: `required`
 
   - [ ] `media`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `title`
+
     - Type: `normalizedString`
     - Use: `optional`
 
@@ -10288,6 +12196,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `case-sensitive`
     - Type: `boolean`
     - Use: `required`
@@ -10321,11 +12230,14 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Default: `show`
@@ -10364,21 +12276,26 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `base-type`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `boolean`, `directedPair`, `duration`, `file`, `float`, `identifier`, `integer`, `pair`, `point`, `string`, `uri`
 
   - [ ] `cardinality`
+
     - Type: `string`
     - Use: `required`
     - Allowed values: `multiple`, `ordered`, `record`, `single`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `math-variable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
@@ -10427,268 +12344,326 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `data-ssml`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
 
   - [ ] `show-hide`
+
     - Type: `string`
     - Use: `optional`
     - Default: `show`
@@ -10717,6 +12692,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `template-identifier`
     - Type: `xs:NCName`
     - Use: `required`
@@ -10730,63 +12706,78 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `base`
+
     - Type: `int`
     - Use: `optional`
     - Default: `10`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-patternmask-message`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `expected-length`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `format`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `pattern-mask`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `placeholder-text`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:IDREF`
     - Use: `required`
 
@@ -10813,259 +12804,315 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [ ] Supported
 
   **Attributes:**
+
   - [ ] `aria-activedescendant`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-atomic`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-autocomplete`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `inline`, `list`, `both`, `none`
 
   - [ ] `aria-busy`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-checked`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-colcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-colspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-controls`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-current`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `page`, `step`, `location`, `date`, `time`, `true`, `false`, `undefined`
 
   - [ ] `aria-describedby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-details`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-disabled`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-errormessage`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `aria-expanded`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-flowto`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-haspopup`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-hidden`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-invalid`
+
     - Type: `string`
     - Use: `optional`
     - Default: `false`
     - Allowed values: `true`, `false`, `grammar`, `spelling`
 
   - [ ] `aria-keyshortcuts`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `aria-labelledby`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-level`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-live`
+
     - Type: `string`
     - Use: `optional`
     - Default: `off`
     - Allowed values: `off`, `polite`, `assertive`
 
   - [ ] `aria-modal`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiline`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-multiselectable`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-orientation`
+
     - Type: `string`
     - Use: `optional`
     - Default: `horizontal`
     - Allowed values: `vertical`, `horizontal`
 
   - [ ] `aria-owns`
+
     - Type: `IDREFS`
     - Use: `optional`
 
   - [ ] `aria-placeholder`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-posinset`
+
     - Type: `xs:integer`
     - Use: `optional`
     - minInclusive: `1`
 
   - [ ] `aria-pressed`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `mixed`, `undefined`
 
   - [ ] `aria-readonly`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-relevant`
+
     - Type: `unknown`
     - Use: `optional`
     - Default: `additions text`
 
   - [ ] `aria-required`
+
     - Type: `boolean`
     - Use: `optional`
     - Default: `false`
 
   - [ ] `aria-roledescription`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `aria-rowcount`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowindex`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-rowspan`
+
     - Type: `nonNegativeInteger`
     - Use: `optional`
 
   - [ ] `aria-selected`
+
     - Type: `string`
     - Use: `optional`
     - Default: `undefined`
     - Allowed values: `true`, `false`, `undefined`
 
   - [ ] `aria-setsize`
+
     - Type: `integer`
     - Use: `optional`
 
   - [ ] `aria-sort`
+
     - Type: `string`
     - Use: `optional`
     - Default: `none`
     - Allowed values: `ascending`, `descending`, `none`, `other`
 
   - [ ] `aria-valuemax`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuemin`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuenow`
+
     - Type: `decimal`
     - Use: `optional`
 
   - [ ] `aria-valuetext`
+
     - Type: `string`
     - Use: `optional`
 
   - [ ] `class`
+
     - Type: `unknown`
     - Use: `optional`
 
   - [ ] `data-catalog-idref`
+
     - Type: `IDREF`
     - Use: `optional`
 
   - [ ] `data-qti-suppress-tts`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `computer-read-aloud`, `screen-reader`, `all`
 
   - [ ] `dir`
+
     - Type: `string`
     - Use: `optional`
     - Default: `auto`
     - Allowed values: `ltr`, `rtl`, `auto`
 
   - [ ] `id`
+
     - Type: `xs:ID`
     - Use: `optional`
 
   - [ ] `label`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `lang`
+
     - Type: `normalizedString`
     - Use: `optional`
 
   - [ ] `response-identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
   - [ ] `role`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
@@ -11083,7 +13130,9 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 - [x] Supported
 
   **Attributes:**
+
   - [ ] `base-type`
+
     - Type: `string`
     - Use: `optional`
     - Allowed values: `boolean`, `directedPair`, `duration`, `file`, `float`, `identifier`, `integer`, `pair`, `point`, `string`, `uri`
@@ -11098,10 +13147,12 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-variable`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
-  - [ ] `identifier`
+
+  - [x] `identifier`
+
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -11110,4 +13161,3 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
     - Use: `optional`
 
 ---
-
