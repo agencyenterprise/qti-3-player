@@ -1,13 +1,11 @@
-import React, { useEffect, useRef } from "react";
-import { QtiRenderer } from "@qti-renderer/core";
+import React, { useEffect, useRef } from 'react';
+import { QtiRenderer } from '@qti-renderer/core';
 
 interface VanillaQtiItemProps {
   xml: string;
 }
 
-export function VanillaQtiItem({
-  xml,
-}: VanillaQtiItemProps) {
+export function VanillaQtiItem({ xml }: VanillaQtiItemProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<QtiRenderer | null>(null);
 
@@ -20,19 +18,26 @@ export function VanillaQtiItem({
       const renderer = new QtiRenderer(xml, {
         debug: false,
         showFeedback: true,
+        validateXml: true,
       });
       rendererRef.current = renderer;
-      renderer.mount(containerRef.current);
+      renderer.render(containerRef.current).catch((error) => {
+        console.error('Failed to render QTI item:', error);
+        if (containerRef.current) {
+          containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
+            Error rendering QTI item: ${error instanceof Error ? error.message : 'Unknown error'}
+          </div>`;
+        }
+      });
+
       return () => {
         rendererRef.current = null;
       };
     } catch (error) {
-      console.error("Failed to render QTI item:", error);
+      console.error('Failed to create QTI renderer:', error);
       if (containerRef.current) {
         containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
-          Error rendering QTI item: ${
-            error instanceof Error ? error.message : "Unknown error"
-          }
+          Error creating QTI renderer: ${error instanceof Error ? error.message : 'Unknown error'}
         </div>`;
       }
     }
@@ -42,9 +47,9 @@ export function VanillaQtiItem({
     <div
       ref={containerRef}
       style={{
-        width: "100%",
-        maxWidth: "800px",
-        padding: "20px",
+        width: '100%',
+        maxWidth: '800px',
+        padding: '20px',
       }}
       className="qti-item-container"
     />

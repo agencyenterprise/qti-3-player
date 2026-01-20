@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { QtiRenderer } from "@qti-renderer/core";
+import React, { useEffect, useRef, useState } from 'react';
+import { QtiRenderer } from '@qti-renderer/core';
 
 /**
  * React wrapper component for QTI renderer
@@ -16,9 +16,7 @@ interface QtiItemProps {
   xml: string;
 }
 
-export function QtiItem({
-  xml,
-}: QtiItemProps) {
+export function QtiItem({ xml }: QtiItemProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<QtiRenderer | null>(null);
   const [, forceUpdate] = useState(0);
@@ -29,22 +27,28 @@ export function QtiItem({
     }
 
     try {
-      // Create new renderer instance with feedback enabled
+      // Create new renderer instance with feedback and validation enabled
       const renderer = new QtiRenderer(xml, {
         debug: false,
         showFeedback: true,
+        validateXml: true,
       });
       rendererRef.current = renderer;
 
-      // Mount to container
-      renderer.mount(containerRef.current);
+      // Render to container (async)
+      renderer.render(containerRef.current).catch((error) => {
+        console.error('Failed to render QTI item:', error);
+        if (containerRef.current) {
+          containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
+            Error rendering QTI item: ${error instanceof Error ? error.message : 'Unknown error'}
+          </div>`;
+        }
+      });
     } catch (error) {
-      console.error("Failed to render QTI item:", error);
+      console.error('Failed to create QTI renderer:', error);
       if (containerRef.current) {
         containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
-          Error rendering QTI item: ${
-            error instanceof Error ? error.message : "Unknown error"
-          }
+          Error creating QTI renderer: ${error instanceof Error ? error.message : 'Unknown error'}
         </div>`;
       }
     }
