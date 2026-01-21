@@ -21,13 +21,39 @@ body {
   padding: 0;
 }
 
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #444;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+.app-header h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.app-header a {
+  color: #646cff;
+  text-decoration: none;
+}
+
+.app-header a:hover {
+  text-decoration: underline;
+}
+
 .container {
   display: flex;
-  height: 100%;
+  height: calc(100% - 60px);
   width: 100%;
 }
 
-.editor-pane, .preview-pane {
+.editor-pane,
+.preview-pane {
   flex: 1;
   padding: 20px;
   display: flex;
@@ -57,7 +83,6 @@ body {
 
 .editor-pane textarea {
   flex: 1;
-  width: 100%;
   resize: none;
   background-color: #2d2d2d;
   color: #e0e0e0;
@@ -107,14 +132,15 @@ body {
 #qti-container {
   width: 100%;
   height: 100%;
-  
+
   /* Strong reset to isolate from outer styles */
   all: initial;
   display: block; /* Restore block display after all: initial */
-  
+
   /* Re-apply desired base styles for the player */
   text-align: left;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 16px;
   line-height: 1.5;
   color: #212529;
