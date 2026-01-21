@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { VanillaQtiItem, type VanillaQtiItemOptions } from "@qti-renderer/vanilla";
-import type { AssessmentResult } from "@qti-renderer/core";
 
 /**
  * React wrapper for Vanilla QtiItem
@@ -9,14 +8,10 @@ import type { AssessmentResult } from "@qti-renderer/core";
  */
 export interface VanillaQtiItemWrapperProps {
   xml: string;
-  onResponseChange?: (responses: Record<string, string | string[]>) => void;
-  onAssessmentResult?: (result: AssessmentResult) => void;
 }
 
 export function VanillaQtiItemWrapper({
   xml,
-  onResponseChange,
-  onAssessmentResult,
 }: VanillaQtiItemWrapperProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const qtiItemRef = useRef<VanillaQtiItem | null>(null);
@@ -27,8 +22,6 @@ export function VanillaQtiItemWrapper({
     }
 
     const options: VanillaQtiItemOptions = {
-      onResponseChange,
-      onAssessmentResult,
       debug: false,
       showFeedback: true,
     };
@@ -41,7 +34,7 @@ export function VanillaQtiItemWrapper({
         qtiItemRef.current = null;
       }
     };
-  }, [xml, onResponseChange, onAssessmentResult]);
+  }, [xml]);
 
   return (
     <div

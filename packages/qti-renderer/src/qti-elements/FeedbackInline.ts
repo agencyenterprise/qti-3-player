@@ -4,22 +4,24 @@ import { VisualElement } from '../types';
 import { EventsEnum, onQti3PlayerEvent } from '../events';
 
 /**
- * XML Schema type: ModalFeedbackDType
- * Modal feedback is shown to the candidate directly following response processing. The value
- * of an outcome variable is used in conjunction with the showHide and identifier characteri-
- * stics to determine whether or not the feedback is shown. The content of the modalFeedback
- * must not contain any interactions.
+ * XML Schema type: FeedbackInlineDType
+ * This is feedback that is presented as inline content. Inline feedback that forms part of a
+ * Non-adaptive Item must not contain an interaction object, either directly or indirectly.
+ * When an interaction is contained in a hidden feedback it must also be hidden. The candida-
+ * te must not be able to set or update the value of the associated response variables. Feed-
+ * back can be embedded inside each other, with one exception: qti-feedback-inline cannot co-
+ * ntain feedback block elements.
  */
-export class ModalFeedback extends BaseQtiElement {
-  static readonly elementNames = ['qti-modal-feedback'];
+export class FeedbackInline extends BaseQtiElement {
+  static readonly elementNames = ['qti-feedback-inline'];
   static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): VisualElement {
-    const container = document.createElement('div');
+    const container = document.createElement('span');
     const outcomeIdentifier = this.element.getAttribute('outcome-identifier') || '';
     const identifier = this.getIdentifier();
 
-    container.className = 'qti-modal-feedback';
+    container.className = 'qti-feedback-inline';
     container.setAttribute('data-outcome-identifier', outcomeIdentifier);
     container.setAttribute('data-identifier', identifier);
 

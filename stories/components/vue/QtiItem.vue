@@ -4,12 +4,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
-import { QtiRenderer, type AssessmentResult } from '@qti-renderer/core';
+import { QtiRenderer } from '@qti-renderer/core';
 
 interface Props {
   xml: string;
-  onResponseChange?: (responses: Record<string, string | string[]>) => void;
-  onAssessmentResult?: (result: AssessmentResult) => void;
 }
 
 const props = defineProps<Props>();
@@ -38,16 +36,6 @@ const mountRenderer = () => {
         containerRef.value.innerHTML = `<div style="color: red; padding: 1rem;">
           Error rendering QTI item: ${error instanceof Error ? error.message : 'Unknown error'}
         </div>`;
-      }
-    });
-
-    // Set up feedback callback
-    renderer.onFeedbackUpdate(() => {
-      if (props.onResponseChange && rendererRef.value) {
-        props.onResponseChange(rendererRef.value.getResponses());
-      }
-      if (props.onAssessmentResult && rendererRef.value) {
-        props.onAssessmentResult(rendererRef.value.processResponses());
       }
     });
   } catch (error) {

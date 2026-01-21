@@ -1,17 +1,11 @@
-import React, { useEffect, useRef } from "react";
-import { QtiRenderer, type AssessmentResult } from "@qti-renderer/core";
+import React, { useEffect, useRef } from 'react';
+import { QtiRenderer } from '@qti-renderer/core';
 
 interface VanillaQtiItemProps {
   xml: string;
-  onResponseChange?: (responses: Record<string, string | string[]>) => void;
-  onAssessmentResult?: (result: AssessmentResult) => void;
 }
 
-export function VanillaQtiItem({
-  xml,
-  onResponseChange,
-  onAssessmentResult,
-}: VanillaQtiItemProps) {
+export function VanillaQtiItem({ xml }: VanillaQtiItemProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<QtiRenderer | null>(null);
 
@@ -28,23 +22,11 @@ export function VanillaQtiItem({
       });
       rendererRef.current = renderer;
       renderer.render(containerRef.current).catch((error) => {
-        console.error("Failed to render QTI item:", error);
+        console.error('Failed to render QTI item:', error);
         if (containerRef.current) {
           containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
-            Error rendering QTI item: ${
-              error instanceof Error ? error.message : "Unknown error"
-            }
+            Error rendering QTI item: ${error instanceof Error ? error.message : 'Unknown error'}
           </div>`;
-        }
-      });
-
-      // Set up feedback callback
-      renderer.onFeedbackUpdate(() => {
-        if (onResponseChange && rendererRef.current) {
-          onResponseChange(rendererRef.current.getResponses());
-        }
-        if (onAssessmentResult && rendererRef.current) {
-          onAssessmentResult(rendererRef.current.processResponses());
         }
       });
 
@@ -52,24 +34,22 @@ export function VanillaQtiItem({
         rendererRef.current = null;
       };
     } catch (error) {
-      console.error("Failed to create QTI renderer:", error);
+      console.error('Failed to create QTI renderer:', error);
       if (containerRef.current) {
         containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
-          Error creating QTI renderer: ${
-            error instanceof Error ? error.message : "Unknown error"
-          }
+          Error creating QTI renderer: ${error instanceof Error ? error.message : 'Unknown error'}
         </div>`;
       }
     }
-  }, [xml, onResponseChange, onAssessmentResult]);
+  }, [xml]);
 
   return (
     <div
       ref={containerRef}
       style={{
-        width: "100%",
-        maxWidth: "800px",
-        padding: "20px",
+        width: '100%',
+        maxWidth: '800px',
+        padding: '20px',
       }}
       className="qti-item-container"
     />

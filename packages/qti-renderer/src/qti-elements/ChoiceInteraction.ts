@@ -1,72 +1,90 @@
-import { BaseQtiElement } from "./BaseQtiElement";
-import { QtiRenderer } from "../renderer";
-import { SimpleChoice } from "./SimpleChoice";
+import { BaseQtiElement } from './BaseQtiElement';
+import { QtiRenderer } from '../renderer';
+import { SimpleChoice } from './SimpleChoice';
+import { VisualElement } from '../types';
 
 /**
- * Renders the choiceInteraction element
- * Creates a fieldset with radio buttons or checkboxes for each choice
+ * XML Schema type: ChoiceInteractionDType
+ * The choice interaction presents a set of choices to the candidate. The candidate's task is
+ * to select one or more of the choices, up to a maximum of max-choices. The interaction is
+ * always initialized with no choices selected. The ChoiceInteraction must be bound to a res-
+ * ponse variable with a base-type of identifier and single or multiple cardinality.
  */
 export class ChoiceInteraction extends BaseQtiElement {
-  getElementNames(): string[] {
-    return ["choiceInteraction", "qti-choice-interaction"];
+  static readonly elementNames = ['qti-choice-interaction'];
+  static readonly canBeRoot = false;
+
+  process(renderer: QtiRenderer): VisualElement {
+    const responseIdentifier = this.getResponseIdentifier();
+    const isMultiple = this.getMaxChoices() > 1;
+    const fieldset = document.createElement('fieldset');
+    const orientation = this.element.getAttribute('orientation') || 'horizontal';
+    fieldset.className = `qti-choice-interaction qti-orientation-${orientation}`;
+    fieldset.setAttribute('data-response-identifier', responseIdentifier);
+    fieldset.setAttribute('data-is-multiple', isMultiple.toString());
+
+    this.processPrompt(renderer, fieldset);
+    this.processChoices(renderer, fieldset);
+
+    fieldset.addEventListener('change', (event) => {
+      const checkboxes = document.getElementsByName(responseIdentifier);
+
+      const values = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        const checkboxElement = checkboxes[i] as HTMLInputElement;
+        const closestFieldset = checkboxElement.closest('fieldset[data-response-identifier]');
+        if (
+          closestFieldset &&
+          closestFieldset.getAttribute('data-response-identifier') === responseIdentifier
+        ) {
+          if (checkboxElement.checked) {
+            values.push(checkboxElement.value);
+          }
+        }
+      }
+      renderer.setVariable(responseIdentifier, {
+        type: 'value',
+        value: isMultiple ? values : values[0],
+        valueType: 'identifier',
+        cardinality: isMultiple ? 'multiple' : 'single',
+      });
+    });
+
+    return {
+      type: 'visual',
+      element: fieldset,
+    };
   }
 
-  render(element: Element, renderer: QtiRenderer): HTMLElement {
-    const identifier =
-      element.getAttribute("responseIdentifier") ||
-      element.getAttribute("response-identifier") ||
-      element.getAttribute("identifier") ||
-      `choice-${Math.random().toString(36).substr(2, 9)}`;
+  getMaxChoices(): number {
+    return parseInt(this.element.getAttribute('max-choices') || '1', 10);
+  }
 
-    const maxChoices = parseInt(
-      element.getAttribute("maxChoices") ||
-        element.getAttribute("max-choices") ||
-        "1",
-      10
-    );
-    const isMultiple = maxChoices > 1;
-
-    const fieldset = document.createElement("fieldset");
-    fieldset.className = "qti-choice-interaction";
-    fieldset.setAttribute("data-response-identifier", identifier);
-
-    // Render prompt if present (handles namespaces and qti- prefix)
-    const prompt =
-      renderer.querySelectorLocal(element, "prompt") ||
-      renderer.querySelectorLocal(element, "qti-prompt");
+  processPrompt(renderer: QtiRenderer, fieldset: HTMLFieldSetElement) {
+    const prompt = renderer.querySelectorLocal(this.element, 'qti-prompt');
     if (prompt) {
-      const promptElement = renderer.renderElement(prompt);
-      const legend = document.createElement("legend");
-      legend.className = "qti-prompt";
-      // Move prompt content into legend
-      while (promptElement.firstChild) {
-        legend.appendChild(promptElement.firstChild);
+      const promptElement = renderer.processElement(prompt);
+      const legend = document.createElement('legend');
+      legend.className = 'qti-prompt';
+      if (promptElement.type === 'visual') {
+        legend.appendChild(promptElement.element);
       }
       fieldset.appendChild(legend);
     }
+  }
 
-    // Render choices (handles namespaces and qti- prefix)
-    const choices = [
-      ...renderer.querySelectorAllLocal(element, "simpleChoice"),
-      ...renderer.querySelectorAllLocal(element, "qti-simple-choice"),
-    ];
-    
-    // Create SimpleChoice instance to render choices
-    const simpleChoiceRenderer = new SimpleChoice();
-    choices.forEach((choice, index) => {
-      const choiceId = choice.getAttribute("identifier") || `choice-${index}`;
-      // Set data attributes on choice element so SimpleChoice can access context
-      choice.setAttribute("data-interaction-id", identifier);
-      choice.setAttribute("data-choice-id", choiceId);
-      choice.setAttribute("data-is-multiple", isMultiple.toString());
-      
-      const renderedChoice = simpleChoiceRenderer.render(choice, renderer);
-      fieldset.appendChild(renderedChoice);
+  processChoices(renderer: QtiRenderer, fieldset: HTMLFieldSetElement) {
+    const choices = renderer.querySelectorAllLocal(this.element, 'qti-simple-choice');
+
+    choices.forEach((choice) => {
+      const simpleChoiceRenderer = new SimpleChoice(choice);
+      simpleChoiceRenderer.setMaxChoices(this.getMaxChoices());
+      simpleChoiceRenderer.setGroupName(this.getResponseIdentifier());
+      const renderedChoice = simpleChoiceRenderer.process(renderer);
+      if (renderedChoice.type === 'visual') {
+        fieldset.appendChild(renderedChoice.element);
+      }
     });
-
-    // Initialize response state
-    renderer.initializeResponse(identifier, isMultiple ? [] : "");
-
-    return fieldset;
   }
 }

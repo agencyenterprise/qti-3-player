@@ -1,24 +1,26 @@
-import { BaseQtiElement } from "./BaseQtiElement";
-import { QtiRenderer } from "../renderer";
+import { BaseQtiElement } from './BaseQtiElement';
+import { QtiRenderer } from '../renderer';
+import { VisualElement } from '../types';
 
+/**
+ * XML Schema type: PromptDType
+ * This enables an author to define the prompt for the question.  The way in which the prompt
+ * is displayed depends upon the rendering system. The prompt should not be used to contain
+ * the actual root of the question.
+ */
 export class Prompt extends BaseQtiElement {
-  getElementNames(): string[] {
-    return ["prompt", "qti-prompt"];
-  }
+  static readonly elementNames = ['qti-prompt'];
+  static readonly canBeRoot = false;
 
-  render(element: Element, renderer: QtiRenderer): HTMLElement {
-    const container = document.createElement("div");
-    container.className = "qti-prompt";
+  process(renderer: QtiRenderer): VisualElement {
+    const container = document.createElement('div');
+    container.className = 'qti-prompt';
 
-    Array.from(element.childNodes).forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        container.appendChild(document.createTextNode(node.textContent || ""));
-      } else if (node.nodeType === Node.ELEMENT_NODE) {
-        const rendered = renderer.renderElement(node as Element);
-        container.appendChild(rendered);
-      }
-    });
+    renderer.processElementChildren(this.element, container);
 
-    return container;
+    return {
+      type: 'visual',
+      element: container,
+    };
   }
 }
