@@ -1,6 +1,7 @@
 import { BaseQtiElement } from './BaseQtiElement';
 import { QtiRenderer } from '../renderer';
 import { EmptyElement } from '../types';
+import { dispatchSubmitRenderEvent, EventsEnum, onQti3PlayerEvent } from '../events';
 
 /**
  * XML Schema type: ResponseProcessingDType
@@ -18,8 +19,9 @@ export class ResponseProcessing extends BaseQtiElement {
   static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): EmptyElement {
-    document.addEventListener('qti-submit', () => {
+    onQti3PlayerEvent(EventsEnum.SUBMIT_PROCESS_EVENT, () => {
       renderer.processElementChildren(this.element, null);
+      dispatchSubmitRenderEvent();
     });
     return {
       type: 'empty',

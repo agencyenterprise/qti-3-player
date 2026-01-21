@@ -1,4 +1,8 @@
-import { validateXML as xmllintValidateXML, type XMLValidationResult, type XMLValidationError } from 'xmllint-wasm';
+import {
+  validateXML as xmllintValidateXML,
+  type XMLValidationResult,
+  type XMLValidationError,
+} from 'xmllint-wasm';
 
 /**
  * Validation error details
@@ -106,11 +110,11 @@ async function loadLocalSchema(): Promise<string> {
       const path = require('path') as typeof import('path');
       // Try multiple possible locations
       const possiblePaths = [
-        path.join(__dirname, 'imsqti_asiv3p0_v1p0.xsd'),
-        path.join(process.cwd(), 'packages/qti-renderer/src/imsqti_asiv3p0_v1p0.xsd'),
+        path.join(__dirname, '../assets/imsqti_asiv3p0_v1p0.xsd'),
+        path.join(process.cwd(), 'packages/qti-renderer/assets/imsqti_asiv3p0_v1p0.xsd'),
         path.join(process.cwd(), 'packages/qti-renderer/dist/imsqti_asiv3p0_v1p0.xsd'),
       ];
-      
+
       for (const schemaPath of possiblePaths) {
         try {
           if (fs.existsSync(schemaPath)) {
@@ -175,7 +179,7 @@ export function extractSchemaLocation(xml: string): string | null {
 
 /**
  * Validate XML against XSD schema
- * 
+ *
  * @param xmlString - XML string to validate
  * @param options - Validation options
  * @returns Promise resolving to validation result
@@ -264,10 +268,7 @@ export async function validateXml(
       valid: false,
       errors: [
         {
-          message:
-            error instanceof Error
-              ? error.message
-              : 'Unknown validation error occurred',
+          message: error instanceof Error ? error.message : 'Unknown validation error occurred',
         },
       ],
     };
@@ -278,13 +279,8 @@ export async function validateXml(
  * Synchronous validation wrapper (for cases where schema is already loaded)
  * Note: This still uses async internally but provides a simpler API
  */
-export function validateXmlSync(
-  xmlString: string,
-  schemaString: string
-): ValidationResult {
+export function validateXmlSync(xmlString: string, schemaString: string): ValidationResult {
   // For true sync validation, we'd need a different approach
   // But xmllint-wasm is async, so we'll throw an error suggesting async version
-  throw new Error(
-    'Synchronous validation not supported. Use validateXml() instead.'
-  );
+  throw new Error('Synchronous validation not supported. Use validateXml() instead.');
 }

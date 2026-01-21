@@ -21,7 +21,7 @@ export class SimpleChoice extends BaseQtiElement {
     label.setAttribute('for', identifier);
 
     const input = document.createElement('input');
-    input.type = this.maxChoices > 1 ? 'checkbox' : 'radio';
+    input.type = this.maxChoices === 1 ? 'radio' : 'checkbox';
     input.name = this.groupName;
     input.id = identifier;
     input.value = identifier;

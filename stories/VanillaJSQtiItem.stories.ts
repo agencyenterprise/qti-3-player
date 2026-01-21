@@ -1,19 +1,26 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { VanillaQtiItemWrapper } from "./components/vanilla/VanillaQtiItemWrapper";
-import { docsExample, mathQuestion, planetsQuestion, modalFeedbackQuestion } from "./shared/examples";
+import type { Meta, StoryObj } from '@storybook/react';
+import { VanillaQtiItemWrapper } from './components/vanilla/VanillaQtiItemWrapper';
+import {
+  docsExample,
+  mathQuestion,
+  planetsQuestion,
+  modalFeedbackQuestion,
+  inlineFeedbackQuestion,
+  unlimitedChoicesQuestion,
+} from './shared/examples';
 
 const meta = {
-  title: "Vanilla JS/QtiItem",
+  title: 'Vanilla JS/QtiItem',
   component: VanillaQtiItemWrapper,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     xml: {
-      control: "text",
-      description: "QTI 3.x XML string",
-    }
+      control: 'text',
+      description: 'QTI 3.x XML string',
+    },
   },
 } satisfies Meta<typeof VanillaQtiItemWrapper>;
 
@@ -41,5 +48,17 @@ export const PlanetsQuestion: Story = {
 export const ModalFeedbackQuestion: Story = {
   args: {
     xml: modalFeedbackQuestion,
+  },
+};
+
+export const InlineFeedbackQuestion: Story = {
+  args: {
+    xml: inlineFeedbackQuestion,
+  },
+};
+
+export const UnlimitedChoicesQuestion: Story = {
+  args: {
+    xml: unlimitedChoicesQuestion,
   },
 };

@@ -386,7 +386,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
     - Use: `optional`
     - Default: `0`
 
-  - [ ] `orientation`
+  - [x] `orientation`
 
     - Type: `string`
     - Use: `optional`
@@ -2432,9 +2432,26 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-feedback-inline`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
+
+  - [x] `identifier`
+
+    - Type: `xs:NCName`
+    - Use: `required`
+
+  - [x] `outcome-identifier`
+
+    - Type: `xs:NCName`
+    - Use: `required`
+
+  - [x] `show-hide`
+
+    - Type: `string`
+    - Use: `optional`
+    - Default: `show`
+    - Allowed values: `show`, `hide`
 
   - [ ] `aria-activedescendant`
 
@@ -2732,11 +2749,6 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
     - Type: `xs:ID`
     - Use: `optional`
 
-  - [ ] `identifier`
-
-    - Type: `xs:NCName`
-    - Use: `required`
-
   - [ ] `label`
 
     - Type: `normalizedString`
@@ -2747,22 +2759,11 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
     - Type: `normalizedString`
     - Use: `optional`
 
-  - [ ] `outcome-identifier`
-
-    - Type: `xs:NCName`
-    - Use: `required`
-
   - [ ] `role`
 
     - Type: `string`
     - Use: `optional`
     - Allowed values: `article`, `columnheader`, `definition`, `document`, `group`, `heading`, `img`, `list`, `listitem`, `math`, `note`, `presentation`, `region`, `row`, `rowgroup`, `rowheader`, `separator`, `toolbar`, `button`, `checkbox`, `gridcell`, `link`, `log`, `option`, `radio`, `slider`, `spinbutton`, `status`, `tab`, `tabpanel`, `textbox`, `timer`, `listbox`, `radiogroup`, `tablist`, `complementary`, `contentinfo`, `alert`, `alertdialog`, `application`, `banner`, `combobox`, `dialog`, `form`, `grid`, `main`, `marquee`, `menu`, `menubar`, `menuitem`, `menuitemcheckbox`, `menuitemradio`, `navigation`, `progressbar`, `scrollbar`, `search`, `tooltip`, `tree`, `treegrid`, `treeitem`, `searchbox`, `switch`, `term`, `figure`, `code`, `time`, `subscript`, `superscript`, `meter`, `generic`, `insertion`, `deletion`, `strong`, `emphasis`
-
-  - [ ] `show-hide`
-    - Type: `string`
-    - Use: `optional`
-    - Default: `show`
-    - Allowed values: `show`, `hide`
 
 ---
 

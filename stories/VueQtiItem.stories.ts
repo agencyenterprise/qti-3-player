@@ -1,19 +1,26 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { VueQtiItemWrapper } from "./components/vue/VueQtiItemWrapper";
-import { docsExample, mathQuestion, planetsQuestion, modalFeedbackQuestion } from "./shared/examples";
+import type { Meta, StoryObj } from '@storybook/react';
+import { VueQtiItemWrapper } from './components/vue/VueQtiItemWrapper';
+import {
+  docsExample,
+  mathQuestion,
+  planetsQuestion,
+  modalFeedbackQuestion,
+  inlineFeedbackQuestion,
+  unlimitedChoicesQuestion,
+} from './shared/examples';
 
 const meta = {
-  title: "Vue/QtiItem",
+  title: 'Vue/QtiItem',
   component: VueQtiItemWrapper,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     xml: {
-      control: "text",
-      description: "QTI 3.x XML string",
-    }
+      control: 'text',
+      description: 'QTI 3.x XML string',
+    },
   },
 } satisfies Meta<typeof VueQtiItemWrapper>;
 
@@ -41,5 +48,17 @@ export const PlanetsQuestion: Story = {
 export const ModalFeedbackQuestion: Story = {
   args: {
     xml: modalFeedbackQuestion,
+  },
+};
+
+export const InlineFeedbackQuestion: Story = {
+  args: {
+    xml: inlineFeedbackQuestion,
+  },
+};
+
+export const UnlimitedChoicesQuestion: Story = {
+  args: {
+    xml: unlimitedChoicesQuestion,
   },
 };

@@ -1,0 +1,4 @@
+.qti-orientation-vertical {
+  display: flex;
+  flex-direction: column;
+}

@@ -2,6 +2,7 @@ import { QtiRendererOptions, EmptyElement, ProcessResult, ValueElement } from '.
 import { registerAllElements } from './qti-elements/register';
 import { ConcreteQtiElementClass } from './qti-elements/types';
 import { validateXml, type ValidationResult, type ValidationOptions } from './validation';
+import { dispatchSubmitProcessEvent } from './events';
 
 /**
  * Registry of QTI element names to their render functions
@@ -347,7 +348,16 @@ export class QtiRenderer {
 
     if (ElementClass) {
       const instance = new ElementClass(element);
-      return instance.process(this);
+      const result = instance.process(this);
+      if (result.type === 'visual') {
+        // carry over class names from the element to the rendered element
+        const className = element.getAttribute('class') || '';
+        if (className) {
+          const totalClassNames = (result.element as HTMLElement).className + ' ' + className;
+          (result.element as HTMLElement).className = totalClassNames.trim();
+        }
+      }
+      return result;
     }
 
     // Fallback: render as generic element with children
@@ -373,7 +383,7 @@ export class QtiRenderer {
     this.submissionCount++;
     this.updateSubmissionCountDisplay();
 
-    document.dispatchEvent(new CustomEvent('qti-submit'));
+    dispatchSubmitProcessEvent();
   }
 
   /**
@@ -384,10 +394,24 @@ export class QtiRenderer {
     const tagName = element.localName || element.tagName.toLowerCase();
 
     let container = document.createElement(tagName);
-    if (container.toString() === '[object HTMLUnknownElement]') {
-      // render as generic element div
-      container = document.createElement('div');
-      container.className = `qti-${tagName}`;
+    if (container.toString() === '[object HTMLUnknownElement]' || tagName.includes('-')) {
+      if (tagName.startsWith('qti-')) {
+        // Return empty element for QTI elements that are not supported, to avoid rendering something that must not be shown to the user.
+        console.warn(`QTI element ${tagName} is not supported and will not be rendered.`);
+        return {
+          type: 'empty',
+        };
+      } else {
+        // render as generic element div
+        console.info(`Custom or unknown element ${tagName} will be rendered as a div.`);
+        container = document.createElement('div');
+        container.className = tagName;
+      }
+    }
+    // carry over class names from the element to the rendered element
+    const className = element.getAttribute('class') || '';
+    if (className) {
+      container.className = className;
     }
 
     // Copy text content and render children
