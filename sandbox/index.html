@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QTI 3 Player Sandbox</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <div class="editor-pane">
+          <h2>QTI XML Input</h2>
+          <textarea id="xml-input" placeholder="Paste your QTI XML here..."></textarea>
+          <div class="controls">
+            <button id="render-btn">Render QTI</button>
+          </div>
+        </div>
+        <div class="preview-pane">
+          <h2>Preview</h2>
+          <div id="qti-container"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
