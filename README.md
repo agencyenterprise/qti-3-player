@@ -1,76 +1,91 @@
-# QTI 3.x Renderer - Proof of Concept
+# QTI 3.x Renderer
 
-A framework-agnostic QTI 3.x renderer with a React demo application.
+[**Live Sandbox Demo**](https://agencyenterprise.github.io/qti-3-player/)
+
+A framework-agnostic QTI 3.x renderer with support for multiple frontend frameworks.
 
 ## Structure
 
 ```
 qti-3-player/
 ├── packages/
-│   └── qti-renderer/     # Core renderer library (TypeScript, framework-agnostic)
-└── apps/
-    └── react-demo/        # React sample application
+│   ├── qti-renderer/     # Core renderer library (TypeScript, framework-agnostic)
+│   ├── qti-react/        # React wrapper component
+│   ├── qti-vue/          # Vue wrapper component
+│   └── qti-vanilla/      # Vanilla JS wrapper
+├── sandbox/              # Standalone demo application
+└── stories/              # Storybook examples and stories
 ```
 
-## Core Library (`packages/qti-renderer`)
+## Packages
 
-Framework-agnostic npm package that renders QTI 3.x assessment items to HTML.
+### Core Library (`packages/qti-renderer`)
 
-### Supported QTI Elements
+Framework-agnostic npm package that renders QTI 3.x assessment items to HTML with full response processing support.
 
-- `<assessmentItem>` - Root element
-- `<itemBody>` - Question content container
-- `<choiceInteraction>` - Multiple choice interaction
-- `<prompt>` - Question text
-- `<simpleChoice>` - Individual choice options
-
-### API
+**API:**
 
 ```typescript
 import { QtiRenderer } from '@qti-renderer/core';
 
 const renderer = new QtiRenderer(qtiXmlString);
-renderer.mount(containerElement);
-const responses = renderer.getResponses(); // Record<string, string | string[]>
+renderer.render(containerElement);
 ```
 
-### Design Decisions
+**Features:**
+
+- XML validation against QTI 3.0 schema
+- Response processing with conditional logic
+- Outcome variable management (RESPONSE)
+- Feedback display (inline and modal)
+- Response state management
+
+## Supported QTI Elements
+
+See [QTI Support Documentation](docs/qti_support/README.md) for a complete checklist of supported elements and attributes.
+
+## Design Decisions
 
 - Uses `DOMParser` for XML parsing (no external dependencies)
 - Renders to vanilla DOM elements (framework-agnostic)
 - Maintains response state internally
 - Uses semantic HTML (`fieldset`, `legend`, `label`) for accessibility
 - Registry pattern for extensible element rendering
+- Event-driven response processing
 
-## React Demo (`apps/react-demo`)
+## Development
 
-Sample React application demonstrating QTI renderer usage.
-
-### Usage
-
-```tsx
-import { QtiItem } from './QtiItem';
-
-<QtiItem xml={qtiXmlString} onResponseChange={(responses) => console.log(responses)} />
-```
-
-### Running
+### Running Storybook
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Limitations
+This will start Storybook on `http://localhost:6006` with examples for React, Vue, and Vanilla JS.
 
-This is a proof of concept with the following limitations:
+### Building
 
-- **No response processing** - Only renders questions, doesn't grade them
+```bash
+npm run build
+```
+
+Builds all packages in the monorepo.
+
+### Sandbox
+
+The sandbox provides a standalone demo application:
+
+```bash
+cd sandbox
+npm install
+npm run dev
+```
+
+## Current Limitations
+
 - **No scoring** - No calculation or evaluation of responses
-- **No adaptive behavior** - Static rendering only
-- **No feedback** - No correct/incorrect feedback display
-- **No test structure** - Only single items, no tests/sections
-
-## QTI 3.x Support
-
-Targets QTI 3.x specification structure and syntax. Uses `responseIdentifier` and supports `maxChoices` attribute for single/multiple selection.
+- **No test structure** - Only single assessment items, no tests/sections
+- **Limited interaction types** - Currently supports `choice-interaction` (single and multiple choice)
+- **Partial expression support** - Basic expressions like `match` and `correct` are supported, but not all QTI expressions
+- **No adaptive behavior** - Static rendering only, no adaptive item selection
