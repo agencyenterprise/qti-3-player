@@ -9,6 +9,7 @@
   "scripts": {
     "build": "npm run build --workspace=@qti-renderer/core && npm run build --workspaces",
     "dev": "npm run build && storybook dev -p 6006",
+    "dev:sandbox": "npm run build && (cd sandbox && npm run dev)",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

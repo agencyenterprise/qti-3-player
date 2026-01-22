@@ -1,4 +1,80 @@
-.qti-orientation-vertical {
-  display: flex;
-  flex-direction: column;
+/* Shared vocabulary */
+
+.qti-orientation-vertical > ul {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+}
+
+.qti-orientation-horizontal > ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+}
+
+.qti-choices-stacking-1 > ul,
+.qti-orientation-horizontal.qti-choices-stacking-1 > ul {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.qti-choices-stacking-2 > ul,
+.qti-orientation-horizontal.qti-choices-stacking-2 > ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.qti-choices-stacking-3 > ul,
+.qti-orientation-horizontal.qti-choices-stacking-3 > ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.qti-choices-stacking-4 > ul,
+.qti-orientation-horizontal.qti-choices-stacking-4 > ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.qti-choices-stacking-5 > ul,
+.qti-orientation-horizontal.qti-choices-stacking-5 > ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.qti-orientation-vertical.qti-choices-stacking-1 > ul {
+  display: block;
+  column-count: 1;
+}
+
+.qti-orientation-vertical.qti-choices-stacking-2 > ul {
+  display: block;
+  column-count: 2;
+}
+
+.qti-orientation-vertical.qti-choices-stacking-3 > ul {
+  display: block;
+  column-count: 3;
+}
+
+.qti-orientation-vertical.qti-choices-stacking-4 > ul {
+  display: block;
+  column-count: 4;
+}
+
+.qti-orientation-vertical.qti-choices-stacking-5 > ul {
+  display: block;
+  column-count: 5;
+}
+
+/* End of shared vocabulary */
+
+ul.qti-choices-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.qti-choices-list-item-number {
+  padding-right: 0.5rem;
 }

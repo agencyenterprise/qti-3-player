@@ -13,9 +13,12 @@ export class SimpleChoice extends BaseQtiElement {
 
   maxChoices: number = 1;
   groupName: string = '';
+  itemNumber: string = '';
 
   process(renderer: QtiRenderer): VisualElement {
     const identifier = this.getIdentifier();
+    const li = document.createElement('li');
+    li.className = 'qti-simple-choice';
     const label = document.createElement('label');
     label.className = 'qti-simple-choice';
     label.setAttribute('for', identifier);
@@ -53,18 +56,24 @@ export class SimpleChoice extends BaseQtiElement {
       });
     }
 
-    label.appendChild(input);
+    li.appendChild(input);
+    li.appendChild(label);
 
-    const content = document.createElement('span');
-    content.className = 'qti-choice-content';
+    if (this.itemNumber !== '') {
+      const itemNumberElement = document.createElement('span');
+      itemNumberElement.className = 'qti-choices-list-item-number';
+      itemNumberElement.textContent = this.itemNumber;
+      label.appendChild(itemNumberElement);
+    }
 
-    renderer.processElementChildren(this.element, content);
-
-    label.appendChild(content);
+    const labelContent = document.createElement('span');
+    labelContent.className = 'qti-choices-list-item-label';
+    renderer.processElementChildren(this.element, labelContent);
+    label.appendChild(labelContent);
 
     return {
       type: 'visual',
-      element: label,
+      element: li,
     };
   }
 
@@ -74,5 +83,9 @@ export class SimpleChoice extends BaseQtiElement {
 
   setGroupName(groupName: string): void {
     this.groupName = groupName;
+  }
+
+  setItemNumber(itemNumber: string): void {
+    this.itemNumber = itemNumber;
   }
 }

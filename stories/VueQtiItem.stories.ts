@@ -7,6 +7,7 @@ import {
   modalFeedbackQuestion,
   inlineFeedbackQuestion,
   unlimitedChoicesQuestion,
+  choiceLayout,
 } from './shared/examples';
 
 const meta = {
@@ -60,5 +61,11 @@ export const InlineFeedbackQuestion: Story = {
 export const UnlimitedChoicesQuestion: Story = {
   args: {
     xml: unlimitedChoicesQuestion,
+  },
+};
+
+export const ChoiceLayout: Story = {
+  args: {
+    xml: choiceLayout,
   },
 };

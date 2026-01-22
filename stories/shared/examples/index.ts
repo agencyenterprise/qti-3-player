@@ -11,6 +11,7 @@ export { planetsQuestion } from './planets-question';
 export { modalFeedbackQuestion } from './modal-feedback';
 export { inlineFeedbackQuestion } from './inline-feedback';
 export { unlimitedChoicesQuestion } from './unlimited-choices';
+export { choiceLayout } from './choice-layout';
 
 // Backward compatibility
 export { planetsQuestion as marsQuestion } from './planets-question';
