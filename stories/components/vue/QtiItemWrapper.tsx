@@ -1,18 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { createApp } from "vue";
 import QtiItemVue from "./QtiItem.vue";
-import type { AssessmentResult } from "@qti-renderer/core";
 
 interface VueQtiItemWrapperProps {
   xml: string;
-  onResponseChange?: (responses: Record<string, string | string[]>) => void;
-  onAssessmentResult?: (result: AssessmentResult) => void;
 }
 
 export function VueQtiItemWrapper({
   xml,
-  onResponseChange,
-  onAssessmentResult,
 }: VueQtiItemWrapperProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<ReturnType<typeof createApp> | null>(null);
@@ -25,8 +20,6 @@ export function VueQtiItemWrapper({
     // Create and mount Vue app
     const app = createApp(QtiItemVue, {
       xml,
-      onResponseChange,
-      onAssessmentResult,
     });
     app.mount(containerRef.current);
     appRef.current = app;
@@ -37,7 +30,7 @@ export function VueQtiItemWrapper({
         appRef.current = null;
       }
     };
-  }, [xml, onResponseChange, onAssessmentResult]);
+  }, [xml]);
 
   return (
     <div

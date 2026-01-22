@@ -1,4 +1,8 @@
-import { validateXML as xmllintValidateXML, type XMLValidationResult, type XMLValidationError } from 'xmllint-wasm';
+import {
+  validateXML as xmllintValidateXML,
+  type XMLValidationResult,
+  type XMLValidationError,
+} from 'xmllint-wasm';
 
 /**
  * Validation error details
@@ -187,7 +191,7 @@ async function loadPreloadedSchemas(): Promise<Array<{ fileName: string; content
 
 /**
  * Validate XML against XSD schema
- * 
+ *
  * @param xmlString - XML string to validate
  * @param options - Validation options
  * @returns Promise resolving to validation result
@@ -444,13 +448,8 @@ export async function validateXml(
  * Synchronous validation wrapper (for cases where schema is already loaded)
  * Note: This still uses async internally but provides a simpler API
  */
-export function validateXmlSync(
-  xmlString: string,
-  schemaString: string
-): ValidationResult {
+export function validateXmlSync(xmlString: string, schemaString: string): ValidationResult {
   // For true sync validation, we'd need a different approach
   // But xmllint-wasm is async, so we'll throw an error suggesting async version
-  throw new Error(
-    'Synchronous validation not supported. Use validateXml() instead.'
-  );
+  throw new Error('Synchronous validation not supported. Use validateXml() instead.');
 }

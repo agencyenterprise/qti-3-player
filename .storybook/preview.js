@@ -1,3 +1,6 @@
+import '@qti-renderer/core/dist/qti-base.css';
+import '@qti-renderer/core/dist/qti-custom.css';
+
 /** @type { import('storybook').Preview } */
 const preview = {
   parameters: {
