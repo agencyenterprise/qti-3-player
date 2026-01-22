@@ -45,19 +45,9 @@ export interface ValidationResult {
  */
 export interface ValidationOptions {
   /**
-   * XSD schema string or URL to fetch schema from
-   * If not provided, will use the local bundled schema by default
-   */
-  schema?: string;
-  /**
-   * Custom schema string to use instead of default
-   * This takes precedence over schema option
+   * Custom schema string to use instead of default local schema
    */
   customSchema?: string;
-  /**
-   * Whether to fetch schema from URL if schema is a URL
-   */
-  fetchSchema?: boolean;
   /**
    * Additional schema files to preload (for imports/includes)
    */
@@ -65,38 +55,41 @@ export interface ValidationOptions {
 }
 
 /**
- * Default QTI 3.0 schema location (fallback URL)
+ * Cache for the main schema content
  */
-export const DEFAULT_QTI_SCHEMA_URL =
-  'https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd';
+let mainSchemaCache: string | null = null;
 
 /**
- * Paths to try for local schema file
+ * Cache for preloaded schemas
  */
-const LOCAL_SCHEMA_PATHS = [
-  './imsqti_asiv3p0_v1p0.xsd',
-  '/node_modules/@qti-renderer/core/dist/imsqti_asiv3p0_v1p0.xsd',
-  './dist/imsqti_asiv3p0_v1p0.xsd',
+let preloadedSchemasCache: Array<{ fileName: string; contents: string }> | null = null;
+
+/**
+ * List of all schema files to preload (matching browser-demo-final/logic.js)
+ */
+const SCHEMA_FILES = [
+  'xml.xsd',
+  'imsmd_loose_v1p3p2.xsd',
+  'imsqtiv3p0_csmv1p1_v1p0.xsd',
+  'imsqti_metadatav3p0_v1p0.xsd',
+  'imsqtiv3p0_cpextv1p2_v1p0.xsd',
+  'imsqtiv3p0_imscpv1p2_v1p0.xsd',
+  'imsqtiv3p0_afa3p0drd_v1p0.xsd',
+  'mathml3.xsd',
+  'mathml3-common.xsd',
+  'mathml3-content.xsd',
+  'mathml3-presentation.xsd',
+  'mathml3-strict-content.xsd',
+  'ssmlv1p1-core.xsd',
+  'synthesis-nonamespace.xsd',
+  'XInclude.xsd',
+  'xlink.xsd',
 ];
 
 /**
- * Cache for the local schema content
+ * Load a file from the file system (Node.js) or via fetch (browser)
  */
-let localSchemaCache: string | null = null;
-
-/**
- * Load the local schema file
- * Tries multiple methods to load the schema:
- * 1. Try to read from file system (Node.js/test environment)
- * 2. Try to fetch from various paths (browser/bundler)
- * 3. Fall back to remote URL
- */
-async function loadLocalSchema(): Promise<string> {
-  // Return cached schema if available
-  if (localSchemaCache) {
-    return localSchemaCache;
-  }
-
+async function loadFile(filePath: string, relativeTo: string = ''): Promise<string> {
   // Try Node.js file system first (for tests/server-side)
   if (typeof process !== 'undefined' && process.versions?.node) {
     try {
@@ -104,20 +97,20 @@ async function loadLocalSchema(): Promise<string> {
       const fs = require('fs') as typeof import('fs');
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const path = require('path') as typeof import('path');
+      
       // Try multiple possible locations
       const possiblePaths = [
-        path.join(__dirname, 'imsqti_asiv3p0_v1p0.xsd'),
-        path.join(process.cwd(), 'packages/qti-renderer/src/imsqti_asiv3p0_v1p0.xsd'),
-        path.join(process.cwd(), 'packages/qti-renderer/dist/imsqti_asiv3p0_v1p0.xsd'),
+        path.join(__dirname, relativeTo, filePath),
+        path.join(process.cwd(), 'packages/qti-renderer/src', relativeTo, filePath),
+        path.join(process.cwd(), 'packages/qti-renderer/dist', relativeTo, filePath),
       ];
       
-      for (const schemaPath of possiblePaths) {
+      for (const fullPath of possiblePaths) {
         try {
-          if (fs.existsSync(schemaPath)) {
-            const content = fs.readFileSync(schemaPath, 'utf-8') as string;
+          if (fs.existsSync(fullPath)) {
+            const content = fs.readFileSync(fullPath, 'utf-8') as string;
             if (content && content.length > 0) {
-              localSchemaCache = content;
-              return localSchemaCache;
+              return content;
             }
           }
         } catch (error) {
@@ -130,47 +123,66 @@ async function loadLocalSchema(): Promise<string> {
   }
 
   // Try to fetch as static asset (browser/bundler)
-  for (const schemaPath of LOCAL_SCHEMA_PATHS) {
+  const fetchPaths = [
+    `/dist/${relativeTo}${filePath}`,
+    `./${relativeTo}${filePath}`,
+    `/node_modules/@qti-renderer/core/dist/${relativeTo}${filePath}`,
+    `./dist/${relativeTo}${filePath}`,
+    `./node_modules/@qti-renderer/core/dist/${relativeTo}${filePath}`,
+  ];
+
+  // For schemas directory, also try direct /schemas/ path (for Storybook staticDirs mapping)
+  if (relativeTo === 'schemas/') {
+    fetchPaths.unshift(`/schemas/${filePath}`, `./schemas/${filePath}`);
+  }
+
+  for (const fetchPath of fetchPaths) {
     try {
-      const response = await fetch(schemaPath);
+      const response = await fetch(fetchPath);
       if (response.ok) {
-        localSchemaCache = await response.text();
-        return localSchemaCache;
+        return await response.text();
       }
     } catch (error) {
       // Continue to next path
     }
   }
 
-  // Fallback to remote schema
-  console.warn('Failed to load local schema, falling back to remote URL');
-  return await fetchSchema(DEFAULT_QTI_SCHEMA_URL);
+  throw new Error(`Failed to load file: ${filePath}`);
 }
 
 /**
- * Fetch schema content from URL
+ * Load the main QTI schema file (imsqti_asiv3p0p1_v1p0.xsd)
  */
-async function fetchSchema(url: string): Promise<string> {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch schema from ${url}: ${response.statusText}`);
+async function loadMainSchema(): Promise<string> {
+  // Return cached schema if available
+  if (mainSchemaCache) {
+    return mainSchemaCache;
   }
-  return await response.text();
+
+  mainSchemaCache = await loadFile('imsqti_asiv3p0p1_v1p0.xsd');
+  return mainSchemaCache;
 }
 
 /**
- * Extract schema location from XML string
- * Looks for xsi:schemaLocation attribute
+ * Load all schema files for preloading (matching browser-demo-final/logic.js strategy)
  */
-export function extractSchemaLocation(xml: string): string | null {
-  const schemaLocationMatch = xml.match(/xsi:schemaLocation\s*=\s*["']([^"']+)["']/);
-  if (schemaLocationMatch) {
-    // schemaLocation format is typically "namespace schema-url"
-    const parts = schemaLocationMatch[1].trim().split(/\s+/);
-    // Return the URL part (usually the second part)
-    return parts.length > 1 ? parts[parts.length - 1] : parts[0];
+async function loadPreloadedSchemas(): Promise<Array<{ fileName: string; contents: string }>> {
+  // Return cached schemas if available
+  if (preloadedSchemasCache) {
+    return preloadedSchemasCache;
   }
-  return null;
+
+  // Load all schema files in parallel (matching browser-demo-final/logic.js)
+  const schemaPromises = SCHEMA_FILES.map(async (fileName) => {
+    const contents = await loadFile(fileName, 'schemas/');
+    return {
+      fileName,
+      contents,
+    };
+  });
+
+  preloadedSchemasCache = await Promise.all(schemaPromises);
+  return preloadedSchemasCache;
 }
 
 /**
@@ -185,53 +197,26 @@ export async function validateXml(
   options: ValidationOptions = {}
 ): Promise<ValidationResult> {
   try {
-    let schemaString: string | undefined;
+    // Use customSchema if provided, otherwise load main schema
+    const schemaString = options.customSchema || await loadMainSchema();
 
-    // Priority 1: Use customSchema if provided
-    if (options.customSchema) {
-      schemaString = options.customSchema;
-    }
-    // Priority 2: Use schema option if provided
-    else if (options.schema) {
-      schemaString = options.schema;
-    }
-    // Priority 3: Try to extract from XML
-    else {
-      const schemaLocation = extractSchemaLocation(xmlString);
-      if (schemaLocation) {
-        schemaString = schemaLocation;
-      }
-    }
+    // Load preloaded schemas (unless custom ones are provided)
+    const schemaFiles = options.preloadSchemas || await loadPreloadedSchemas();
 
-    // If schema is a URL and fetchSchema is enabled, fetch it
-    if (schemaString && options.fetchSchema !== false) {
-      if (schemaString.startsWith('http://') || schemaString.startsWith('https://')) {
-        schemaString = await fetchSchema(schemaString);
-      }
-    }
+    // Prepare XML file for xmllint-wasm (matching browser-demo-final/logic.js)
+    const xmlFile = {
+      fileName: 'document.xml',
+      contents: xmlString,
+    };
 
-    // If still no schema, use local cached schema by default
-    if (!schemaString) {
-      // Always try to use local cached schema first (fast, no network)
-      // Only fetch from URL if explicitly requested via fetchSchema: true
-      if (options.fetchSchema === true) {
-        // User explicitly wants to fetch from URL
-        schemaString = await fetchSchema(DEFAULT_QTI_SCHEMA_URL);
-      } else {
-        // Default: use local cached schema (fast)
-        schemaString = await loadLocalSchema();
-      }
-    }
-
-    // Prepare files for xmllint-wasm
-    const xmlFile = { fileName: 'document.xml', contents: xmlString };
-    const schemaFiles = options.preloadSchemas || [];
-
-    // Validate using xmllint-wasm
+    // Validate using xmllint-wasm with same settings as browser-demo-final/logic.js
     const result: XMLValidationResult = await xmllintValidateXML({
       xml: xmlFile,
       schema: schemaString,
       preload: schemaFiles.length > 0 ? schemaFiles : undefined,
+      // Memory settings matching browser-demo-final/logic.js
+      initialMemoryPages: 256,
+      maxMemoryPages: 32768, // 2GiB
     });
 
     if (result.valid) {
@@ -246,9 +231,117 @@ export async function validateXml(
     if (result.errors && Array.isArray(result.errors)) {
       for (const error of result.errors) {
         const xmlError: XMLValidationError = error as XMLValidationError;
+        
+        // Extract readable error message
+        let message = '';
+        
+        // Helper to check if a string is an unhelpful stringified Event/Object
+        const isUnhelpfulString = (str: string): boolean => {
+          if (!str) return true;
+          const unhelpfulPatterns = [
+            '[object Event]',
+            '[object Object]',
+            '{"isTrusted":true}',
+            '{"isTrusted":false}',
+          ];
+          return unhelpfulPatterns.some(pattern => str.includes(pattern));
+        };
+        
+        // Helper to check if a value is usable as an error message
+        const isUsableMessage = (val: any): val is string => {
+          return typeof val === 'string' && val.length > 0 && !isUnhelpfulString(val);
+        };
+        
+        // Handle Event objects
+        if (xmlError instanceof Event) {
+          // Event objects don't contain useful error info - will use default message
+        }
+        // Handle string errors
+        else if (typeof xmlError === 'string') {
+          if (!isUnhelpfulString(xmlError)) {
+            message = xmlError;
+          }
+        }
+        // Handle object errors
+        else if (xmlError && typeof xmlError === 'object') {
+          const err = xmlError as any;
+          
+          // Try common error message properties, but skip unhelpful values
+          if (!(err.message instanceof Event) && isUsableMessage(err.message)) {
+            message = err.message;
+          }
+          
+          if (!message && !(err.rawMessage instanceof Event) && isUsableMessage(err.rawMessage)) {
+            message = err.rawMessage;
+          }
+          
+          if (!message && isUsableMessage(err.msg)) {
+            message = err.msg;
+          }
+          
+          if (!message && isUsableMessage(err.text)) {
+            message = err.text;
+          }
+          
+          // Try to find any useful string property
+          if (!message) {
+            for (const key in err) {
+              if (key !== 'message' && key !== 'rawMessage') {
+                const value: any = err[key];
+                if (isUsableMessage(value)) {
+                  message = value;
+                  break;
+                }
+              }
+            }
+          }
+          
+          // Try toString if available
+          if (!message && typeof err.toString === 'function') {
+            try {
+              const str = err.toString();
+              if (isUsableMessage(str)) {
+                message = str;
+              }
+            } catch (e) {
+              // toString failed
+            }
+          }
+        }
+        
+        // If no useful message found, provide a descriptive default based on context
+        if (!message) {
+          // Check if we have location info that can help
+          const lineInfo = xmlError.loc?.lineNumber;
+          if (lineInfo) {
+            message = `XML validation error at line ${lineInfo}. Check the element structure and attribute values at this location.`;
+          } else {
+            // Generic but more helpful message
+            message = 'XML validation failed. Common issues include: missing required attributes (like "identifier"), invalid element structure, or namespace problems. Please verify your XML against the QTI 3.0 specification.';
+          }
+        }
+        
+        // Clean up error message for better readability
+        message = message
+          .replace(/file_0\.xsd:(\d+):/g, 'Line $1:') // Replace file references with "Line X:"
+          .replace(/document\.xml:(\d+):/g, 'Line $1:') // Replace document.xml references
+          .replace(/file:\/\/\/.*?:\d+:\d+:/g, '') // Remove file:// URLs
+          .replace(/element\s+\{[^}]+\}(\w+)/g, '<$1>') // Simplify namespace references to element names
+          .replace(/Element\s+\{[^}]+\}(\w+)/g, '<$1>') // Simplify namespace references
+          .replace(/\{http:\/\/[^}]+\}/g, '') // Remove namespace URIs in braces
+          .replace(/Schemas parser (error|warning)\s*:\s*/gi, '') // Remove parser prefix
+          .replace(/warning:\s*/gi, '')
+          .replace(/error:\s*/gi, '')
+          .replace(/\s+/g, ' ') // Normalize whitespace
+          .trim();
+        
         errors.push({
-          message: xmlError.message || xmlError.rawMessage,
-          rawMessage: xmlError.rawMessage,
+          message: message || 'Validation error',
+          rawMessage: typeof xmlError.rawMessage === 'string' && !isUnhelpfulString(xmlError.rawMessage)
+            ? xmlError.rawMessage 
+            : (xmlError instanceof Event 
+                ? 'Event object - schema loading may have failed' 
+                : undefined),
           line: xmlError.loc?.lineNumber,
           fileName: xmlError.loc?.fileName,
         });
@@ -260,14 +353,87 @@ export async function validateXml(
       errors,
     };
   } catch (error) {
+    // Log the error for debugging (only in development)
+    if (typeof console !== 'undefined' && console.error) {
+      console.error('Validation error:', error);
+    }
+    
+    // Helper to check if a string is an unhelpful stringified Event/Object
+    const isUnhelpfulString = (str: string): boolean => {
+      if (!str) return true;
+      const unhelpfulPatterns = [
+        '[object Event]',
+        '[object Object]',
+        '{"isTrusted":true}',
+        '{"isTrusted":false}',
+      ];
+      return unhelpfulPatterns.some(pattern => str.includes(pattern));
+    };
+    
+    // Extract error message from various error types
+    let errorMessage = '';
+    
+    // Handle Event objects (e.g., from failed worker loading)
+    if (error instanceof Event) {
+      // Try to extract more info from Event
+      const eventType = error.type || 'unknown';
+      const target = (error.target as any)?.src || (error.target as any)?.href || '';
+      errorMessage = `Validation library failed to initialize (${eventType}). This may be a browser compatibility issue or network error loading the worker file. ${target ? `Failed to load: ${target}` : ''}`;
+    } else if (error instanceof Error) {
+      const msg = error.message || error.name || '';
+      if (!isUnhelpfulString(msg)) {
+        errorMessage = msg;
+      }
+      // Include stack trace in rawMessage for debugging
+      if (error.stack && !isUnhelpfulString(error.stack)) {
+        errorMessage = errorMessage || error.message || error.name || 'Validation error';
+      }
+    } else if (error && typeof error === 'object') {
+      // Handle error objects that might not be Error instances
+      const err = error as any;
+      
+      // Try to extract useful information
+      if (err.message && typeof err.message === 'string' && !isUnhelpfulString(err.message)) {
+        errorMessage = err.message;
+      } else if (err.name && typeof err.name === 'string' && !isUnhelpfulString(err.name)) {
+        errorMessage = err.name;
+      } else if (err.toString && typeof err.toString === 'function') {
+        try {
+          const str = err.toString();
+          if (!isUnhelpfulString(str) && str !== '[object Object]') {
+            errorMessage = str;
+          }
+        } catch (e) {
+          // toString failed
+        }
+      }
+      
+      // Check for common error properties
+      if (!errorMessage) {
+        for (const key of ['error', 'reason', 'description', 'detail']) {
+          if (err[key] && typeof err[key] === 'string' && !isUnhelpfulString(err[key])) {
+            errorMessage = err[key];
+            break;
+          }
+        }
+      }
+    } else if (error && typeof error === 'string') {
+      if (!isUnhelpfulString(error)) {
+        errorMessage = error;
+      }
+    }
+    
+    // Fallback to helpful default message
+    if (!errorMessage) {
+      errorMessage = 'XML validation failed. This could be due to: a network error loading the validation library, browser compatibility issues, or malformed XML. Please check your XML syntax and try again.';
+    }
+    
     return {
       valid: false,
       errors: [
         {
-          message:
-            error instanceof Error
-              ? error.message
-              : 'Unknown validation error occurred',
+          message: errorMessage,
+          rawMessage: error instanceof Error ? error.stack : (typeof error === 'object' ? JSON.stringify(error, null, 2) : String(error)),
         },
       ],
     };

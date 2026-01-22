@@ -23,8 +23,51 @@ const config = {
       esbuild: {
         jsx: 'automatic',
       },
+      server: {
+        fs: {
+          allow: ['..'],
+        },
+      },
+      // Configure worker handling for xmllint-wasm
+      worker: {
+        format: 'es',
+        plugins: () => [],
+      },
+      // Build configuration for workers
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: undefined,
+          },
+        },
+      },
+      // Optimize dependencies for xmllint-wasm
+      optimizeDeps: {
+        exclude: ['xmllint-wasm'],
+        include: [],
+      },
+      // Ensure WASM files are handled correctly
+      assetsInclude: ['**/*.wasm'],
+      // Resolve configuration to help with xmllint-wasm worker loading
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve?.alias,
+        },
+      },
     });
   },
+  // Serve schema files as static assets
+  staticDirs: [
+    {
+      from: '../packages/qti-renderer/dist/schemas',
+      to: '/schemas',
+    },
+    {
+      from: '../packages/qti-renderer/dist',
+      to: '/dist',
+    },
+  ],
   core: {
     disableTelemetry: true,
   },
