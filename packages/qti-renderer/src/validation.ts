@@ -140,18 +140,26 @@ async function loadFile(filePath: string, relativeTo: string = ''): Promise<stri
     fetchPaths.unshift(`/schemas/${filePath}`, `./schemas/${filePath}`);
   }
 
+  const errors: string[] = [];
   for (const fetchPath of fetchPaths) {
     try {
       const response = await fetch(fetchPath);
       if (response.ok) {
-        return await response.text();
+        const content = await response.text();
+        if (content && content.trim().length > 0) {
+          return content;
+        }
+        errors.push(`${fetchPath}: empty response`);
+      } else {
+        errors.push(`${fetchPath}: ${response.status} ${response.statusText}`);
       }
     } catch (error) {
+      errors.push(`${fetchPath}: ${error instanceof Error ? error.message : String(error)}`);
       // Continue to next path
     }
   }
 
-  throw new Error(`Failed to load file: ${filePath}`);
+  throw new Error(`Failed to load file: ${filePath}. Tried paths: ${fetchPaths.join(', ')}. Errors: ${errors.join('; ')}`);
 }
 
 /**
@@ -204,6 +212,16 @@ export async function validateXml(
     // Use customSchema if provided, otherwise load main schema
     const schemaString = options.customSchema || await loadMainSchema();
 
+    // Verify schema was loaded correctly
+    if (!schemaString || schemaString.trim().length === 0) {
+      throw new Error('Failed to load QTI schema. The schema file may not be accessible.');
+    }
+
+    // Verify schema starts with XML declaration or root element
+    if (!schemaString.trim().startsWith('<?xml') && !schemaString.trim().startsWith('<xs:schema') && !schemaString.trim().startsWith('<schema')) {
+      throw new Error(`Invalid schema content. Expected XML/XSD but got: ${schemaString.substring(0, 100)}...`);
+    }
+
     // Load preloaded schemas (unless custom ones are provided)
     const schemaFiles = options.preloadSchemas || await loadPreloadedSchemas();
 
@@ -213,10 +231,17 @@ export async function validateXml(
       contents: xmlString,
     };
 
+    // Pass schema as file object with correct filename (not just string)
+    // This ensures xmllint-wasm can resolve schema imports correctly
+    const schemaFile = {
+      fileName: 'imsqti_asiv3p0p1_v1p0.xsd',
+      contents: schemaString,
+    };
+
     // Validate using xmllint-wasm with same settings as browser-demo-final/logic.js
     const result: XMLValidationResult = await xmllintValidateXML({
       xml: xmlFile,
-      schema: schemaString,
+      schema: schemaFile,
       preload: schemaFiles.length > 0 ? schemaFiles : undefined,
       // Memory settings matching browser-demo-final/logic.js
       initialMemoryPages: 256,

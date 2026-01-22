@@ -2,7 +2,7 @@ import { QtiRendererOptions, EmptyElement, ProcessResult, ValueElement } from '.
 import { registerAllElements } from './qti-elements/register';
 import { ConcreteQtiElementClass } from './qti-elements/types';
 import { validateXml, type ValidationResult, type ValidationOptions } from './validation';
-import { dispatchSubmitProcessEvent } from './events';
+import { dispatchSubmitProcessEvent, dispatchSubmitRenderEvent } from './events';
 
 /**
  * Registry of QTI element names to their render functions
@@ -297,6 +297,16 @@ export class QtiRenderer {
         type: 'empty',
       }
     );
+  }
+
+  /**
+   * Callback for when feedback should be updated
+   * This is called after response processing to trigger feedback re-rendering
+   */
+  onFeedbackUpdate(): void {
+    // Trigger feedback re-rendering by dispatching the render event
+    // This will cause FeedbackInline and ModalFeedback elements to re-render
+    dispatchSubmitRenderEvent();
   }
 
   setCorrectResponse(identifier: string, value: ValueElement): void {
