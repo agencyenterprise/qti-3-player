@@ -43,6 +43,7 @@ export class QtiRenderer {
   private validationResult: ValidationResult | null = null;
   private validationPromise: Promise<ValidationResult> | null = null;
   private isValidated: boolean = false;
+  private mathJaxPromises: Promise<void>[] = [];
 
   /**
    * Internal registry mapping QTI element names to class constructors
@@ -212,7 +213,39 @@ export class QtiRenderer {
     }
 
     // Proceed with rendering
+    this.mathJaxPromises = [];
     this.renderContent(container);
+    await Promise.all(this.mathJaxPromises);
+  }
+
+  setMathContainer(container: Element): void {
+    this.mathJaxPromises.push(this.triggerMathJax(container));
+  }
+
+  private async triggerMathJax(container: Element): Promise<void> {
+    if (typeof (window as any).MathJax !== 'undefined') {
+      try {
+        // Support MathJax v3/v4
+        if ((window as any).MathJax.typesetPromise) {
+          await (window as any).MathJax.typesetPromise([container]);
+        } else if ((window as any).MathJax.Hub && (window as any).MathJax.Hub.Queue) {
+          // Support MathJax v2
+          return new Promise((resolve) => {
+            (window as any).MathJax.Hub.Queue(
+              ['Typeset', (window as any).MathJax.Hub, container],
+              resolve
+            );
+          });
+        } else if ((window as any).MathJax.typeset) {
+          // Support older versions or different configs
+          (window as any).MathJax.typeset([container]);
+        }
+      } catch (e) {
+        console.warn('MathJax typesetting failed:', e);
+      }
+    } else {
+      console.warn('MathJax not found');
+    }
   }
 
   /**

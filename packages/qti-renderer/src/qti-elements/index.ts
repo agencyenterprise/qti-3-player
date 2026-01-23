@@ -17,4 +17,8 @@ export { ResponseIf } from './ResponseIf';
 export { ResponseProcessing } from './ResponseProcessing';
 export { SetOutcomeValue } from './SetOutcomeValue';
 export { SimpleChoice } from './SimpleChoice';
+export { TextEntryInteraction } from './TextEntryInteraction';
 export { Variable } from './Variable';
+
+// MathML support
+export { Math } from './Math';
