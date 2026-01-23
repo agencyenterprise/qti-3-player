@@ -103,10 +103,21 @@ async function loadFile(filePath: string, relativeTo: string = ''): Promise<stri
       const path = require('path') as typeof import('path');
       
       // Try multiple possible locations
+      // Check if we're in the package directory or root
+      const cwd = process.cwd();
+      const isPackageDir = cwd.endsWith('qti-renderer') || cwd.endsWith('qti-renderer/');
+      const distPath = isPackageDir 
+        ? path.join(cwd, 'dist', relativeTo, filePath)
+        : path.join(cwd, 'packages/qti-renderer/dist', relativeTo, filePath);
+      const assetsPath = isPackageDir
+        ? path.join(cwd, 'assets', relativeTo, filePath)
+        : path.join(cwd, 'packages/qti-renderer/assets', relativeTo, filePath);
+      
       const possiblePaths = [
         path.join(__dirname, relativeTo, filePath),
-        path.join(process.cwd(), 'packages/qti-renderer/src', relativeTo, filePath),
-        path.join(process.cwd(), 'packages/qti-renderer/dist', relativeTo, filePath),
+        path.join(__dirname, '..', relativeTo, filePath), // In case __dirname is in a subdirectory
+        distPath,
+        assetsPath,
       ];
       
       for (const fullPath of possiblePaths) {

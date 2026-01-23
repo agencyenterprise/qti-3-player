@@ -9,8 +9,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom';
 
-const SCHEMAS_DIR = path.join(__dirname, '../src/schemas');
-const MAIN_SCHEMA_PATH = path.join(__dirname, '../src/imsqti_asiv3p0p1_v1p0.xsd');
+const SCHEMAS_DIR = path.join(__dirname, '../assets/schemas');
+const MAIN_SCHEMA_PATH = path.join(__dirname, '../assets/imsqti_asiv3p0p1_v1p0.xsd');
 
 interface SchemaReference {
   namespace?: string;

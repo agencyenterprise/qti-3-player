@@ -1,8 +1,8 @@
 import './style.css';
 import { VanillaQtiItem } from '@qti-renderer/vanilla';
 // Import base styles from the renderer core
-import '@qti-renderer/core/assets/qti-base.css';
-import '@qti-renderer/core/assets/qti-custom.css';
+import '@qti-renderer/core/dist/qti-base.css';
+import '@qti-renderer/core/dist/qti-custom.css';
 import { validateXml } from '@qti-renderer/core';
 
 const xmlInput = document.getElementById('xml-input') as HTMLTextAreaElement;

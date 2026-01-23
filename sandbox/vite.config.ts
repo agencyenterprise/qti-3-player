@@ -86,12 +86,56 @@ export default defineConfig({
               const relativePath = req.url.replace('/schemas/', '');
               const filePath = join(projectRoot, 'packages/qti-renderer/dist/schemas', relativePath);
               const content = readFileSync(filePath, 'utf-8');
+              if (!content || content.length === 0) {
+                console.error(`Empty file: ${filePath}`);
+                next();
+                return;
+              }
               res.setHeader('Content-Type', 'application/xml');
               res.setHeader('Access-Control-Allow-Origin', '*');
               res.end(content);
               return;
             } catch (error) {
               console.error(`Failed to serve ${req.url}:`, error);
+            }
+          }
+          // Serve main schema file
+          if (req.url === '/imsqti_asiv3p0p1_v1p0.xsd' || req.url.endsWith('/imsqti_asiv3p0p1_v1p0.xsd')) {
+            try {
+              const filePath = join(projectRoot, 'packages/qti-renderer/dist/imsqti_asiv3p0p1_v1p0.xsd');
+              const content = readFileSync(filePath, 'utf-8');
+              if (!content || content.length === 0) {
+                console.error(`Empty file: ${filePath}`);
+                next();
+                return;
+              }
+              res.setHeader('Content-Type', 'application/xml');
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.end(content);
+              return;
+            } catch (error) {
+              console.error(`Failed to serve ${req.url}:`, error);
+            }
+          }
+          // Serve CSS files from @qti-renderer/core/dist
+          if (req.url.includes('@qti-renderer/core/dist') && req.url.endsWith('.css')) {
+            try {
+              const relativePath = req.url.includes('/node_modules/')
+                ? req.url.replace('/node_modules/@qti-renderer/core', '')
+                : req.url.replace(/.*@qti-renderer\/core/, '');
+              const filePath = join(projectRoot, 'packages/qti-renderer', relativePath);
+              const content = readFileSync(filePath, 'utf-8');
+              if (!content || content.length === 0) {
+                console.error(`Empty file: ${filePath}`);
+                next();
+                return;
+              }
+              res.setHeader('Content-Type', 'text/css');
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.end(content);
+              return;
+            } catch (error) {
+              console.error(`Failed to serve CSS ${req.url}:`, error);
             }
           }
           next();
@@ -126,10 +170,13 @@ export default defineConfig({
     // Ensure WASM files are copied to output
     assetsInlineLimit: 0, // Don't inline WASM files
   },
-  // Resolve configuration to help with xmllint-wasm
+  // Resolve configuration to help with xmllint-wasm and CSS imports
   resolve: {
     preserveSymlinks: false,
     dedupe: [],
+    alias: {
+      '@qti-renderer/core/dist': join(__dirname, '../packages/qti-renderer/dist'),
+    },
   },
   // Ensure xmllint-wasm worker files are accessible
   publicDir: false, // We don't need a public dir, but this ensures proper handling

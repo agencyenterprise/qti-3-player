@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && cp assets/* dist/ && cp src/imsqti_asiv3p0p1_v1p0.xsd dist/imsqti_asiv3p0p1_v1p0.xsd && [ -d src/schemas ] && cp -r src/schemas dist/schemas || true",
+    "build": "tsc && cp -r assets/* dist/",
     "dev": "tsc --watch",
     "test": "vitest",
     "test:run": "vitest run",
