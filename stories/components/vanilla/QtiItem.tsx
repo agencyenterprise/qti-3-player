@@ -15,11 +15,7 @@ export function VanillaQtiItem({ xml }: VanillaQtiItemProps) {
     }
 
     try {
-      const renderer = new QtiRenderer(xml, {
-        debug: false,
-        showFeedback: true,
-        validateXml: true,
-      });
+      const renderer = new QtiRenderer(xml);
       rendererRef.current = renderer;
       renderer.render(containerRef.current).catch((error) => {
         console.error('Failed to render QTI item:', error);

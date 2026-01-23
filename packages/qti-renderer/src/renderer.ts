@@ -3,6 +3,7 @@ import { registerAllElements } from './qti-elements/register';
 import { ConcreteQtiElementClass } from './qti-elements/types';
 import { validateXml, type ValidationResult, type ValidationOptions } from './validation';
 import { dispatchSubmitProcessEvent, dispatchSubmitRenderEvent } from './events';
+import { DebugView } from './debug/DebugView';
 
 /**
  * Registry of QTI element names to their render functions
@@ -45,6 +46,8 @@ export class QtiRenderer {
   private isValidated: boolean = false;
   private mathJaxPromises: Promise<void>[] = [];
 
+  private debugView: DebugView | null = null;
+
   /**
    * Internal registry mapping QTI element names to class constructors
    * Used for validation and content-model lookups
@@ -54,9 +57,10 @@ export class QtiRenderer {
   constructor(qtiXml: string, options: QtiRendererOptions = {}) {
     this.xmlString = qtiXml;
     this.options = {
-      showFeedback: true,
-      validateXml: true, // Validation enabled by default
-      ...options,
+      debug: options.debug ?? false,
+      showFeedback: options.showFeedback ?? true,
+      validateXml: options.validateXml ?? true,
+      validationOptions: options.validationOptions ?? {},
     };
     registerAllElements(this.rendererClassRegistry);
     this.parseXml(qtiXml);
@@ -306,10 +310,17 @@ export class QtiRenderer {
 
     this.submitButtonContainer.appendChild(submitButton);
     container.appendChild(this.submitButtonContainer);
+
+    // Initialize Debug View if debug mode is enabled
+    if (this.options.debug) {
+      this.debugView = new DebugView(this);
+      this.debugView.mount(container);
+    }
   }
 
   setOutcomeValue(identifier: string, value: ValueElement): void {
     this.outcomeValues.set(identifier, value);
+    this.debugView?.update();
   }
 
   getOutcomeValue(identifier: string): ValueElement | EmptyElement {
@@ -320,8 +331,13 @@ export class QtiRenderer {
     );
   }
 
+  getOutcomeValues(): Map<string, ValueElement> {
+    return this.outcomeValues;
+  }
+
   setVariable(identifier: string, value: ValueElement): void {
     this.variables.set(identifier, value);
+    this.debugView?.update();
   }
 
   getVariable(identifier: string): ValueElement | EmptyElement {
@@ -332,8 +348,13 @@ export class QtiRenderer {
     );
   }
 
+  getVariables(): Map<string, ValueElement> {
+    return this.variables;
+  }
+
   setCorrectResponse(identifier: string, value: ValueElement): void {
     this.correctResponses.set(identifier, value);
+    this.debugView?.update();
   }
 
   getCorrectResponse(identifier: string): ValueElement | EmptyElement {
@@ -344,14 +365,21 @@ export class QtiRenderer {
     );
   }
 
-  processElementChildren(element: Element, container: HTMLElement | null): void {
+  getCorrectResponses(): Map<string, ValueElement> {
+    return this.correctResponses;
+  }
+
+  processElementChildren(element: Element, container: HTMLElement | null): ProcessResult[] {
     const children = Array.from(element.childNodes);
+    const results: ProcessResult[] = [];
     for (const child of children) {
       const result = this.processElement(child as Element);
       if (result.type === 'visual' && container) {
         container.appendChild(result.element);
       }
+      results.push(result);
     }
+    return results;
   }
 
   /**

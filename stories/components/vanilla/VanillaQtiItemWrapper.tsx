@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { VanillaQtiItem, type VanillaQtiItemOptions } from "@qti-renderer/vanilla";
+import React, { useEffect, useRef } from 'react';
+import { VanillaQtiItem } from '@qti-renderer/vanilla';
 
 /**
  * React wrapper for Vanilla QtiItem
@@ -10,9 +10,7 @@ export interface VanillaQtiItemWrapperProps {
   xml: string;
 }
 
-export function VanillaQtiItemWrapper({
-  xml,
-}: VanillaQtiItemWrapperProps) {
+export function VanillaQtiItemWrapper({ xml }: VanillaQtiItemWrapperProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const qtiItemRef = useRef<VanillaQtiItem | null>(null);
 
@@ -21,12 +19,7 @@ export function VanillaQtiItemWrapper({
       return;
     }
 
-    const options: VanillaQtiItemOptions = {
-      debug: false,
-      showFeedback: true,
-    };
-
-    qtiItemRef.current = new VanillaQtiItem(containerRef.current, xml, options);
+    qtiItemRef.current = new VanillaQtiItem(containerRef.current, xml);
 
     return () => {
       if (qtiItemRef.current) {
@@ -40,9 +33,9 @@ export function VanillaQtiItemWrapper({
     <div
       ref={containerRef}
       style={{
-        width: "100%",
-        maxWidth: "800px",
-        padding: "20px",
+        width: '100%',
+        maxWidth: '800px',
+        padding: '20px',
       }}
       className="qti-item-container"
     />

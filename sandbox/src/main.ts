@@ -55,7 +55,10 @@ const renderQti = () => {
     const itemElement = document.createElement('div');
     qtiContainer.appendChild(itemElement);
 
-    currentItem = new VanillaQtiItem(itemElement, xml, {});
+    currentItem = new VanillaQtiItem(itemElement, xml, {
+      debug: true,
+      validateXml: true,
+    });
 
     console.log('QTI Item rendered successfully');
   } catch (error) {
@@ -66,25 +69,26 @@ const renderQti = () => {
 
 const validateQti = async () => {
   const xml = xmlInput.value;
-  
+
   // Clear previous results
   validationResult.innerHTML = '';
   validationResult.className = '';
-  
+
   // Set loading state
   validateBtn.disabled = true;
   validateBtn.textContent = 'Validating...';
-  
+
   try {
     const result = await validateXml(xml);
-    
+
     if (result.valid) {
       validationResult.className = 'validation-success';
-      validationResult.innerHTML = '<strong>✓ Valid</strong> - XML is valid according to QTI 3.0 schema.';
+      validationResult.innerHTML =
+        '<strong>✓ Valid</strong> - XML is valid according to QTI 3.0 schema.';
     } else {
       validationResult.className = 'validation-error';
       const errorsHtml = result.errors
-        .map(err => {
+        .map((err) => {
           const location = err.line ? ` (line ${err.line})` : '';
           return `<div>• ${err.message}${location}</div>`;
         })
@@ -93,7 +97,9 @@ const validateQti = async () => {
     }
   } catch (error) {
     validationResult.className = 'validation-error';
-    validationResult.innerHTML = `<strong>✗ Validation Error</strong> - ${error instanceof Error ? error.message : 'Unknown error occurred'}`;
+    validationResult.innerHTML = `<strong>✗ Validation Error</strong> - ${
+      error instanceof Error ? error.message : 'Unknown error occurred'
+    }`;
   } finally {
     // Reset button state
     validateBtn.disabled = false;

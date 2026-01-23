@@ -1,9 +1,4 @@
-import { QtiRenderer } from '@qti-renderer/core';
-
-export interface VanillaQtiItemOptions {
-  debug?: boolean;
-  showFeedback?: boolean;
-}
+import { QtiRenderer, QtiRendererOptions } from '@qti-renderer/core';
 
 /**
  * Vanilla JS wrapper for QTI renderer
@@ -26,15 +21,11 @@ export interface VanillaQtiItemOptions {
 export class VanillaQtiItem {
   private container: HTMLElement;
   private renderer: QtiRenderer | null = null;
-  private options: VanillaQtiItemOptions;
+  private options: QtiRendererOptions;
 
-  constructor(container: HTMLElement, xml: string, options: VanillaQtiItemOptions = {}) {
+  constructor(container: HTMLElement, xml: string, options: QtiRendererOptions = {}) {
     this.container = container;
-    this.options = {
-      debug: false,
-      showFeedback: true,
-      ...options,
-    };
+    this.options = options;
     this.mount(xml);
   }
 
@@ -46,11 +37,7 @@ export class VanillaQtiItem {
     this.destroy();
 
     try {
-      this.renderer = new QtiRenderer(xml, {
-        debug: this.options.debug ?? false,
-        showFeedback: this.options.showFeedback ?? true,
-        validateXml: true,
-      });
+      this.renderer = new QtiRenderer(xml, this.options);
 
       // Render to container (async)
       this.renderer.render(this.container).catch((error) => {
@@ -98,7 +85,7 @@ export class VanillaQtiItem {
 export function mountQtiItem(
   container: HTMLElement,
   xml: string,
-  options?: VanillaQtiItemOptions
+  options?: QtiRendererOptions
 ): VanillaQtiItem {
   return new VanillaQtiItem(container, xml, options);
 }

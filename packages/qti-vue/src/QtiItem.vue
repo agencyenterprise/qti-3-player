@@ -19,11 +19,7 @@ const mountRenderer = () => {
 
   try {
     // Create new renderer instance with feedback and validation enabled
-    const renderer = new QtiRenderer(props.xml, {
-      debug: false,
-      showFeedback: true,
-      validateXml: true,
-    });
+    const renderer = new QtiRenderer(props.xml, props.options ?? {});
     rendererRef.value = renderer;
 
     // Render to container (async)

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { QtiRenderer } from '@qti-renderer/core';
+import { QtiRenderer, QtiRendererOptions } from '@qti-renderer/core';
 
 /**
  * React wrapper component for QTI renderer
@@ -14,9 +14,10 @@ import { QtiRenderer } from '@qti-renderer/core';
  */
 export interface QtiItemProps {
   xml: string;
+  options?: QtiRendererOptions;
 }
 
-export function QtiItem({ xml }: QtiItemProps) {
+export function QtiItem({ xml, options }: QtiItemProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<QtiRenderer | null>(null);
   const [, forceUpdate] = useState(0);
@@ -28,11 +29,7 @@ export function QtiItem({ xml }: QtiItemProps) {
 
     try {
       // Create new renderer instance with feedback and validation enabled
-      const renderer = new QtiRenderer(xml, {
-        debug: false,
-        showFeedback: true,
-        validateXml: true,
-      });
+      const renderer = new QtiRenderer(xml, options);
       rendererRef.current = renderer;
 
       // Render to container (async)

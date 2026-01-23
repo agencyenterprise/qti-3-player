@@ -27,7 +27,7 @@ export class ChoiceInteraction extends BaseQtiElement {
 
   process(renderer: QtiRenderer): VisualElement {
     const responseIdentifier = this.getResponseIdentifier();
-    const isMultiple = this.getMaxChoices() > 1;
+    const isMultiple = this.getMaxChoices() !== 1;
     const fieldset = document.createElement('fieldset');
 
     fieldset.className = `qti-choice-interaction ${this.getOrientationClass()}`;
