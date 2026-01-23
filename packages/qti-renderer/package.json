@@ -2,13 +2,16 @@
   "name": "@qti-renderer/core",
   "version": "0.1.0",
   "description": "Framework-agnostic QTI 3.x renderer",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && cp assets/* dist/",
+    "build": "tsc && cp -r assets/* dist/",
     "dev": "tsc --watch",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "update-schemas": "tsx scripts/update-schemas.ts",
+    "test-validation": "tsx scripts/test-validation.ts"
   },
   "keywords": [
     "qti",
@@ -19,7 +22,9 @@
   "license": "MIT",
   "devDependencies": {
     "@vitest/ui": "^4.0.17",
+    "@xmldom/xmldom": "^0.8.10",
     "jsdom": "^27.4.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.0.0",
     "vitest": "^4.0.17"
   },

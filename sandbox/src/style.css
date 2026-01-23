@@ -97,6 +97,7 @@ body {
 .controls {
   display: flex;
   justify-content: flex-end;
+  gap: 10px;
 }
 
 .editor-pane button {
@@ -118,6 +119,34 @@ body {
 .editor-pane button:focus,
 .editor-pane button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.editor-pane button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#validation-result {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.validation-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.validation-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+#validation-result div {
+  margin-top: 5px;
 }
 
 .error {
