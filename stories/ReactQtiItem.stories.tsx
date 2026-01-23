@@ -8,6 +8,7 @@ import {
   inlineFeedbackQuestion,
   unlimitedChoicesQuestion,
   choiceLayout,
+  textEntryInteraction,
 } from './shared/examples';
 
 const meta = {
@@ -67,5 +68,11 @@ export const UnlimitedChoicesQuestion: Story = {
 export const ChoiceLayout: Story = {
   args: {
     xml: choiceLayout,
+  },
+};
+
+export const TextEntryInteraction: Story = {
+  args: {
+    xml: textEntryInteraction,
   },
 };

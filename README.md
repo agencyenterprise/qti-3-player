@@ -89,3 +89,42 @@ npm run dev
 - **Limited interaction types** - Currently supports `choice-interaction` (single and multiple choice)
 - **Partial expression support** - Basic expressions like `match` and `correct` are supported, but not all QTI expressions
 - **No adaptive behavior** - Static rendering only, no adaptive item selection
+
+## MathML Support
+
+This renderer supports MathML rendering via MathJax. We do not bundle MathJax with the library to keep it lightweight and flexible. You must include MathJax in your application, and the `MathJax` object must be defined on the `window` object.
+
+We support MathJax versions 2, 3, and 4. Here are examples of how to include them in your HTML:
+
+### MathJax 2
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+```
+
+### MathJax 3
+
+```html
+<script>
+  MathJax = {
+    loader: { load: ['[mml]/mml3'] },
+  };
+</script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/tex-mml-chtml.min.js"
+  integrity="sha512-yxTB34XQUKlyuz73upeDrZ91/tbZW/YAURVWL3s+09bEWdmORQzUZwSKyBIRxSeHuSwh1aOKEffn2/D65kwyYg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+```
+
+### MathJax 4
+
+```html
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.0.0/tex-mml-chtml.min.js"
+  integrity="sha512-yxTB34XQUKlyuz73upeDrZ91/tbZW/YAURVWL3s+09bEWdmORQzUZwSKyBIRxSeHuSwh1aOKEffn2/D65kwyYg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+```

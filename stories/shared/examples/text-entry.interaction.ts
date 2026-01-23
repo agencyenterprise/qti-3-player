@@ -1,0 +1,50 @@
+export const textEntryInteraction = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.w3.org/1998/Math/MathML https://purl.imsglobal.org/spec/mathml/v3p0/schema/xsd/mathml3.xsd" adaptive="false" identifier="qti3-text-entry-01" time-dependent="false" title="Richard III (take 3) Text Entry qti3">
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE">
+    <qti-correct-response>
+      <qti-value>York</qti-value>
+    </qti-correct-response>
+    <qti-mapping default-value="0">
+      <qti-map-entry map-key="York" mapped-value="1"/>
+      <qti-map-entry map-key="york" mapped-value="0.5"/>
+    </qti-mapping>
+  </qti-response-declaration>
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE1"/>
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE2"/>
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE3"/>
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE4"/>
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE5"/>
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE6"/>
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE7"/>
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE8"/>
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE9"/>
+  <qti-response-declaration base-type="string" cardinality="single" identifier="RESPONSE10"/>
+  <qti-outcome-declaration base-type="float" cardinality="single" identifier="SCORE"/>
+  <qti-item-body>
+    <p>Identify the missing word in this famous quote from Shakespeare's Richard III.</p>		
+    <blockquote>
+      <p>
+        Now is the winter of our discontent<br/>
+        Made glorious summer by this sun of
+        <qti-text-entry-interaction expected-length="15" response-identifier="RESPONSE"/>;<br/>
+        And all the clouds that lour'd upon our house<br/> In the deep bosom of the ocean
+        buried.
+      </p>
+    </blockquote>
+    <p>qti-input-width-1 : <qti-text-entry-interaction class="qti-input-width-1" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE1"/></p>
+    <p>qti-input-width-2 : <qti-text-entry-interaction class="qti-input-width-2" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE2"/></p>
+    <p>qti-input-width-3 : <qti-text-entry-interaction class="qti-input-width-3" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE3"/></p>
+    <p>qti-input-width-4 : <qti-text-entry-interaction class="qti-input-width-4" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE4"/></p>
+    <p>qti-input-width-6 : <qti-text-entry-interaction class="qti-input-width-6" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE5"/></p>
+    <p>qti-input-width-10: <qti-text-entry-interaction class="qti-input-width-10" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE6"/></p>
+    <p>qti-input-width-15: <qti-text-entry-interaction class="qti-input-width-15" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE7"/></p>
+    <p>qti-input-width-20: <qti-text-entry-interaction class="qti-input-width-20" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE8"/></p>
+    <p>qti-input-width-25: <qti-text-entry-interaction class="qti-input-width-25" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE9"/></p>
+    <p>qti-input-width-30: <qti-text-entry-interaction class="qti-input-width-30" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE9"/></p>
+    <p>qti-input-width-35: <qti-text-entry-interaction class="qti-input-width-35" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE9"/></p>
+    <p>qti-input-width-45: <qti-text-entry-interaction class="qti-input-width-45" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE9"/></p>
+    <p>qti-input-width-50: <qti-text-entry-interaction class="qti-input-width-50" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE9"/></p>
+    <p>qti-input-width-72: <qti-text-entry-interaction class="qti-input-width-72" expected-length="15" placeholder-text="Enter the missing word" response-identifier="RESPONSE9"/></p>  
+  </qti-item-body>
+</qti-assessment-item>
+`;
