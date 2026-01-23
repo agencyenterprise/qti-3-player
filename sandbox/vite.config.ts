@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import prefixSelector from 'postcss-prefix-selector';
-import { readFileSync } from 'fs';
+import { readFileSync, copyFileSync, mkdirSync, existsSync, readdirSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -32,6 +32,72 @@ export default defineConfig({
     middlewareMode: false,
   },
   plugins: [
+    // Plugin to copy schema files during build
+    {
+      name: 'copy-qti-schemas',
+      writeBundle() {
+        const projectRoot = join(__dirname, '..');
+        const sourceDir = join(projectRoot, 'packages/qti-renderer/dist');
+        const destDir = join(__dirname, 'dist');
+        
+        // Ensure dest directory exists
+        if (!existsSync(destDir)) {
+          mkdirSync(destDir, { recursive: true });
+        }
+        
+        // Copy main schema file to multiple locations for compatibility
+        const mainSchema = join(sourceDir, 'imsqti_asiv3p0p1_v1p0.xsd');
+        if (existsSync(mainSchema)) {
+          // Copy to root of dist (for ./imsqti_asiv3p0p1_v1p0.xsd)
+          copyFileSync(mainSchema, join(destDir, 'imsqti_asiv3p0p1_v1p0.xsd'));
+          console.log('Copied imsqti_asiv3p0p1_v1p0.xsd to dist/');
+          
+          // Copy to dist/dist/ (for ./dist/imsqti_asiv3p0p1_v1p0.xsd)
+          const distDistDir = join(destDir, 'dist');
+          if (!existsSync(distDistDir)) {
+            mkdirSync(distDistDir, { recursive: true });
+          }
+          copyFileSync(mainSchema, join(distDistDir, 'imsqti_asiv3p0p1_v1p0.xsd'));
+          console.log('Copied imsqti_asiv3p0p1_v1p0.xsd to dist/dist/');
+        }
+        
+        // Copy schemas directory
+        const schemasSourceDir = join(sourceDir, 'schemas');
+        if (existsSync(schemasSourceDir)) {
+          // Copy to dist/schemas/ (for ./schemas/ paths)
+          const schemasDestDir = join(destDir, 'schemas');
+          if (!existsSync(schemasDestDir)) {
+            mkdirSync(schemasDestDir, { recursive: true });
+          }
+          
+          const files = readdirSync(schemasSourceDir);
+          for (const file of files) {
+            const sourcePath = join(schemasSourceDir, file);
+            const destPath = join(schemasDestDir, file);
+            const stat = statSync(sourcePath);
+            if (stat.isFile()) {
+              copyFileSync(sourcePath, destPath);
+              console.log(`Copied schemas/${file} to dist/schemas/`);
+            }
+          }
+          
+          // Copy to dist/dist/schemas/ (for ./dist/schemas/ paths)
+          const distSchemasDestDir = join(destDir, 'dist', 'schemas');
+          if (!existsSync(distSchemasDestDir)) {
+            mkdirSync(distSchemasDestDir, { recursive: true });
+          }
+          
+          for (const file of files) {
+            const sourcePath = join(schemasSourceDir, file);
+            const destPath = join(distSchemasDestDir, file);
+            const stat = statSync(sourcePath);
+            if (stat.isFile()) {
+              copyFileSync(sourcePath, destPath);
+            }
+          }
+        }
+      },
+    },
     // Plugin to serve schema files from @qti-renderer/core without copying
     {
       name: 'serve-qti-schemas',
