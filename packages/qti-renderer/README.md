@@ -1,11 +1,11 @@
-# @qti-renderer/core
+# @ae-studio/qti-renderer
 
 Framework-agnostic QTI 3.x renderer and validator library for rendering and validating QTI (Question and Test Interoperability) assessment items in web applications. Features **WASM-powered client-side XML schema validation** - validate QTI XML directly in the browser without backend dependencies.
 
 ## Installation
 
 ```bash
-npm install @qti-renderer/core
+npm install @ae-studio/qti-renderer
 ```
 
 ## Quick Start
@@ -34,10 +34,10 @@ Here's a complete minimal example based on a real-world implementation:
 **2. TypeScript/JavaScript (`main.ts` or `main.js`):**
 
 ```typescript
-import { QtiRenderer } from '@qti-renderer/core';
+import { QtiRenderer } from '@ae-studio/qti-renderer';
 // Import required CSS styles - these are essential for proper styling
-import '@qti-renderer/core/assets/qti-base.css';
-import '@qti-renderer/core/assets/qti-custom.css';
+import '@ae-studio/qti-renderer/assets/qti-base.css';
+import '@ae-studio/qti-renderer/assets/qti-custom.css';
 
 const qtiXml = `<?xml version="1.0" encoding="UTF-8"?>
 <qti-assessment-item
@@ -124,7 +124,7 @@ Traditional QTI validation requires:
 The library uses [`xmllint-wasm`](https://github.com/kripken/xml.js), a WebAssembly port of the industry-standard `xmllint` XML validator. This allows us to run native XML schema validation directly in the browser:
 
 ```typescript
-import { QtiRenderer, validateXml } from '@qti-renderer/core';
+import { QtiRenderer, validateXml } from '@ae-studio/qti-renderer';
 
 // Validate QTI XML before rendering
 const qtiXml = `<?xml version="1.0"?>

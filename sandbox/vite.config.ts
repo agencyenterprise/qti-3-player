@@ -98,7 +98,7 @@ export default defineConfig({
         }
       },
     },
-    // Plugin to serve schema files from @qti-renderer/core without copying
+    // Plugin to serve schema files from @ae-studio/qti-renderer without copying
     {
       name: 'serve-qti-schemas',
       configureServer(server) {
@@ -112,11 +112,11 @@ export default defineConfig({
             return;
           }
           
-          // Serve schema files from @qti-renderer/core/dist
-          if (req.url.startsWith('/node_modules/@qti-renderer/core/dist/')) {
+          // Serve schema files from @ae-studio/qti-renderer/dist
+          if (req.url.startsWith('/node_modules/@ae-studio/qti-renderer/dist/')) {
             try {
-              const relativePath = req.url.replace('/node_modules/@qti-renderer/core', '');
-              const filePath = join(projectRoot, 'node_modules/@qti-renderer/core', relativePath);
+              const relativePath = req.url.replace('/node_modules/@ae-studio/qti-renderer', '');
+              const filePath = join(projectRoot, 'node_modules/@ae-studio/qti-renderer', relativePath);
               const content = readFileSync(filePath, 'utf-8');
               if (!content || content.length === 0) {
                 console.error(`Empty file: ${filePath}`);
@@ -183,11 +183,11 @@ export default defineConfig({
               console.error(`Failed to serve ${req.url}:`, error);
             }
           }
-          // Serve CSS files from @qti-renderer/core/dist
-          if (req.url.includes('@qti-renderer/core/dist') && req.url.endsWith('.css')) {
+          // Serve CSS files from @ae-studio/qti-renderer/dist
+          if (req.url.includes('@ae-studio/qti-renderer/dist') && req.url.endsWith('.css')) {
             try {
               const relativePath = req.url.includes('/node_modules/')
-                ? req.url.replace('/node_modules/@qti-renderer/core', '')
+                ? req.url.replace('/node_modules/@ae-studio/qti-renderer', '')
                 : req.url.replace(/.*@qti-renderer\/core/, '');
               const filePath = join(projectRoot, 'packages/qti-renderer', relativePath);
               const content = readFileSync(filePath, 'utf-8');
@@ -217,12 +217,6 @@ export default defineConfig({
   // Optimize dependencies for xmllint-wasm - exclude it from pre-bundling
   optimizeDeps: {
     exclude: ['xmllint-wasm'],
-    esbuildOptions: {
-      // Ensure WASM files are treated as external
-      loader: {
-        '.wasm': 'file',
-      },
-    },
   },
   // Ensure WASM files are handled correctly
   assetsInclude: ['**/*.wasm'],
@@ -241,7 +235,7 @@ export default defineConfig({
     preserveSymlinks: false,
     dedupe: [],
     alias: {
-      '@qti-renderer/core/dist': join(__dirname, '../packages/qti-renderer/dist'),
+      '@ae-studio/qti-renderer/dist': join(__dirname, '../packages/qti-renderer/dist'),
     },
   },
   // Ensure xmllint-wasm worker files are accessible

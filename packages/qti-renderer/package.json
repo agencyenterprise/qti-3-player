@@ -1,5 +1,5 @@
 {
-  "name": "@qti-renderer/core",
+  "name": "@ae-studio/qti-renderer",
   "version": "0.1.0",
   "description": "Framework-agnostic QTI 3.x renderer and validator with WASM-powered client-side XML schema validation",
   "type": "module",

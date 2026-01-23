@@ -1,4 +1,4 @@
-import { QtiRenderer } from '@qti-renderer/core';
+import { QtiRenderer } from '@ae-studio/qti-renderer';
 
 export interface VanillaQtiItemOptions {
   debug?: boolean;

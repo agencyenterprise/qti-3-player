@@ -141,9 +141,9 @@ async function loadFile(filePath: string, relativeTo: string = ''): Promise<stri
   const fetchPaths = [
     `/dist/${relativeTo}${filePath}`,
     `./${relativeTo}${filePath}`,
-    `/node_modules/@qti-renderer/core/dist/${relativeTo}${filePath}`,
+    `/node_modules/@ae-studio/qti-renderer/dist/${relativeTo}${filePath}`,
     `./dist/${relativeTo}${filePath}`,
-    `./node_modules/@qti-renderer/core/dist/${relativeTo}${filePath}`,
+    `./node_modules/@ae-studio/qti-renderer/dist/${relativeTo}${filePath}`,
   ];
 
   // For schemas directory, also try direct /schemas/ path (for Storybook staticDirs mapping)

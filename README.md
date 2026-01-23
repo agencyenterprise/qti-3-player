@@ -26,7 +26,7 @@ Framework-agnostic npm package that renders QTI 3.x assessment items to HTML wit
 **API:**
 
 ```typescript
-import { QtiRenderer } from '@qti-renderer/core';
+import { QtiRenderer } from '@ae-studio/qti-renderer';
 
 const renderer = new QtiRenderer(qtiXmlString);
 renderer.render(containerElement);
