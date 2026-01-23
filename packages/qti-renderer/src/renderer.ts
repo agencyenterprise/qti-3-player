@@ -299,16 +299,6 @@ export class QtiRenderer {
     );
   }
 
-  /**
-   * Callback for when feedback should be updated
-   * This is called after response processing to trigger feedback re-rendering
-   */
-  onFeedbackUpdate(): void {
-    // Trigger feedback re-rendering by dispatching the render event
-    // This will cause FeedbackInline and ModalFeedback elements to re-render
-    dispatchSubmitRenderEvent();
-  }
-
   setCorrectResponse(identifier: string, value: ValueElement): void {
     this.correctResponses.set(identifier, value);
   }
