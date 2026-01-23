@@ -2,7 +2,7 @@ import { QtiRendererOptions, EmptyElement, ProcessResult, ValueElement } from '.
 import { registerAllElements } from './qti-elements/register';
 import { ConcreteQtiElementClass } from './qti-elements/types';
 import { validateXml, type ValidationResult, type ValidationOptions } from './validation';
-import { dispatchSubmitProcessEvent } from './events';
+import { dispatchSubmitProcessEvent, dispatchSubmitRenderEvent } from './events';
 
 /**
  * Registry of QTI element names to their render functions
@@ -72,14 +72,8 @@ export class QtiRenderer {
     // Default: use local cached schema (fast, no network request)
     // User can override via validationOptions to use custom schema or fetch from URL
     const validationOptions: ValidationOptions = {
-      // Default: use cached local schema (fetchSchema defaults to false/undefined)
-      // This means loadLocalSchema() will be used, which uses the cached schema
+      // Use local schema by default
       ...this.options.validationOptions,
-      // If user explicitly provided a schema URL, allow fetching
-      // Otherwise, fetchSchema remains false/undefined to use local cached schema
-      fetchSchema: this.options.validationOptions?.schema?.startsWith('http')
-        ? this.options.validationOptions.fetchSchema ?? true
-        : this.options.validationOptions?.fetchSchema ?? false,
     };
 
     this.validationPromise = validateXml(this.xmlString, validationOptions);

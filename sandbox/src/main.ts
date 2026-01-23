@@ -1,11 +1,14 @@
 import './style.css';
 import { VanillaQtiItem } from '@qti-renderer/vanilla';
 // Import base styles from the renderer core
-import '@qti-renderer/core/assets/qti-base.css';
-import '@qti-renderer/core/assets/qti-custom.css';
+import '@qti-renderer/core/dist/qti-base.css';
+import '@qti-renderer/core/dist/qti-custom.css';
+import { validateXml } from '@qti-renderer/core';
 
 const xmlInput = document.getElementById('xml-input') as HTMLTextAreaElement;
 const renderBtn = document.getElementById('render-btn') as HTMLButtonElement;
+const validateBtn = document.getElementById('validate-btn') as HTMLButtonElement;
+const validationResult = document.getElementById('validation-result') as HTMLDivElement;
 const qtiContainer = document.getElementById('qti-container') as HTMLDivElement;
 
 // Default XML example
@@ -61,6 +64,44 @@ const renderQti = () => {
   }
 };
 
+const validateQti = async () => {
+  const xml = xmlInput.value;
+  
+  // Clear previous results
+  validationResult.innerHTML = '';
+  validationResult.className = '';
+  
+  // Set loading state
+  validateBtn.disabled = true;
+  validateBtn.textContent = 'Validating...';
+  
+  try {
+    const result = await validateXml(xml);
+    
+    if (result.valid) {
+      validationResult.className = 'validation-success';
+      validationResult.innerHTML = '<strong>✓ Valid</strong> - XML is valid according to QTI 3.0 schema.';
+    } else {
+      validationResult.className = 'validation-error';
+      const errorsHtml = result.errors
+        .map(err => {
+          const location = err.line ? ` (line ${err.line})` : '';
+          return `<div>• ${err.message}${location}</div>`;
+        })
+        .join('');
+      validationResult.innerHTML = `<strong>✗ Invalid</strong> - Found ${result.errors.length} error(s):<br>${errorsHtml}`;
+    }
+  } catch (error) {
+    validationResult.className = 'validation-error';
+    validationResult.innerHTML = `<strong>✗ Validation Error</strong> - ${error instanceof Error ? error.message : 'Unknown error occurred'}`;
+  } finally {
+    // Reset button state
+    validateBtn.disabled = false;
+    validateBtn.textContent = 'Validate XML';
+  }
+};
+
 renderBtn.addEventListener('click', renderQti);
+validateBtn.addEventListener('click', validateQti);
 
 renderQti();

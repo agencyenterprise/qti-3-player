@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/2001/10/synthesis" targetNamespace="http://www.w3.org/2001/10/synthesis" elementFormDefault="qualified">
+    
+    
+    
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+    <xsd:redefine schemaLocation="synthesis-nonamespace.xsd">
+        
+        <xsd:complexType name="speak" mixed="true">
+            <xsd:complexContent>
+                <xsd:restriction base="speak">
+                    <xsd:group ref="speak.class"/>
+                    <xsd:attribute name="version" type="version.datatype" use="required"/>
+                    <xsd:attribute ref="xml:lang" use="required"/>
+                    <xsd:anyAttribute namespace="##other" processContents="lax"/>
+                </xsd:restriction>
+            </xsd:complexContent>
+        </xsd:complexType>
+        
+        <xsd:complexType name="mark">
+            <xsd:complexContent>
+                <xsd:restriction base="mark">
+                    <xsd:sequence>
+                        <xsd:any namespace="##other" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="name" type="xsd:token" use="required"/>
+                    <xsd:anyAttribute namespace="##other" processContents="lax"/>
+                </xsd:restriction>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:redefine>
+</xsd:schema>
