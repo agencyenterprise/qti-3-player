@@ -7,7 +7,7 @@ describe('XML Validation', () => {
 <qti-assessment-item
   xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 imsqti_asiv3p0p1_v1p0.xsd" 
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" 
   identifier="TEST_001"
   title="Test Question"
   adaptive="false"
@@ -71,7 +71,7 @@ describe('XML Validation', () => {
 <qti-assessment-item
   xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 imsqti_asiv3p0p1_v1p0.xsd" 
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" 
   title="Test Question"
   adaptive="false"
   time-dependent="false">
@@ -126,7 +126,7 @@ describe('XML Validation', () => {
 <qti-assessment-item
   xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 imsqti_asiv3p0p1_v1p0.xsd" 
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" 
   identifier="TEST_004"
   title="Test Question"
   adaptive="false"
@@ -150,7 +150,7 @@ describe('XML Validation', () => {
 <qti-assessment-item
   xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 imsqti_asiv3p0p1_v1p0.xsd" 
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" 
   identifier="TEST_005"
   title="Test Question"
   adaptive="invalid-boolean-value"
