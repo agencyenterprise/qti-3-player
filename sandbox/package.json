@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@qti-renderer/core": "file:../packages/qti-renderer",
+    "@ae-studio/qti-renderer": "file:../packages/qti-renderer",
     "@qti-renderer/vanilla": "file:../packages/qti-vanilla"
   },
   "devDependencies": {

@@ -1,10 +1,26 @@
 {
-  "name": "@qti-renderer/core",
+  "name": "@ae-studio/qti-renderer",
   "version": "0.1.0",
-  "description": "Framework-agnostic QTI 3.x renderer",
+  "description": "Framework-agnostic QTI 3.x renderer and validator with WASM-powered client-side XML schema validation",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "assets",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/qti-base.css": "./dist/qti-base.css",
+    "./dist/qti-custom.css": "./dist/qti-custom.css",
+    "./assets/qti-base.css": "./assets/qti-base.css",
+    "./assets/qti-custom.css": "./assets/qti-custom.css"
+  },
   "scripts": {
     "build": "tsc && cp -r assets/* dist/",
     "dev": "tsc --watch",
@@ -15,11 +31,35 @@
   },
   "keywords": [
     "qti",
+    "qti-3",
+    "qti-3.0",
+    "qti-renderer",
+    "qti-validator",
+    "qti-validation",
+    "qti-schema",
     "assessment",
-    "renderer"
+    "renderer",
+    "validator",
+    "validation",
+    "xml-validation",
+    "wasm",
+    "webassembly",
+    "ims-qti",
+    "question-test-interoperability"
   ],
-  "author": "",
+  "author": "AE Studio",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agencyenterprise/qti-3-player.git"
+  },
+  "homepage": "https://github.com/agencyenterprise/qti-3-player#readme",
+  "bugs": {
+    "url": "https://github.com/agencyenterprise/qti-3-player/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@vitest/ui": "^4.0.17",
     "@xmldom/xmldom": "^0.8.10",

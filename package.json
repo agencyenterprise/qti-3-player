@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspace=@qti-renderer/core && npm run build --workspaces",
+    "build": "npm run build --workspace=@ae-studio/qti-renderer && npm run build --workspaces",
     "dev": "npm run build && storybook dev -p 6006",
     "dev:sandbox": "npm run build && concurrently -k -n \"CORE,SANDBOX\" -c \"magenta,cyan\" \"npm run dev --workspace=@qti-renderer/core\"  \"cd sandbox && npm run dev\"",
     "storybook": "storybook dev -p 6006",
