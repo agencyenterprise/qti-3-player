@@ -62,6 +62,25 @@ export class VanillaQtiItem {
   }
 
   /**
+   * Submit the current response
+   */
+  submit(): void {
+    if (this.renderer) {
+      this.renderer.submit();
+    }
+  }
+
+  /**
+   * Get the submission count
+   */
+  getSubmissionCount(): number {
+    if (this.renderer) {
+      return this.renderer.getSubmissionCount();
+    }
+    return 0;
+  }
+
+  /**
    * Destroy the renderer and clean up
    */
   destroy(): void {
