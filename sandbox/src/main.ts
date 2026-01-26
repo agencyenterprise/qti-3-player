@@ -1,9 +1,9 @@
 import './style.css';
 import { VanillaQtiItem } from '@qti-renderer/vanilla';
 // Import base styles from the renderer core
-import '@qti-renderer/core/dist/qti-base.css';
-import '@qti-renderer/core/dist/qti-custom.css';
-import { validateXml } from '@qti-renderer/core';
+import '@ae-studio/qti-renderer/dist/qti-base.css';
+import '@ae-studio/qti-renderer/dist/qti-custom.css';
+import { validateXml } from '@ae-studio/qti-renderer';
 
 const xmlInput = document.getElementById('xml-input') as HTMLTextAreaElement;
 const renderBtn = document.getElementById('render-btn') as HTMLButtonElement;

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { QtiItem } from '@qti-renderer/react';
-import { validateXml } from '@qti-renderer/core';
+import { validateXml } from '@ae-studio/qti-renderer';
 
 const meta = {
   title: 'Playground/QTI XML Editor',

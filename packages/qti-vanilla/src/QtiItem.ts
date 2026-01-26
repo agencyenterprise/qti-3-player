@@ -1,4 +1,4 @@
-import { QtiRenderer, QtiRendererOptions } from '@qti-renderer/core';
+import { QtiRenderer, QtiRendererOptions } from '@ae-studio/qti-renderer';
 
 /**
  * Vanilla JS wrapper for QTI renderer

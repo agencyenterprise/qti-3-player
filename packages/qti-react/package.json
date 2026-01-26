@@ -15,7 +15,7 @@
     "react": "^18.0.0"
   },
   "dependencies": {
-    "@qti-renderer/core": "file:../qti-renderer"
+    "@ae-studio/qti-renderer": "file:../qti-renderer"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

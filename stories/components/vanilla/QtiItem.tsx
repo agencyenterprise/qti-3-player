@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { QtiRenderer } from '@qti-renderer/core';
+import { QtiRenderer } from '@ae-studio/qti-renderer';
 
 interface VanillaQtiItemProps {
   xml: string;
