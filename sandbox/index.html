@@ -28,12 +28,26 @@
           <div class="controls">
             <button id="validate-btn">Validate XML</button>
             <button id="render-btn">Render QTI</button>
+            <label class="toggle-control">
+              <input type="checkbox" id="custom-css-toggle">
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Custom CSS</span>
+            </label>
           </div>
           <div id="validation-result"></div>
         </div>
+        <div class="resizer" id="dragMe"></div>
         <div class="preview-pane">
-          <h2>Preview</h2>
-          <div id="qti-container"></div>
+          <div class="preview-header">
+            <h2>Preview</h2>
+          </div>
+          <div class="renderer-wrapper">
+            <div id="qti-container"></div>
+          </div>
+          <div class="controls preview-controls">
+            <span id="submission-count">Submissions: 0</span>
+            <button id="submit-btn" class="primary-btn">Submit Answer</button>
+          </div>
         </div>
       </div>
     </div>

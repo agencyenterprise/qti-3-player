@@ -1,0 +1,155 @@
+/* Custom Renderer CSS */
+.qti-item-body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.qti-choice-interaction {
+  margin-top: 2rem;
+  border: none;
+  padding: 0;
+}
+
+.qti-prompt {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #111;
+  line-height: 1.4;
+}
+
+ul.qti-choices-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+li.qti-simple-choice {
+  background-color: #fff;
+  border: 1px solid #e1e4e8;
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: 1rem;
+}
+
+li.qti-simple-choice:hover {
+  background-color: #f8f9fa;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+li.qti-simple-choice:active {
+  transform: translateY(0);
+}
+
+/* Hide the default radio/checkbox */
+li.qti-simple-choice input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #cbd5e1;
+  border-radius: 50%; /* Default to circle (radio style), JS/Renderer handles type */
+  margin-right: 16px;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+/* Checkbox specific style if distinguishable, usually controlled by attribute on interaction */
+/* For now we style the input generically */
+
+li.qti-simple-choice input:checked {
+  border-color: #2563eb;
+  background-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Style the label inside */
+label.qti-simple-choice {
+  cursor: pointer;
+  flex: 1;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Selected state for the row */
+li.qti-simple-choice:has(input:checked) {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  box-shadow: 0 0 0 1px #bfdbfe;
+}
+
+li.qti-simple-choice:has(input:checked) label.qti-simple-choice {
+  color: #1e40af;
+}
+
+/* Custom styling for specific elements */
+.qti-underline {
+  text-decoration: underline;
+  text-decoration-color: #2563eb;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.qti-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Feedback Styles */
+.qti-modal-feedback {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+.qti-modal-feedback:empty {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.qti-feedback-inline {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  background-color: #f1f3f5;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #495057;
+  vertical-align: middle;
+}
+
+.qti-feedback-inline:empty {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
