@@ -1178,7 +1178,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-default-value`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
 
@@ -13132,13 +13132,13 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
   **Attributes:**
 
-  - [ ] `base-type`
+  - [x] `base-type`
 
     - Type: `string`
     - Use: `optional`
     - Allowed values: `boolean`, `directedPair`, `duration`, `file`, `float`, `identifier`, `integer`, `pair`, `point`, `string`, `uri`
 
-  - [ ] `field-identifier`
+  - [x] `field-identifier`
     - Type: `xs:NCName`
     - Use: `optional`
 
