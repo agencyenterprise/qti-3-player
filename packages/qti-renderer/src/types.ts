@@ -20,14 +20,14 @@ export interface QtiRendererOptions {
   /**
    * Custom validation options (schema, customSchema, fetchSchema, etc.)
    * Only used if validateXml is true
-   * 
+   *
    * @example
    * ```typescript
    * // Use custom schema string
    * validationOptions: {
    *   customSchema: '<xs:schema>...</xs:schema>'
    * }
-   * 
+   *
    * // Use custom schema URL
    * validationOptions: {
    *   schema: 'https://example.com/custom-schema.xsd'
@@ -66,6 +66,7 @@ export type ValueElement = {
   value: any;
   valueType: BaseValueType;
   cardinality: CardinalityType;
+  fieldIdentifier?: string;
 };
 
 export type ProcessResult = VisualElement | ValueElement | EmptyElement;
