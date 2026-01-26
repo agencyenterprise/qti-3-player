@@ -41,6 +41,24 @@ const mountRenderer = () => {
   }
 };
 
+const submit = () => {
+  if (rendererRef.value) {
+    rendererRef.value.submit();
+  }
+};
+
+const getSubmissionCount = () => {
+  if (rendererRef.value) {
+    return rendererRef.value.getSubmissionCount();
+  }
+  return 0;
+};
+
+defineExpose({
+  submit,
+  getSubmissionCount,
+});
+
 onMounted(() => {
   mountRenderer();
 });

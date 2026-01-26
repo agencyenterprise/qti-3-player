@@ -11,8 +11,6 @@ export class QtiRenderer {
   private container: HTMLElement | null = null;
   private options: QtiRendererOptions;
 
-  private submitButtonContainer: HTMLElement | null = null;
-  private submissionCountContainer: HTMLElement | null = null;
   private submissionCount: number = 0;
 
   private outcomeValues: Map<string, ValueElement> = new Map();
@@ -268,27 +266,6 @@ export class QtiRenderer {
       container.appendChild(rendered.element);
     }
 
-    // Create submission count display
-    this.submissionCountContainer = document.createElement('div');
-    this.submissionCountContainer.className = 'qti-submission-count';
-    this.updateSubmissionCountDisplay();
-    container.appendChild(this.submissionCountContainer);
-
-    // Create submit button container (always visible)
-    this.submitButtonContainer = document.createElement('div');
-    this.submitButtonContainer.className = 'qti-submit-container';
-
-    const submitButton = document.createElement('button');
-    submitButton.type = 'button';
-    submitButton.className = 'qti-submit-button';
-    submitButton.textContent = 'Submit';
-    submitButton.addEventListener('click', () => {
-      this.handleSubmit();
-    });
-
-    this.submitButtonContainer.appendChild(submitButton);
-    container.appendChild(this.submitButtonContainer);
-
     // Initialize Debug View if debug mode is enabled
     if (this.options.debug) {
       this.debugView = new DebugView(this);
@@ -397,26 +374,13 @@ export class QtiRenderer {
     return this.processGenericElement(element);
   }
 
-  /**
-   * Update submission count display - shows remaining attempts
-   */
-  private updateSubmissionCountDisplay(): void {
-    if (!this.submissionCountContainer) return;
-
-    this.submissionCountContainer.textContent = `Submissions: ${this.submissionCount}`;
+  public submit(): void {
+    dispatchSubmitProcessEvent(this.outcomeValues, this.variables);
+    this.submissionCount++;
   }
 
-  /**
-   * Handle submit button click - show feedback
-   */
-  private handleSubmit(): void {
-    if (!this.container) return;
-
-    // Increment submission count
-    this.submissionCount++;
-    this.updateSubmissionCountDisplay();
-
-    dispatchSubmitProcessEvent(this.outcomeValues, this.variables);
+  public getSubmissionCount(): number {
+    return this.submissionCount;
   }
 
   /**

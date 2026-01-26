@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import { QtiRenderer, QtiRendererOptions } from '@ae-studio/qti-renderer';
 
 /**
@@ -17,10 +17,29 @@ export interface QtiItemProps {
   options?: QtiRendererOptions;
 }
 
-export function QtiItem({ xml, options }: QtiItemProps) {
+export interface QtiItemRef {
+  submit: () => void;
+  getSubmissionCount: () => number;
+}
+
+export const QtiItem = forwardRef<QtiItemRef, QtiItemProps>(({ xml, options }, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<QtiRenderer | null>(null);
   const [, forceUpdate] = useState(0);
+
+  useImperativeHandle(ref, () => ({
+    submit: () => {
+      if (rendererRef.current) {
+        rendererRef.current.submit();
+      }
+    },
+    getSubmissionCount: () => {
+      if (rendererRef.current) {
+        return rendererRef.current.getSubmissionCount();
+      }
+      return 0;
+    },
+  }));
 
   useEffect(() => {
     if (!containerRef.current) {
@@ -52,4 +71,4 @@ export function QtiItem({ xml, options }: QtiItemProps) {
   }, [xml]);
 
   return <div ref={containerRef} className="qti-item-container" />;
-}
+});
