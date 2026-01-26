@@ -4,6 +4,7 @@ export { ChoiceInteraction } from './ChoiceInteraction';
 export { ContentBody } from './ContentBody';
 export { Correct } from './Correct';
 export { CorrectResponse } from './CorrectResponse';
+export { DefaultValue } from './DefaultValue';
 export { FeedbackInline } from './FeedbackInline';
 export { ItemBody } from './ItemBody';
 export { Match } from './Match';
@@ -18,6 +19,7 @@ export { ResponseProcessing } from './ResponseProcessing';
 export { SetOutcomeValue } from './SetOutcomeValue';
 export { SimpleChoice } from './SimpleChoice';
 export { TextEntryInteraction } from './TextEntryInteraction';
+export { Value } from './Value';
 export { Variable } from './Variable';
 
 // MathML support
