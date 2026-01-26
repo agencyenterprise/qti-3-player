@@ -3,12 +3,11 @@ import { QtiRenderer } from '../renderer';
 import { BaseValueType, CardinalityType, EmptyElement, ValueElement } from '../types';
 
 /**
- * XML Schema type: CorrectResponseDType
- * This class is used to define, as part of the response declaration, the values(s) for the
- * correct response.
+ * XML Schema type: DefaultValueDType
+ * Defines the default value of the associated response, outcome and template variable.
  */
-export class CorrectResponse extends BaseQtiElement {
-  static readonly elementNames = ['qti-correct-response'];
+export class DefaultValue extends BaseQtiElement {
+  static readonly elementNames = ['qti-default-value'];
   static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): ValueElement {

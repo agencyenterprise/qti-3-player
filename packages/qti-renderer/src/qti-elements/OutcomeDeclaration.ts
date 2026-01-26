@@ -1,6 +1,7 @@
 import { BaseQtiElement } from './BaseQtiElement';
 import { QtiRenderer } from '../renderer';
 import { BaseValueType, CardinalityType, EmptyElement } from '../types';
+import { DefaultValue } from './DefaultValue';
 
 /**
  * XML Schema type: OutcomeDeclarationDType
@@ -27,7 +28,27 @@ export class OutcomeDeclaration extends BaseQtiElement {
     const identifier = this.getIdentifier();
     const cardinality = this.getCardinality();
     const baseType = this.getBaseType();
-    // TODO: Implement the logic to set the outcome value?
+
+    const defaultValue = renderer.querySelectorLocal(this.element, 'qti-default-value');
+    if (defaultValue) {
+      const d = new DefaultValue(defaultValue);
+      const defaultValueValue = d.process(renderer);
+
+      renderer.setOutcomeValue(identifier, {
+        type: 'value',
+        value: defaultValueValue.value,
+        valueType: baseType,
+        cardinality: cardinality,
+      });
+    } else if (baseType === 'float' || baseType === 'integer') {
+      // Default value is 0 for float and integer types according to the QTI specification.
+      renderer.setOutcomeValue(identifier, {
+        type: 'value',
+        value: 0,
+        valueType: baseType,
+        cardinality: cardinality,
+      });
+    }
     return {
       type: 'empty',
     };

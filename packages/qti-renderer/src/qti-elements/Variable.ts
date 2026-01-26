@@ -32,6 +32,10 @@ export class Variable extends BaseQtiElement {
 
   process(renderer: QtiRenderer): ValueElement | EmptyElement {
     const identifier = this.getIdentifier();
-    return renderer.getVariable(identifier);
+    let value = renderer.getVariable(identifier);
+    if (value.type === 'empty') {
+      value = renderer.getOutcomeValue(identifier);
+    }
+    return value;
   }
 }

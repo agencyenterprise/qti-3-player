@@ -2,31 +2,9 @@ import { QtiRendererOptions, EmptyElement, ProcessResult, ValueElement } from '.
 import { registerAllElements } from './qti-elements/register';
 import { ConcreteQtiElementClass } from './qti-elements/types';
 import { validateXml, type ValidationResult, type ValidationOptions } from './validation';
-import { dispatchSubmitProcessEvent, dispatchSubmitRenderEvent } from './events';
+import { dispatchSubmitProcessEvent } from './events';
 import { DebugView } from './debug/DebugView';
 
-/**
- * Registry of QTI element names to their render functions
- * Each render function receives the XML element and returns an HTML element
- */
-type RenderFunction = (element: Element, renderer: QtiRenderer) => HTMLElement;
-
-/**
- * QTI Renderer - Framework-agnostic renderer for QTI 3.x assessment items
- *
- * Supports a minimal subset of QTI 3.x:
- * - assessmentItem
- * - itemBody
- * - choiceInteraction
- * - prompt
- * - simpleChoice
- *
- * Design decisions:
- * - Uses DOMParser for XML parsing (no external dependencies)
- * - Renders to vanilla DOM elements (framework-agnostic)
- * - Maintains response state internally
- * - Uses semantic HTML for accessibility
- */
 export class QtiRenderer {
   private xmlDoc: Document | null = null;
   private xmlString: string;
@@ -438,7 +416,7 @@ export class QtiRenderer {
     this.submissionCount++;
     this.updateSubmissionCountDisplay();
 
-    dispatchSubmitProcessEvent();
+    dispatchSubmitProcessEvent(this.outcomeValues, this.variables);
   }
 
   /**
