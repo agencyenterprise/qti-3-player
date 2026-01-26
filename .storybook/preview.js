@@ -1,5 +1,5 @@
-import '@qti-renderer/core/dist/qti-base.css';
-import '@qti-renderer/core/dist/qti-custom.css';
+import '@ae-studio/qti-renderer/dist/qti-base.css';
+import '@ae-studio/qti-renderer/dist/qti-custom.css';
 
 // Load MathJax
 const script = document.createElement('script');

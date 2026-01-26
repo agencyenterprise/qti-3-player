@@ -18,7 +18,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@qti-renderer/core": "file:../qti-renderer"
+    "@ae-studio/qti-renderer": "file:../qti-renderer"
   },
   "devDependencies": {
     "typescript": "^5.0.0"

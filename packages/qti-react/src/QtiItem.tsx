@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { QtiRenderer } from '@qti-renderer/core';
+import { QtiRenderer } from '@ae-studio/qti-renderer';
 
 /**
  * React wrapper component for QTI renderer

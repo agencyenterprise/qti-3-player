@@ -4,12 +4,12 @@ This monorepo contains the QTI 3.x renderer and framework-specific wrappers.
 
 ## Packages
 
-### `@qti-renderer/core`
+### `@ae-studio/qti-renderer`
 Framework-agnostic QTI 3.x renderer library. This is the core rendering engine that all wrappers use.
 
 **Usage:**
 ```typescript
-import { QtiRenderer } from '@qti-renderer/core';
+import { QtiRenderer } from '@ae-studio/qti-renderer';
 
 const renderer = new QtiRenderer(xml, options);
 await renderer.render(containerElement);
@@ -20,7 +20,7 @@ React wrapper component for QTI renderer.
 
 **Installation:**
 ```bash
-npm install @qti-renderer/react @qti-renderer/core
+npm install @qti-renderer/react @ae-studio/qti-renderer
 ```
 
 **Usage:**
@@ -37,7 +37,7 @@ Vue wrapper component for QTI renderer.
 
 **Installation:**
 ```bash
-npm install @qti-renderer/vue @qti-renderer/core
+npm install @qti-renderer/vue @ae-studio/qti-renderer
 ```
 
 **Usage in Vue:**
@@ -65,7 +65,7 @@ Vanilla JS wrapper (React-based for Storybook compatibility).
 
 **Installation:**
 ```bash
-npm install @qti-renderer/vanilla @qti-renderer/core
+npm install @qti-renderer/vanilla @ae-studio/qti-renderer
 ```
 
 **Usage:**
