@@ -1,0 +1,70 @@
+# Source files
+src/
+scripts/
+assets/
+
+# Test files
+*.test.ts
+*.test.tsx
+*.test.js
+*.test.jsx
+*.spec.ts
+*.spec.tsx
+*.spec.js
+*.spec.jsx
+__tests__/
+test/
+tests/
+coverage/
+
+# Development files
+dev/
+.vite/
+*.local
+
+# Build artifacts (keep dist/ as it's in files field)
+*.tsbuildinfo
+
+# Configuration files
+tsconfig.json
+vitest.config.ts
+vite.config.ts
+*.config.js
+*.config.ts
+
+# Development dependencies
+node_modules/
+.npm/
+.yarn/
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.log
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+
+# Documentation (keep README.md as it's in files field)
+docs/
+*.md
+!README.md
+
+# Misc
+.env
+.env.local
+.env.*.local
+.npmrc
+.yarnrc

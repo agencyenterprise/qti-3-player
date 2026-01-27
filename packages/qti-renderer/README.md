@@ -36,8 +36,8 @@ Here's a complete minimal example based on a real-world implementation:
 ```typescript
 import { QtiRenderer } from '@ae-studio/qti-renderer';
 // Import required CSS styles - these are essential for proper styling
-import '@ae-studio/qti-renderer/assets/qti-base.css';
-import '@ae-studio/qti-renderer/assets/qti-custom.css';
+import '@ae-studio/qti-renderer/dist/qti-base.css';
+import '@ae-studio/qti-renderer/dist/qti-custom.css';
 
 const qtiXml = `<?xml version="1.0" encoding="UTF-8"?>
 <qti-assessment-item
@@ -370,6 +370,39 @@ This is the core renderer library. Framework-specific wrappers are available:
 - **React**: `@qti-renderer/react` (coming soon)
 - **Vue**: `@qti-renderer/vue` (coming soon)
 - **Vanilla JS**: `@qti-renderer/vanilla` (coming soon)
+
+## Publishing
+
+To publish a new version of this package to npm:
+
+1. **Update the version** in `package.json`:
+   ```bash
+   npm version patch  # for 0.1.1 -> 0.1.2
+   # or
+   npm version minor  # for 0.1.1 -> 0.2.0
+   # or
+   npm version major  # for 0.1.1 -> 1.0.0
+   ```
+   Or manually edit the `version` field in `package.json`.
+
+2. **Build the package**:
+   ```bash
+   npm run build
+   ```
+
+3. **Ensure you're logged into npm**:
+   ```bash
+   npm login
+   ```
+
+4. **Publish to npm**:
+   ```bash
+   npm publish
+   ```
+
+The package is configured with `"access": "public"` in `publishConfig`, so the scoped package `@ae-studio/qti-renderer` will be published publicly to npm.
+
+**Note:** Make sure you've run `npm run build` before publishing to ensure the `dist/` folder contains the latest compiled code and assets.
 
 ## Contributing
 
