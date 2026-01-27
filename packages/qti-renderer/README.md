@@ -36,8 +36,8 @@ Here's a complete minimal example based on a real-world implementation:
 ```typescript
 import { QtiRenderer } from '@ae-studio/qti-renderer';
 // Import required CSS styles - these are essential for proper styling
-import '@ae-studio/qti-renderer/assets/qti-base.css';
-import '@ae-studio/qti-renderer/assets/qti-custom.css';
+import '@ae-studio/qti-renderer/dist/qti-base.css';
+import '@ae-studio/qti-renderer/dist/qti-custom.css';
 
 const qtiXml = `<?xml version="1.0" encoding="UTF-8"?>
 <qti-assessment-item
