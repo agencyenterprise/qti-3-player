@@ -2,38 +2,15 @@ import { QtiRendererOptions, EmptyElement, ProcessResult, ValueElement } from '.
 import { registerAllElements } from './qti-elements/register';
 import { ConcreteQtiElementClass } from './qti-elements/types';
 import { validateXml, type ValidationResult, type ValidationOptions } from './validation';
-import { dispatchSubmitProcessEvent, dispatchSubmitRenderEvent } from './events';
+import { dispatchSubmitProcessEvent } from './events';
+import { DebugView } from './debug/DebugView';
 
-/**
- * Registry of QTI element names to their render functions
- * Each render function receives the XML element and returns an HTML element
- */
-type RenderFunction = (element: Element, renderer: QtiRenderer) => HTMLElement;
-
-/**
- * QTI Renderer - Framework-agnostic renderer for QTI 3.x assessment items
- *
- * Supports a minimal subset of QTI 3.x:
- * - assessmentItem
- * - itemBody
- * - choiceInteraction
- * - prompt
- * - simpleChoice
- *
- * Design decisions:
- * - Uses DOMParser for XML parsing (no external dependencies)
- * - Renders to vanilla DOM elements (framework-agnostic)
- * - Maintains response state internally
- * - Uses semantic HTML for accessibility
- */
 export class QtiRenderer {
   private xmlDoc: Document | null = null;
   private xmlString: string;
   private container: HTMLElement | null = null;
   private options: QtiRendererOptions;
 
-  private submitButtonContainer: HTMLElement | null = null;
-  private submissionCountContainer: HTMLElement | null = null;
   private submissionCount: number = 0;
 
   private outcomeValues: Map<string, ValueElement> = new Map();
@@ -43,6 +20,9 @@ export class QtiRenderer {
   private validationResult: ValidationResult | null = null;
   private validationPromise: Promise<ValidationResult> | null = null;
   private isValidated: boolean = false;
+  private mathJaxPromises: Promise<void>[] = [];
+
+  private debugView: DebugView | null = null;
 
   /**
    * Internal registry mapping QTI element names to class constructors
@@ -53,9 +33,10 @@ export class QtiRenderer {
   constructor(qtiXml: string, options: QtiRendererOptions = {}) {
     this.xmlString = qtiXml;
     this.options = {
-      showFeedback: true,
-      validateXml: true, // Validation enabled by default
-      ...options,
+      debug: options.debug ?? false,
+      showFeedback: options.showFeedback ?? true,
+      validateXml: options.validateXml ?? true,
+      validationOptions: options.validationOptions ?? {},
     };
     registerAllElements(this.rendererClassRegistry);
     this.parseXml(qtiXml);
@@ -212,7 +193,39 @@ export class QtiRenderer {
     }
 
     // Proceed with rendering
+    this.mathJaxPromises = [];
     this.renderContent(container);
+    await Promise.all(this.mathJaxPromises);
+  }
+
+  setMathContainer(container: Element): void {
+    this.mathJaxPromises.push(this.triggerMathJax(container));
+  }
+
+  private async triggerMathJax(container: Element): Promise<void> {
+    if (typeof (window as any).MathJax !== 'undefined') {
+      try {
+        // Support MathJax v3/v4
+        if ((window as any).MathJax.typesetPromise) {
+          await (window as any).MathJax.typesetPromise([container]);
+        } else if ((window as any).MathJax.Hub && (window as any).MathJax.Hub.Queue) {
+          // Support MathJax v2
+          return new Promise((resolve) => {
+            (window as any).MathJax.Hub.Queue(
+              ['Typeset', (window as any).MathJax.Hub, container],
+              resolve
+            );
+          });
+        } else if ((window as any).MathJax.typeset) {
+          // Support older versions or different configs
+          (window as any).MathJax.typeset([container]);
+        }
+      } catch (e) {
+        console.warn('MathJax typesetting failed:', e);
+      }
+    } else {
+      console.warn('MathJax not found');
+    }
   }
 
   /**
@@ -253,30 +266,16 @@ export class QtiRenderer {
       container.appendChild(rendered.element);
     }
 
-    // Create submission count display
-    this.submissionCountContainer = document.createElement('div');
-    this.submissionCountContainer.className = 'qti-submission-count';
-    this.updateSubmissionCountDisplay();
-    container.appendChild(this.submissionCountContainer);
-
-    // Create submit button container (always visible)
-    this.submitButtonContainer = document.createElement('div');
-    this.submitButtonContainer.className = 'qti-submit-container';
-
-    const submitButton = document.createElement('button');
-    submitButton.type = 'button';
-    submitButton.className = 'qti-submit-button';
-    submitButton.textContent = 'Submit';
-    submitButton.addEventListener('click', () => {
-      this.handleSubmit();
-    });
-
-    this.submitButtonContainer.appendChild(submitButton);
-    container.appendChild(this.submitButtonContainer);
+    // Initialize Debug View if debug mode is enabled
+    if (this.options.debug) {
+      this.debugView = new DebugView(this);
+      this.debugView.mount(container);
+    }
   }
 
   setOutcomeValue(identifier: string, value: ValueElement): void {
     this.outcomeValues.set(identifier, value);
+    this.debugView?.update();
   }
 
   getOutcomeValue(identifier: string): ValueElement | EmptyElement {
@@ -287,8 +286,13 @@ export class QtiRenderer {
     );
   }
 
+  getOutcomeValues(): Map<string, ValueElement> {
+    return this.outcomeValues;
+  }
+
   setVariable(identifier: string, value: ValueElement): void {
     this.variables.set(identifier, value);
+    this.debugView?.update();
   }
 
   getVariable(identifier: string): ValueElement | EmptyElement {
@@ -299,8 +303,13 @@ export class QtiRenderer {
     );
   }
 
+  getVariables(): Map<string, ValueElement> {
+    return this.variables;
+  }
+
   setCorrectResponse(identifier: string, value: ValueElement): void {
     this.correctResponses.set(identifier, value);
+    this.debugView?.update();
   }
 
   getCorrectResponse(identifier: string): ValueElement | EmptyElement {
@@ -311,14 +320,21 @@ export class QtiRenderer {
     );
   }
 
-  processElementChildren(element: Element, container: HTMLElement | null): void {
+  getCorrectResponses(): Map<string, ValueElement> {
+    return this.correctResponses;
+  }
+
+  processElementChildren(element: Element, container: HTMLElement | null): ProcessResult[] {
     const children = Array.from(element.childNodes);
+    const results: ProcessResult[] = [];
     for (const child of children) {
       const result = this.processElement(child as Element);
       if (result.type === 'visual' && container) {
         container.appendChild(result.element);
       }
+      results.push(result);
     }
+    return results;
   }
 
   /**
@@ -358,26 +374,13 @@ export class QtiRenderer {
     return this.processGenericElement(element);
   }
 
-  /**
-   * Update submission count display - shows remaining attempts
-   */
-  private updateSubmissionCountDisplay(): void {
-    if (!this.submissionCountContainer) return;
-
-    this.submissionCountContainer.textContent = `Submissions: ${this.submissionCount}`;
+  public submit(): void {
+    dispatchSubmitProcessEvent(this.outcomeValues, this.variables);
+    this.submissionCount++;
   }
 
-  /**
-   * Handle submit button click - show feedback
-   */
-  private handleSubmit(): void {
-    if (!this.container) return;
-
-    // Increment submission count
-    this.submissionCount++;
-    this.updateSubmissionCountDisplay();
-
-    dispatchSubmitProcessEvent();
+  public getSubmissionCount(): number {
+    return this.submissionCount;
   }
 
   /**

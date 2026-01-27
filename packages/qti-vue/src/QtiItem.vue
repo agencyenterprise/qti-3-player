@@ -19,11 +19,7 @@ const mountRenderer = () => {
 
   try {
     // Create new renderer instance with feedback and validation enabled
-    const renderer = new QtiRenderer(props.xml, {
-      debug: false,
-      showFeedback: true,
-      validateXml: true,
-    });
+    const renderer = new QtiRenderer(props.xml, props.options ?? {});
     rendererRef.value = renderer;
 
     // Render to container (async)
@@ -44,6 +40,24 @@ const mountRenderer = () => {
     }
   }
 };
+
+const submit = () => {
+  if (rendererRef.value) {
+    rendererRef.value.submit();
+  }
+};
+
+const getSubmissionCount = () => {
+  if (rendererRef.value) {
+    return rendererRef.value.getSubmissionCount();
+  }
+  return 0;
+};
+
+defineExpose({
+  submit,
+  getSubmissionCount,
+});
 
 onMounted(() => {
   mountRenderer();

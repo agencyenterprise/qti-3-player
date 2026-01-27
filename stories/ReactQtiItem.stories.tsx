@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { QtiItem } from '@qti-renderer/react';
+import { ReactQtiItemWrapper } from './components/react/ReactQtiItemWrapper';
 import {
   docsExample,
   mathQuestion,
@@ -8,11 +8,12 @@ import {
   inlineFeedbackQuestion,
   unlimitedChoicesQuestion,
   choiceLayout,
+  textEntryInteraction,
 } from './shared/examples';
 
 const meta = {
   title: 'React/QtiItem',
-  component: QtiItem,
+  component: ReactQtiItemWrapper,
   parameters: {
     layout: 'centered',
   },
@@ -23,7 +24,7 @@ const meta = {
       description: 'QTI 3.x XML string',
     },
   },
-} satisfies Meta<typeof QtiItem>;
+} satisfies Meta<typeof ReactQtiItemWrapper>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -67,5 +68,11 @@ export const UnlimitedChoicesQuestion: Story = {
 export const ChoiceLayout: Story = {
   args: {
     xml: choiceLayout,
+  },
+};
+
+export const TextEntryInteraction: Story = {
+  args: {
+    xml: textEntryInteraction,
   },
 };

@@ -28,11 +28,7 @@ export function QtiItem({ xml }: QtiItemProps) {
 
     try {
       // Create new renderer instance with feedback and validation enabled
-      const renderer = new QtiRenderer(xml, {
-        debug: false,
-        showFeedback: true,
-        validateXml: true,
-      });
+      const renderer = new QtiRenderer(xml);
       rendererRef.current = renderer;
 
       // Render to container (async)

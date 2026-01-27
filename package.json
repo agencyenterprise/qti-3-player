@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm run build --workspace=@ae-studio/qti-renderer && npm run build --workspaces",
     "dev": "npm run build && storybook dev -p 6006",
-    "dev:sandbox": "npm run build && (cd sandbox && npm run dev)",
+    "dev:sandbox": "npm run build && concurrently -k -n \"CORE,SANDBOX\" -c \"magenta,cyan\" \"npm run dev --workspace=@ae-studio/qti-renderer\"  \"cd sandbox && npm run dev\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -35,6 +35,7 @@
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.0.0",
     "@vitejs/plugin-vue": "^5.0.0",
+    "concurrently": "^9.2.1",
     "esbuild": "^0.25.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

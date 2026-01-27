@@ -4,12 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QTI 3 Player Sandbox</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.0.0/tex-mml-chtml.min.js"
+      integrity="sha512-yxTB34XQUKlyuz73upeDrZ91/tbZW/YAURVWL3s+09bEWdmORQzUZwSKyBIRxSeHuSwh1aOKEffn2/D65kwyYg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <div id="app">
       <header class="app-header">
         <h1>QTI 3 Player Sandbox</h1>
-        <a href="https://github.com/agencyenterprise/qti-3-player/tree/main/docs/qti_support" target="_blank">QTI Support Docs</a>
+        <a
+          href="https://github.com/agencyenterprise/qti-3-player/tree/main/docs/qti_support"
+          target="_blank"
+          >QTI Support Docs</a
+        >
       </header>
       <div class="container">
         <div class="editor-pane">
@@ -18,12 +28,26 @@
           <div class="controls">
             <button id="validate-btn">Validate XML</button>
             <button id="render-btn">Render QTI</button>
+            <label class="toggle-control">
+              <input type="checkbox" id="custom-css-toggle">
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Custom CSS</span>
+            </label>
           </div>
           <div id="validation-result"></div>
         </div>
+        <div class="resizer" id="dragMe"></div>
         <div class="preview-pane">
-          <h2>Preview</h2>
-          <div id="qti-container"></div>
+          <div class="preview-header">
+            <h2>Preview</h2>
+          </div>
+          <div class="renderer-wrapper">
+            <div id="qti-container"></div>
+          </div>
+          <div class="controls preview-controls">
+            <span id="submission-count">Submissions: 0</span>
+            <button id="submit-btn" class="primary-btn">Submit Answer</button>
+          </div>
         </div>
       </div>
     </div>
