@@ -96,8 +96,10 @@ const q1Xml = `<?xml version="1.0" encoding="UTF-8"?>
 		</qti-default-value>
 	</qti-outcome-declaration>
 	<qti-item-body>
-		<p>Which planet is known as the "Red Planet"?</p>
-		<qti-text-entry-interaction response-identifier="RESPONSE" class="qti-input-width-45"/>
+    <div>
+      <p>Which planet is known as the "Red Planet"?</p>
+      <qti-text-entry-interaction response-identifier="RESPONSE" class="qti-input-width-45"/>
+    </div>
 	</qti-item-body>
 </qti-assessment-item>`;
 
