@@ -18,10 +18,8 @@ export class Match extends BaseQtiElement {
     const secondValue = renderer.processElement(secondChild);
 
     if (firstValue.type !== 'value' || secondValue.type !== 'value') {
-      console.info(
-        'Match: firstValue or secondValue is not a value',
-        firstValue.type,
-        secondValue.type
+      console.warn(
+        `Match: first expression and/or second expression is not a value: (${firstValue.type}) and (${secondValue.type})`
       );
       return {
         type: 'value',
@@ -31,9 +29,7 @@ export class Match extends BaseQtiElement {
       };
     } else if (firstValue.valueType !== secondValue.valueType) {
       console.debug(
-        'Match: firstValue and secondValue have different types:',
-        firstValue.type,
-        secondValue.type
+        `Match: first expression and second expression have different types: (${firstValue.valueType}) and (${secondValue.valueType})`
       );
       return {
         type: 'value',
@@ -43,9 +39,7 @@ export class Match extends BaseQtiElement {
       };
     } else if (firstValue.cardinality !== secondValue.cardinality) {
       console.debug(
-        'Match: firstValue and secondValue have different cardinalities:',
-        firstValue.cardinality,
-        secondValue.cardinality
+        `Match: first expression and second expression have different cardinalities: (${firstValue.cardinality}) and (${secondValue.cardinality})`
       );
       return {
         type: 'value',
@@ -101,7 +95,7 @@ export class Match extends BaseQtiElement {
         cardinality: 'single',
       };
     }
-    console.warn('Match: firstValue and secondValue could not be compared.');
+    console.warn('Match: first expression and second expression could not be compared.');
     return {
       type: 'value',
       value: false,
