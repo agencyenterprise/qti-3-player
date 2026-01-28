@@ -19,7 +19,8 @@
     "./dist/qti-custom.css": "./dist/qti-custom.css"
   },
   "scripts": {
-    "build": "tsc && cp -r assets/* dist/",
+    "generate-schemas": "tsx scripts/generate-schemas.ts",
+    "build": "npm run generate-schemas && tsc && cp assets/*.css dist/",
     "dev": "tsc --watch",
     "test": "vitest",
     "test:run": "vitest run",
