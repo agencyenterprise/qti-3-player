@@ -137,6 +137,96 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ---
 
+<a name="el-qti-assessment-item-ref"></a>
+
+### `qti-assessment-item-ref`
+
+- [x] Supported
+
+  **Attributes:**
+
+  - [x] `identifier`
+
+    - Type: `xs:NCName`
+    - Use: `required`
+
+  - [ ] `required`
+
+    - Type: `boolean`
+    - Use: `optional`
+    - Default: `false`
+
+  - [ ] `fixed`
+
+    - Type: `boolean`
+    - Use: `optional`
+    - Default: `false`
+
+  - [ ] `class`
+
+    - Type: `string`
+    - Use: `optional`
+
+  - [ ] `href`
+
+    - Type: `anyURI`
+    - Use: `required`
+
+  - [ ] `category`
+
+    - Type: `string`
+    - Use: `optional`
+
+---
+
+<a name="el-qti-assessment-section"></a>
+
+### `qti-assessment-section`
+
+- [x] Supported
+
+  **Attributes:**
+
+  - [x] `identifier`
+
+    - Type: `xs:NCName`
+    - Use: `required`
+
+  - [ ] `required`
+
+    - Type: `boolean`
+    - Use: `optional`
+    - Default: `false`
+
+  - [ ] `fixed`
+
+    - Type: `boolean`
+    - Use: `optional`
+    - Default: `false`
+
+  - [ ] `title`
+
+    - Type: `normalizedString`
+    - Use: `required`
+
+  - [ ] `class`
+
+    - Type: `string`
+    - Use: `optional`
+
+  - [ ] `visible`
+
+    - Type: `boolean`
+    - Use: `required`
+
+  - [ ] `keep-together`
+
+    - Type: `boolean`
+    - Use: `optional`
+    - Default: `true`
+
+---
+
 <a name="el-qti-assessment-stimulus-ref"></a>
 
 ### `qti-assessment-stimulus-ref`
@@ -156,6 +246,41 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
     - Use: `required`
 
   - [ ] `title`
+    - Type: `normalizedString`
+    - Use: `optional`
+
+---
+
+<a name="el-qti-assessment-test"></a>
+
+### `qti-assessment-test`
+
+- [x] Supported
+
+  **Attributes:**
+
+  - [x] `identifier`
+
+    - Type: `xs:NCName`
+    - Use: `required`
+
+  - [ ] `title`
+
+    - Type: `normalizedString`
+    - Use: `required`
+
+  - [ ] `class`
+
+    - Type: `string`
+    - Use: `optional`
+
+  - [ ] `tool-name`
+
+    - Type: `normalizedString`
+    - Use: `optional`
+
+  - [ ] `tool-version`
+
     - Type: `normalizedString`
     - Use: `optional`
 
@@ -10316,7 +10441,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-rubric-block`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
 
@@ -12697,6 +12822,43 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
   - [ ] `template-identifier`
     - Type: `xs:NCName`
     - Use: `required`
+
+---
+
+<a name="el-qti-test-part"></a>
+
+### `qti-test-part`
+
+- [x] Supported
+
+  **Attributes:**
+
+  - [x] `identifier`
+
+    - Type: `xs:NCName`
+    - Use: `required`
+
+  - [ ] `title`
+
+    - Type: `normalizedString`
+    - Use: `optional`
+
+  - [ ] `class`
+
+    - Type: `string`
+    - Use: `optional`
+
+  - [ ] `navigation-mode`
+
+    - Type: `string`
+    - Use: `required`
+    - Allowed values: `linear`, `nonlinear`
+
+  - [ ] `submission-mode`
+
+    - Type: `string`
+    - Use: `required`
+    - Allowed values: `individual`, `simultaneous`
 
 ---
 
