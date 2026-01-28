@@ -1,5 +1,10 @@
-import { QtiRenderer, QtiRendererOptions } from '@ae-studio/qti-renderer';
+import { QtiRenderer, EventsEnum } from '@ae-studio/qti-renderer';
+import { QtiRendererParams } from '@ae-studio/qti-renderer/dist/types';
 
+export interface VanillaQtiItemCallbacks {
+  onRender?: () => void;
+  onValidate?: () => void;
+}
 /**
  * Vanilla JS wrapper for QTI renderer
  *
@@ -21,24 +26,39 @@ import { QtiRenderer, QtiRendererOptions } from '@ae-studio/qti-renderer';
 export class VanillaQtiItem {
   private container: HTMLElement;
   private renderer: QtiRenderer | null = null;
-  private options: QtiRendererOptions;
+  private params: QtiRendererParams;
+  private callbacks?: VanillaQtiItemCallbacks;
 
-  constructor(container: HTMLElement, xml: string, options: QtiRendererOptions = {}) {
+  constructor(
+    container: HTMLElement,
+    params: QtiRendererParams,
+    callbacks?: VanillaQtiItemCallbacks
+  ) {
     this.container = container;
-    this.options = options;
-    this.mount(xml);
+    this.params = params;
+    this.callbacks = callbacks;
+    this.mount();
   }
 
   /**
    * Mount or update the QTI renderer with new XML
    */
-  mount(xml: string): void {
+  mount(): void {
     // Clean up existing renderer
     this.destroy();
 
     try {
-      this.renderer = new QtiRenderer(xml, this.options);
-
+      this.renderer = new QtiRenderer(this.params);
+      if (this.callbacks?.onRender) {
+        document.addEventListener(EventsEnum.AFTER_RENDER_EVENT, () => {
+          this.callbacks?.onRender?.();
+        });
+      }
+      if (this.callbacks?.onValidate) {
+        document.addEventListener(EventsEnum.AFTER_VALIDATE_EVENT, () => {
+          this.callbacks?.onValidate?.();
+        });
+      }
       // Render to container (async)
       this.renderer.render(this.container).catch((error) => {
         console.error('Failed to render QTI item:', error);
@@ -57,8 +77,9 @@ export class VanillaQtiItem {
   /**
    * Update the XML content (alias for mount)
    */
-  updateXml(xml: string): void {
-    this.mount(xml);
+  updateXml(params: QtiRendererParams): void {
+    this.params = params;
+    this.mount();
   }
 
   /**
@@ -90,6 +111,16 @@ export class VanillaQtiItem {
       this.renderer = null;
     }
   }
+
+  /**
+   * Get the renderer
+   */
+  getRenderer(): QtiRenderer {
+    if (this.renderer) {
+      return this.renderer;
+    }
+    throw new Error('Renderer not found');
+  }
 }
 
 /**
@@ -101,10 +132,6 @@ export class VanillaQtiItem {
  * const qtiItem = mountQtiItem(container, xmlString, {});
  * ```
  */
-export function mountQtiItem(
-  container: HTMLElement,
-  xml: string,
-  options?: QtiRendererOptions
-): VanillaQtiItem {
-  return new VanillaQtiItem(container, xml, options);
+export function mountQtiItem(container: HTMLElement, params: QtiRendererParams): VanillaQtiItem {
+  return new VanillaQtiItem(container, params);
 }

@@ -14,7 +14,6 @@ import { ValueElement } from '../types';
  */
 export class ResponseElse extends BaseQtiElement {
   static readonly elementNames = ['qti-response-else'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): ValueElement {
     renderer.processElementChildren(this.element, null);

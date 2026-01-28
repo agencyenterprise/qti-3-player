@@ -153,3 +153,30 @@ li.qti-simple-choice:has(input:checked) label.qti-simple-choice {
   margin: 0;
   padding: 0;
 }
+
+/* Text Entry Interaction */
+.qti-text-entry-interaction {
+  padding: 8px 12px;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  min-width: 200px;
+}
+
+.qti-text-entry-interaction:hover {
+  border-color: #cbd5e1;
+}
+
+.qti-text-entry-interaction:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.qti-text-entry-interaction::placeholder {
+  color: #9ca3af;
+}

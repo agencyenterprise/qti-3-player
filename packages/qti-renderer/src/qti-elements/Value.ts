@@ -10,7 +10,6 @@ import { ValueElement } from '../types';
  */
 export class Value extends BaseQtiElement {
   static readonly elementNames = ['qti-value'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): ValueElement {
     const baseType = this.getBaseType();

@@ -15,7 +15,6 @@ import { VisualElement } from '../types';
  */
 export class ContentBody extends BaseQtiElement {
   static readonly elementNames = ['qti-content-body'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): VisualElement {
     const container = document.createElement('div');

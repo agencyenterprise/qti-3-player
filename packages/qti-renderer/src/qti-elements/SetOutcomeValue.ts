@@ -14,7 +14,6 @@ import { EmptyElement } from '../types';
  */
 export class SetOutcomeValue extends BaseQtiElement {
   static readonly elementNames = ['qti-set-outcome-value'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): EmptyElement {
     const identifier = this.getIdentifier();

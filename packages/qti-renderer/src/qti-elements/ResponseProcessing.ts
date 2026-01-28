@@ -16,12 +16,15 @@ import { dispatchSubmitRenderEvent, EventsEnum, onQti3PlayerEvent } from '../eve
  */
 export class ResponseProcessing extends BaseQtiElement {
   static readonly elementNames = ['qti-response-processing'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): EmptyElement {
+    const contextIdentifier = renderer.getFullTraversingContext();
+
     onQti3PlayerEvent(EventsEnum.SUBMIT_PROCESS_EVENT, () => {
-      renderer.processElementChildren(this.element, null);
-      dispatchSubmitRenderEvent();
+      renderer.withEventContext(contextIdentifier, () => {
+        renderer.processElementChildren(this.element, null);
+        dispatchSubmitRenderEvent();
+      });
     });
     return {
       type: 'empty',

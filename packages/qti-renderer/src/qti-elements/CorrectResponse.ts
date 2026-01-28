@@ -9,7 +9,6 @@ import { BaseValueType, CardinalityType, EmptyElement, ValueElement } from '../t
  */
 export class CorrectResponse extends BaseQtiElement {
   static readonly elementNames = ['qti-correct-response'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): ValueElement {
     const processedValues = renderer

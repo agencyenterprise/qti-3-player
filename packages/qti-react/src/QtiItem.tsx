@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react';
-import { QtiRenderer, QtiRendererOptions } from '@ae-studio/qti-renderer';
+import { EventsEnum, QtiRenderer, QtiRendererOptions } from '@ae-studio/qti-renderer';
 
 /**
  * React wrapper component for QTI renderer
@@ -15,6 +15,8 @@ import { QtiRenderer, QtiRendererOptions } from '@ae-studio/qti-renderer';
 export interface QtiItemProps {
   xml: string;
   options?: QtiRendererOptions;
+  onRender?: () => void;
+  onValidate?: () => void;
 }
 
 export interface QtiItemRef {
@@ -22,53 +24,68 @@ export interface QtiItemRef {
   getSubmissionCount: () => number;
 }
 
-export const QtiItem = forwardRef<QtiItemRef, QtiItemProps>(({ xml, options }, ref) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const rendererRef = useRef<QtiRenderer | null>(null);
-  const [, forceUpdate] = useState(0);
+export const QtiItem = forwardRef<QtiItemRef, QtiItemProps>(
+  ({ xml, options, onRender, onValidate }, ref) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const rendererRef = useRef<QtiRenderer | null>(null);
+    const [, forceUpdate] = useState(0);
 
-  useImperativeHandle(ref, () => ({
-    submit: () => {
-      if (rendererRef.current) {
-        rendererRef.current.submit();
+    useImperativeHandle(ref, () => ({
+      submit: () => {
+        if (rendererRef.current) {
+          rendererRef.current.submit();
+        }
+      },
+      getSubmissionCount: () => {
+        if (rendererRef.current) {
+          return rendererRef.current.getSubmissionCount();
+        }
+        return 0;
+      },
+      getRenderer: () => {
+        if (rendererRef.current) {
+          return rendererRef.current;
+        }
+        throw new Error('Renderer not found');
+      },
+    }));
+
+    useEffect(() => {
+      if (!containerRef.current) {
+        return;
       }
-    },
-    getSubmissionCount: () => {
-      if (rendererRef.current) {
-        return rendererRef.current.getSubmissionCount();
-      }
-      return 0;
-    },
-  }));
 
-  useEffect(() => {
-    if (!containerRef.current) {
-      return;
-    }
+      try {
+        // Create new renderer instance with feedback and validation enabled
+        const renderer = new QtiRenderer({ xml, options });
+        rendererRef.current = renderer;
 
-    try {
-      // Create new renderer instance with feedback and validation enabled
-      const renderer = new QtiRenderer(xml, options);
-      rendererRef.current = renderer;
+        if (onRender) {
+          document.addEventListener(EventsEnum.AFTER_RENDER_EVENT, onRender);
+        }
+        if (onValidate) {
+          document.addEventListener(EventsEnum.AFTER_VALIDATE_EVENT, onValidate);
+        }
 
-      // Render to container (async)
-      renderer.render(containerRef.current).catch((error) => {
-        console.error('Failed to render QTI item:', error);
-        if (containerRef.current) {
-          containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
+        // Render to container (async)
+        renderer.render(containerRef.current).catch((error) => {
+          console.error('Failed to render QTI item:', error);
+          if (containerRef.current) {
+            containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
             Error rendering QTI item: ${error instanceof Error ? error.message : 'Unknown error'}
           </div>`;
-        }
-      });
-    } catch (error) {
-      console.error('Failed to create QTI renderer:', error);
-      if (containerRef.current) {
-        containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
+          }
+        });
+      } catch (error) {
+        console.error('Failed to create QTI renderer:', error);
+        if (containerRef.current) {
+          containerRef.current.innerHTML = `<div style="color: red; padding: 1rem;">
           Error creating QTI renderer: ${error instanceof Error ? error.message : 'Unknown error'}
         </div>`;
+        }
       }
-    }
-  }, [xml]);
+    }, [xml]);
 
-  return <div ref={containerRef} className="qti-item-container" />;
-});
+    return <div ref={containerRef} className="qti-item-container" />;
+  }
+);

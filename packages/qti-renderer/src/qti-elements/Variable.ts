@@ -28,7 +28,6 @@ import { EmptyElement, ValueElement } from '../types';
  */
 export class Variable extends BaseQtiElement {
   static readonly elementNames = ['qti-variable'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): ValueElement | EmptyElement {
     const identifier = this.getIdentifier();

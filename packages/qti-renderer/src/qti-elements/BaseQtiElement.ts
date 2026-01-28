@@ -41,6 +41,25 @@ export abstract class BaseQtiElement {
 
   constructor(element: Element) {
     this.element = element;
+
+    // Wrap the process method to ensure preprocess is called before the subclass implementation
+    const self = this as any;
+    const originalProcess = self.process.bind(this);
+    self.process = (renderer: QtiRenderer): ProcessResult => {
+      const ClassConstructor = this.constructor as typeof BaseQtiElement;
+      const isContextElement = ClassConstructor.contextElement || ClassConstructor.canBeRoot;
+      if (isContextElement) {
+        renderer.pushTraversingContext(this.getIdentifier());
+      }
+      const el = originalProcess(renderer);
+      if (el.type === 'visual') {
+        el.element.setAttribute('data-context', renderer.getFullTraversingContext() || '');
+      }
+      if (isContextElement) {
+        renderer.popTraversingContext();
+      }
+      return el;
+    };
   }
   /**
    * Element names this renderer handles (e.g., ["assessmentItem", "qti-assessment-item"])
@@ -53,7 +72,13 @@ export abstract class BaseQtiElement {
    * Whether this element can be a root element in the QTI document
    * Must be defined as a static readonly property in each subclass
    */
-  static readonly canBeRoot: boolean;
+  static readonly canBeRoot: boolean = false;
+
+  /**
+   * Whether this element is a context element.
+   * Must be defined as a static readonly property in each subclass
+   */
+  static readonly contextElement: boolean = false;
 
   /**
    * Render the QTI element to an HTML element

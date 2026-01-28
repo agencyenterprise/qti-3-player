@@ -8,7 +8,6 @@ import { BaseValueType, CardinalityType, EmptyElement, ValueElement } from '../t
  */
 export class DefaultValue extends BaseQtiElement {
   static readonly elementNames = ['qti-default-value'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): ValueElement {
     const processedValues = renderer

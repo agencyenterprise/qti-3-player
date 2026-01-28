@@ -10,7 +10,6 @@ import { VisualElement } from '../types';
  */
 export class Prompt extends BaseQtiElement {
   static readonly elementNames = ['qti-prompt'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): VisualElement {
     const container = document.createElement('div');

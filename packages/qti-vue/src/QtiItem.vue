@@ -4,23 +4,35 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
-import { QtiRenderer } from '@ae-studio/qti-renderer';
-import type { QtiItemProps } from './types';
+import { EventsEnum, QtiRenderer } from '@ae-studio/qti-renderer';
+import type { QtiRendererParams } from '@ae-studio/qti-renderer/dist/types';
 
-const props = defineProps<QtiItemProps>();
+interface Props extends QtiRendererParams {
+  onRender?: () => void;
+  onValidate?: () => void;
+}
+
+const props = defineProps<Props>();
 
 const containerRef = ref<HTMLElement | null>(null);
 const rendererRef = ref<QtiRenderer | null>(null);
 
-const mountRenderer = () => {
+const mountRenderer = (onRender?: () => void, onValidate?: () => void) => {
   if (!containerRef.value) {
     return;
   }
 
   try {
     // Create new renderer instance with feedback and validation enabled
-    const renderer = new QtiRenderer(props.xml, props.options ?? {});
+    const renderer = new QtiRenderer(props);
     rendererRef.value = renderer;
+
+    if (onRender) {
+      document.addEventListener(EventsEnum.AFTER_RENDER_EVENT, onRender);
+    }
+    if (onValidate) {
+      document.addEventListener(EventsEnum.AFTER_VALIDATE_EVENT, onValidate);
+    }
 
     // Render to container (async)
     renderer.render(containerRef.value).catch((error) => {
@@ -60,7 +72,7 @@ defineExpose({
 });
 
 onMounted(() => {
-  mountRenderer();
+  mountRenderer(props.onRender, props.onValidate);
 });
 
 onBeforeUnmount(() => {
@@ -72,7 +84,7 @@ onBeforeUnmount(() => {
 watch(() => props.xml, () => {
   if (containerRef.value) {
     containerRef.value.innerHTML = '';
-    mountRenderer();
+    mountRenderer(props.onRender, props.onValidate);
   }
 });
 </script>

@@ -16,6 +16,7 @@ import { VisualElement } from '../types';
 export class AssessmentItem extends BaseQtiElement {
   static readonly elementNames = ['qti-assessment-item'];
   static readonly canBeRoot = true;
+  static readonly contextElement = true;
 
   process(renderer: QtiRenderer): VisualElement {
     const container = document.createElement('div');

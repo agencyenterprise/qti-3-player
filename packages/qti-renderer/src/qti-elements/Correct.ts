@@ -11,7 +11,6 @@ import { EmptyElement, ValueElement } from '../types';
  */
 export class Correct extends BaseQtiElement {
   static readonly elementNames = ['qti-correct'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): ValueElement | EmptyElement {
     const responseIdentifier = this.getIdentifier();

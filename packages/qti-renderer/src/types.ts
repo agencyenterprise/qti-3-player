@@ -37,6 +37,14 @@ export interface QtiRendererOptions {
   validationOptions?: ValidationOptions;
 }
 
+export interface QtiRendererParams {
+  xml: string;
+  options?: QtiRendererOptions;
+  context?: {
+    referencedXmls?: Map<string, string>;
+  };
+}
+
 export type BaseValueType =
   | 'boolean'
   | 'directedPair'
@@ -51,6 +59,8 @@ export type BaseValueType =
   | 'uri';
 
 export type CardinalityType = 'multiple' | 'ordered' | 'record' | 'single';
+
+export type ViewType = 'author' | 'candidate' | 'proctor' | 'scorer' | 'testConstructor' | 'tutor';
 
 export type EmptyElement = {
   type: 'empty';

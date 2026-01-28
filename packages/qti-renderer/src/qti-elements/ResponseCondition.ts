@@ -14,14 +14,17 @@ import { EmptyElement } from '../types';
  */
 export class ResponseCondition extends BaseQtiElement {
   static readonly elementNames = ['qti-response-condition'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): EmptyElement {
     const ifElement = renderer.querySelectorLocal(this.element, 'qti-response-if');
 
     if (ifElement) {
       const ifResult = renderer.processElement(ifElement);
-      if (ifResult.type !== 'value' || ifResult.valueType !== 'boolean' || ifResult.cardinality !== 'single') {
+      if (
+        ifResult.type !== 'value' ||
+        ifResult.valueType !== 'boolean' ||
+        ifResult.cardinality !== 'single'
+      ) {
         console.warn('ResponseCondition: ifResult is not a boolean value', ifResult);
       } else if (ifResult.value === true) {
         return {
@@ -50,7 +53,11 @@ export class ResponseCondition extends BaseQtiElement {
     const elseElement = renderer.querySelectorLocal(this.element, 'qti-response-else');
     if (elseElement) {
       const elseResult = renderer.processElement(elseElement);
-      if (elseResult.type !== 'value' || elseResult.valueType !== 'boolean' || elseResult.cardinality !== 'single') {
+      if (
+        elseResult.type !== 'value' ||
+        elseResult.valueType !== 'boolean' ||
+        elseResult.cardinality !== 'single'
+      ) {
         console.warn('ResponseCondition: elseResult is not a boolean value', elseResult);
       }
     }

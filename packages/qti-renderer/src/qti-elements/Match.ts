@@ -9,7 +9,6 @@ import { ValueElement } from '../types';
  */
 export class Match extends BaseQtiElement {
   static readonly elementNames = ['qti-match'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): ValueElement {
     const firstChild = this.element.children[0] as Element;
@@ -19,7 +18,11 @@ export class Match extends BaseQtiElement {
     const secondValue = renderer.processElement(secondChild);
 
     if (firstValue.type !== 'value' || secondValue.type !== 'value') {
-      console.info('Match: firstValue or secondValue is not a value', firstValue.type, secondValue.type);
+      console.info(
+        'Match: firstValue or secondValue is not a value',
+        firstValue.type,
+        secondValue.type
+      );
       return {
         type: 'value',
         value: false,
@@ -27,7 +30,11 @@ export class Match extends BaseQtiElement {
         cardinality: 'single',
       };
     } else if (firstValue.valueType !== secondValue.valueType) {
-      console.debug('Match: firstValue and secondValue have different types:', firstValue.type, secondValue.type);
+      console.debug(
+        'Match: firstValue and secondValue have different types:',
+        firstValue.type,
+        secondValue.type
+      );
       return {
         type: 'value',
         value: false,
@@ -84,8 +91,12 @@ export class Match extends BaseQtiElement {
       return {
         type: 'value',
         value:
-          Object.keys(firstValueValues).every((key) => firstValueValues[key] === secondValueValues[key]) &&
-          Object.keys(secondValueValues).every((key) => firstValueValues[key] === secondValueValues[key]),
+          Object.keys(firstValueValues).every(
+            (key) => firstValueValues[key] === secondValueValues[key]
+          ) &&
+          Object.keys(secondValueValues).every(
+            (key) => firstValueValues[key] === secondValueValues[key]
+          ),
         valueType: 'boolean',
         cardinality: 'single',
       };
