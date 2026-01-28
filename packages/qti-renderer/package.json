@@ -1,13 +1,12 @@
 {
   "name": "@ae-studio/qti-renderer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Framework-agnostic QTI 3.x renderer and validator with WASM-powered client-side XML schema validation",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "assets",
     "README.md",
     "LICENSE"
   ],
@@ -17,9 +16,7 @@
       "types": "./dist/index.d.ts"
     },
     "./dist/qti-base.css": "./dist/qti-base.css",
-    "./dist/qti-custom.css": "./dist/qti-custom.css",
-    "./assets/qti-base.css": "./assets/qti-base.css",
-    "./assets/qti-custom.css": "./assets/qti-custom.css"
+    "./dist/qti-custom.css": "./dist/qti-custom.css"
   },
   "scripts": {
     "build": "tsc && cp -r assets/* dist/",
@@ -51,7 +48,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/agencyenterprise/qti-3-player.git"
+    "url": "git+https://github.com/agencyenterprise/qti-3-player.git"
   },
   "homepage": "https://github.com/agencyenterprise/qti-3-player#readme",
   "bugs": {
