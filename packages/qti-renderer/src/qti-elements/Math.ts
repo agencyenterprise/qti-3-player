@@ -7,7 +7,6 @@ import { VisualElement } from '../types';
  */
 export class Math extends BaseQtiElement {
   static readonly elementNames = ['math'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): VisualElement {
     const wrapper = document.createElement('div');

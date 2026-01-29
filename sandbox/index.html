@@ -24,12 +24,19 @@
       <div class="container">
         <div class="editor-pane">
           <h2>QTI XML Input</h2>
+          <h3 id="editor-title">Main</h3>
           <textarea id="xml-input" placeholder="Paste your QTI XML here..."></textarea>
+          <div class="selector-container" id="xml-source-selector-container">
+            <label id="xml-source-selector-label" for="xml-source-selector" class="selector-label">
+              Switch XML (Main vs item-ref href)
+            </label>
+            <select id="xml-source-selector"></select>
+          </div>
           <div class="controls">
             <button id="validate-btn">Validate XML</button>
             <button id="render-btn">Render QTI</button>
             <label class="toggle-control">
-              <input type="checkbox" id="custom-css-toggle">
+              <input type="checkbox" id="custom-css-toggle" />
               <span class="toggle-slider"></span>
               <span class="toggle-label">Custom CSS</span>
             </label>
@@ -46,6 +53,8 @@
           </div>
           <div class="controls preview-controls">
             <span id="submission-count">Submissions: 0</span>
+            <button id="prev-btn" class="secondary-btn" disabled>Previous</button>
+            <button id="next-btn" class="secondary-btn" disabled>Next</button>
             <button id="submit-btn" class="primary-btn">Submit Answer</button>
           </div>
         </div>

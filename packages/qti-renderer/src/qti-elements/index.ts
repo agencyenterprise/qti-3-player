@@ -1,4 +1,7 @@
 export { AssessmentItem } from './AssessmentItem';
+export { AssessmentItemRef } from './AssessmentItemRef';
+export { AssessmentSection } from './AssessmentSection';
+export { AssessmentTest } from './AssessmentTest';
 export { BaseValue } from './BaseValue';
 export { ChoiceInteraction } from './ChoiceInteraction';
 export { ContentBody } from './ContentBody';
@@ -16,8 +19,10 @@ export { ResponseDeclaration } from './ResponseDeclaration';
 export { ResponseElse } from './ResponseElse';
 export { ResponseIf } from './ResponseIf';
 export { ResponseProcessing } from './ResponseProcessing';
+export { RubricBlock } from './RubricBlock';
 export { SetOutcomeValue } from './SetOutcomeValue';
 export { SimpleChoice } from './SimpleChoice';
+export { TestPart } from './TestPart';
 export { TextEntryInteraction } from './TextEntryInteraction';
 export { Value } from './Value';
 export { Variable } from './Variable';

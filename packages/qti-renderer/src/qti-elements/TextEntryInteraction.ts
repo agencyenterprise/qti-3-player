@@ -14,9 +14,9 @@ import { VisualElement } from '../types';
  */
 export class TextEntryInteraction extends BaseQtiElement {
   static readonly elementNames = ['qti-text-entry-interaction'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): VisualElement {
+    const contextIdentifier = renderer.getFullTraversingContext();
     const responseIdentifier = this.getResponseIdentifier();
     const input = document.createElement('input');
     input.className = 'qti-text-entry-interaction';
@@ -29,22 +29,26 @@ export class TextEntryInteraction extends BaseQtiElement {
     }
 
     input.addEventListener('input', () => {
-      const value = input.value;
-      renderer.setVariable(responseIdentifier, {
-        type: 'value',
-        value: value,
-        valueType: 'string',
-        cardinality: 'single',
+      renderer.withEventContext(contextIdentifier, () => {
+        const value = input.value;
+        renderer.setVariable(responseIdentifier, {
+          type: 'value',
+          value: value,
+          valueType: 'string',
+          cardinality: 'single',
+        });
       });
     });
 
     input.addEventListener('change', () => {
-      const value = input.value;
-      renderer.setVariable(responseIdentifier, {
-        type: 'value',
-        value: value,
-        valueType: 'string',
-        cardinality: 'single',
+      renderer.withEventContext(contextIdentifier, () => {
+        const value = input.value;
+        renderer.setVariable(responseIdentifier, {
+          type: 'value',
+          value: value,
+          valueType: 'string',
+          cardinality: 'single',
+        });
       });
     });
 

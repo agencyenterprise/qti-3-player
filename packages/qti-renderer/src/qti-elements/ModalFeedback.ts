@@ -12,9 +12,9 @@ import { EventsEnum, onQti3PlayerEvent } from '../events';
  */
 export class ModalFeedback extends BaseQtiElement {
   static readonly elementNames = ['qti-modal-feedback'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): VisualElement {
+    const contextIdentifier = renderer.getFullTraversingContext();
     const container = document.createElement('div');
     const outcomeIdentifier = this.element.getAttribute('outcome-identifier') || '';
     const identifier = this.getIdentifier();
@@ -25,8 +25,10 @@ export class ModalFeedback extends BaseQtiElement {
 
     this.innerRender(renderer, container);
     onQti3PlayerEvent(EventsEnum.SUBMIT_RENDER_EVENT, () => {
-      container.innerHTML = '';
-      this.innerRender(renderer, container);
+      renderer.withEventContext(contextIdentifier, () => {
+        container.innerHTML = '';
+        this.innerRender(renderer, container);
+      });
     });
 
     return {

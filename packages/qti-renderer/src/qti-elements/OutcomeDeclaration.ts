@@ -22,7 +22,6 @@ import { DefaultValue } from './DefaultValue';
  */
 export class OutcomeDeclaration extends BaseQtiElement {
   static readonly elementNames = ['qti-outcome-declaration'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): EmptyElement {
     const identifier = this.getIdentifier();

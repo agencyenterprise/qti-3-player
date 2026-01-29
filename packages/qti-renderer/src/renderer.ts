@@ -1,17 +1,39 @@
-import { QtiRendererOptions, EmptyElement, ProcessResult, ValueElement } from './types';
+import {
+  QtiRendererOptions,
+  EmptyElement,
+  ProcessResult,
+  ValueElement,
+  QtiRendererParams,
+} from './types';
 import { registerAllElements } from './qti-elements/register';
 import { ConcreteQtiElementClass } from './qti-elements/types';
 import { validateXml, type ValidationResult, type ValidationOptions } from './validation';
-import { dispatchSubmitProcessEvent } from './events';
+import {
+  dispatchAfterRenderEvent,
+  dispatchAfterValidateEvent,
+  dispatchSubmitProcessEvent,
+} from './events';
 import { DebugView } from './debug/DebugView';
 
 export class QtiRenderer {
   private xmlDoc: Document | null = null;
   private xmlString: string;
-  private container: HTMLElement | null = null;
+  private referencedXmlStrings: Map<string, string> = new Map();
   private options: QtiRendererOptions;
 
+  private container: HTMLElement | null = null;
+  private rootRenderedElement: ProcessResult | null = null;
+
   private submissionCount: number = 0;
+
+  /**
+   * Context stack for the identifiers of container elements
+   */
+  private _traversingContext: string[] = [];
+  private _eventContext: string[] = [];
+  private contextsPaths: string[] = [];
+  private showingContextPathIndex: number = 0;
+  private rootIdentifier: string = '';
 
   private outcomeValues: Map<string, ValueElement> = new Map();
   private variables: Map<string, ValueElement> = new Map();
@@ -30,16 +52,19 @@ export class QtiRenderer {
    */
   private rendererClassRegistry: Map<string, ConcreteQtiElementClass> = new Map();
 
-  constructor(qtiXml: string, options: QtiRendererOptions = {}) {
-    this.xmlString = qtiXml;
+  constructor({ xml, options, context }: QtiRendererParams) {
+    this.xmlString = xml;
+    if (context?.referencedXmls) {
+      this.referencedXmlStrings = context.referencedXmls;
+    }
     this.options = {
-      debug: options.debug ?? false,
-      showFeedback: options.showFeedback ?? true,
-      validateXml: options.validateXml ?? true,
-      validationOptions: options.validationOptions ?? {},
+      debug: options?.debug ?? false,
+      showFeedback: options?.showFeedback ?? true,
+      validateXml: options?.validateXml ?? true,
+      validationOptions: options?.validationOptions ?? {},
     };
     registerAllElements(this.rendererClassRegistry);
-    this.parseXml(qtiXml);
+    this.parseXml();
   }
 
   /**
@@ -75,7 +100,7 @@ export class QtiRenderer {
         console.warn('QTI XML validation failed:', errorMessages);
       }
     }
-
+    dispatchAfterValidateEvent();
     return this.validationResult;
   }
 
@@ -98,7 +123,7 @@ export class QtiRenderer {
   updateXml(qtiXml: string): void {
     this.xmlString = qtiXml;
     this.invalidateValidation();
-    this.parseXml(qtiXml);
+    this.parseXml();
   }
 
   /**
@@ -119,9 +144,9 @@ export class QtiRenderer {
   /**
    * Parse QTI XML string into a Document
    */
-  private parseXml(xml: string): void {
+  private parseXml(): void {
     const parser = new DOMParser();
-    this.xmlDoc = parser.parseFromString(xml, 'text/xml');
+    this.xmlDoc = parser.parseFromString(this.xmlString, 'text/xml');
 
     // Check for parsing errors
     const parseError = this.xmlDoc.querySelector('parsererror');
@@ -196,6 +221,7 @@ export class QtiRenderer {
     this.mathJaxPromises = [];
     this.renderContent(container);
     await Promise.all(this.mathJaxPromises);
+    dispatchAfterRenderEvent();
   }
 
   setMathContainer(container: Element): void {
@@ -260,10 +286,13 @@ export class QtiRenderer {
       );
     }
 
+    this.rootIdentifier = rootElement.getAttribute('identifier') || '';
     const rootRender = new RootClass(rootElement);
-    const rendered = rootRender.process(this);
-    if (rendered.type === 'visual') {
-      container.appendChild(rendered.element);
+    this.rootRenderedElement = rootRender.process(this);
+
+    if (this.rootRenderedElement.type === 'visual') {
+      container.appendChild(this.rootRenderedElement.element);
+      this.showByRules();
     }
 
     // Initialize Debug View if debug mode is enabled
@@ -273,14 +302,76 @@ export class QtiRenderer {
     }
   }
 
+  /**
+   * We will set display none for those who might not be shown for the rules:
+   *  - If the element is not at the current context path
+   *  - If the element viewer is not set on the element: TO BE DONE
+   * @param element
+   * @returns
+   */
+  private showByRules(element?: HTMLElement): void {
+    const showingContext = this.contextsPaths[this.showingContextPathIndex];
+    let elementContext = '';
+    if (!element) {
+      if (!this.rootRenderedElement || this.rootRenderedElement.type !== 'visual') {
+        return;
+      }
+      element = this.rootRenderedElement.element as HTMLElement;
+      elementContext = showingContext;
+    } else {
+      elementContext = element.getAttribute('data-context') || '';
+    }
+
+    if (elementContext === '') {
+      const closestContextElement = element.closest('[data-context]');
+      if (closestContextElement) {
+        elementContext = closestContextElement.getAttribute('data-context') || '';
+      }
+    }
+    if (elementContext === showingContext || showingContext === undefined) {
+      element.style.removeProperty('display');
+      // force all parent elements to also be shown
+      let parent = element.parentElement;
+      while (parent) {
+        if (
+          this.rootRenderedElement?.type === 'visual' &&
+          this.rootRenderedElement.element &&
+          this.rootRenderedElement.element === parent
+        ) {
+          parent = null;
+        } else {
+          parent.style.removeProperty('display');
+          parent = parent.parentElement;
+        }
+      }
+    } else {
+      element.style.display = 'none';
+    }
+    for (const child of Array.from(element.children)) {
+      if (child.nodeType === Node.ELEMENT_NODE) {
+        this.showByRules(child as HTMLElement);
+      }
+    }
+  }
+
+  private getVariableNameForContext(identifier: string, context: boolean | string = true): string {
+    if (context === true) {
+      return this.getTraversingContextVariableName(identifier);
+    } else if (typeof context === 'string') {
+      return `${context}::${identifier}`;
+    }
+    return identifier;
+  }
   setOutcomeValue(identifier: string, value: ValueElement): void {
-    this.outcomeValues.set(identifier, value);
+    const variableName = this.getVariableNameForContext(identifier);
+    this.outcomeValues.set(variableName, value);
     this.debugView?.update();
   }
 
   getOutcomeValue(identifier: string): ValueElement | EmptyElement {
+    const variableName = this.getVariableNameForContext(identifier);
     return (
-      this.outcomeValues.get(identifier) || {
+      this.outcomeValues.get(variableName) || {
         type: 'empty',
       }
     );
@@ -291,13 +382,15 @@ export class QtiRenderer {
   }
 
   setVariable(identifier: string, value: ValueElement): void {
-    this.variables.set(identifier, value);
+    const variableName = this.getVariableNameForContext(identifier);
+    this.variables.set(variableName, value);
     this.debugView?.update();
   }
 
   getVariable(identifier: string): ValueElement | EmptyElement {
+    const variableName = this.getVariableNameForContext(identifier);
     return (
-      this.variables.get(identifier) || {
+      this.variables.get(variableName) || {
         type: 'empty',
       }
     );
@@ -308,13 +401,15 @@ export class QtiRenderer {
   }
 
   setCorrectResponse(identifier: string, value: ValueElement): void {
-    this.correctResponses.set(identifier, value);
+    const variableName = this.getVariableNameForContext(identifier);
+    this.correctResponses.set(variableName, value);
     this.debugView?.update();
   }
 
   getCorrectResponse(identifier: string): ValueElement | EmptyElement {
+    const variableName = this.getVariableNameForContext(identifier);
     return (
-      this.correctResponses.get(identifier) || {
+      this.correctResponses.get(variableName) || {
         type: 'empty',
       }
     );
@@ -322,6 +417,77 @@ export class QtiRenderer {
 
   getCorrectResponses(): Map<string, ValueElement> {
     return this.correctResponses;
+  }
+
+  pushTraversingContext(context: string): void {
+    if (context === this.rootIdentifier && this._traversingContext.length === 0) {
+      // skip root context
+      return;
+    }
+    this._traversingContext.push(context);
+    this.contextsPaths.push(this.getFullTraversingContext());
+  }
+
+  popTraversingContext(): void {
+    if (this._traversingContext.length === 0) {
+      return;
+    }
+    this._traversingContext.pop();
+  }
+
+  withEventContext(context: string, callback: () => void): void {
+    this._eventContext.push(context);
+    try {
+      callback();
+    } finally {
+      this._eventContext.pop();
+    }
+  }
+
+  getFullTraversingContext(): string {
+    if (this._eventContext.length > 0) {
+      return this._eventContext[this._eventContext.length - 1];
+    }
+    return this._traversingContext.join('::');
+  }
+
+  getTraversingContextVariableName(identifier: string): string {
+    const currentContextIdentifier = this.getFullTraversingContext();
+    if (currentContextIdentifier) {
+      return `${currentContextIdentifier}::${identifier}`;
+    }
+    return identifier;
+  }
+
+  hasNextItem(): boolean {
+    return this.showingContextPathIndex < this.contextsPaths.length - 1;
+  }
+
+  hasPreviousItem(): boolean {
+    return this.showingContextPathIndex > 0;
+  }
+
+  nextItem(): void {
+    if (this.showingContextPathIndex < this.contextsPaths.length - 1) {
+      this.showingContextPathIndex++;
+      this.showByRules();
+    }
+  }
+  previousItem(): void {
+    if (this.showingContextPathIndex > 0) {
+      this.showingContextPathIndex--;
+      this.showByRules();
+    }
+  }
+
+  getReferencedXmlElement(href: string): Element | null {
+    const referencedXmlString = this.referencedXmlStrings.get(href);
+    if (referencedXmlString) {
+      const parser = new DOMParser();
+      const referencedXmlDoc = parser.parseFromString(referencedXmlString, 'text/xml');
+      return referencedXmlDoc.documentElement;
+    }
+    return null;
   }
 
   processElementChildren(element: Element, container: HTMLElement | null): ProcessResult[] {

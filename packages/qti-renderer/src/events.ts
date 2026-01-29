@@ -2,10 +2,14 @@ import { ValueElement } from './types';
 
 export const SUBMIT_PROCESS_EVENT = 'qti-submit-process';
 export const SUBMIT_RENDER_EVENT = 'qti-submit-render';
+export const AFTER_RENDER_EVENT = 'qti-after-render';
+export const AFTER_VALIDATE_EVENT = 'qti-after-validate';
 
 export enum EventsEnum {
   SUBMIT_PROCESS_EVENT = 'qti-3-player:submit-process',
   SUBMIT_RENDER_EVENT = 'qti-3-player:submit-render',
+  AFTER_RENDER_EVENT = 'qti-3-player:after-render',
+  AFTER_VALIDATE_EVENT = 'qti-3-player:after-validate',
 }
 
 export type SubmitProcessEventDetail = {
@@ -33,6 +37,14 @@ export function dispatchSubmitProcessEvent(
 
 export function dispatchSubmitRenderEvent(): void {
   document.dispatchEvent(new CustomEvent(EventsEnum.SUBMIT_RENDER_EVENT));
+}
+
+export function dispatchAfterRenderEvent(): void {
+  document.dispatchEvent(new CustomEvent(EventsEnum.AFTER_RENDER_EVENT));
+}
+
+export function dispatchAfterValidateEvent(): void {
+  document.dispatchEvent(new CustomEvent(EventsEnum.AFTER_VALIDATE_EVENT));
 }
 
 export function onQti3PlayerEvent(

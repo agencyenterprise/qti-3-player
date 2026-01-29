@@ -128,6 +128,32 @@ body {
   background-color: #535bf2;
 }
 
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  background-color: #e1e4e8;
+  color: #2c3e50;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1em;
+  transition: background-color 0.25s;
+}
+
+.secondary-btn:hover {
+  background-color: #d1d5da;
+}
+
+.secondary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .renderer-wrapper {
   background-color: #ffffff;
   border-radius: 12px;
@@ -157,8 +183,15 @@ body {
 /* Scoped styles for UI components to avoid polluting QTI content */
 .editor-pane h2 {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 1.25rem;
+  text-align: center;
+}
+
+.editor-pane h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
   text-align: center;
 }
 
@@ -173,6 +206,26 @@ body {
   font-family: monospace;
   font-size: 14px;
   margin-bottom: 10px;
+}
+
+.selector-container {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selector-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  color: #666;
+  text-align: left;
+}
+
+#xml-source-selector {
+  padding: 0.5rem;
+  flex: 1;
 }
 
 .controls {
@@ -299,8 +352,8 @@ body {
 
   /* Re-apply desired base styles for the player */
   text-align: left;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 16px;
   line-height: 1.5;
   color: #212529;

@@ -20,7 +20,6 @@ import { BaseValueType, CardinalityType, EmptyElement } from '../types';
  */
 export class ResponseDeclaration extends BaseQtiElement {
   static readonly elementNames = ['qti-response-declaration'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): EmptyElement {
     const identifier = this.getIdentifier();

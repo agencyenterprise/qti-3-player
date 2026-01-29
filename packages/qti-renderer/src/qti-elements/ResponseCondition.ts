@@ -1,7 +1,12 @@
 import { BaseQtiElement } from './BaseQtiElement';
 import { QtiRenderer } from '../renderer';
-import { EmptyElement } from '../types';
+import { EmptyElement, ProcessResult, ValueElement } from '../types';
 
+const isBooleanResult = (result: ProcessResult): boolean => {
+  return (
+    result.type === 'value' && result.valueType === 'boolean' && result.cardinality === 'single'
+  );
+};
 /**
  * XML Schema type: ResponseConditionDType
  * This enables the 'If..Then..Else' rules to be defined for the response processing. If the
@@ -14,16 +19,16 @@ import { EmptyElement } from '../types';
  */
 export class ResponseCondition extends BaseQtiElement {
   static readonly elementNames = ['qti-response-condition'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): EmptyElement {
     const ifElement = renderer.querySelectorLocal(this.element, 'qti-response-if');
 
     if (ifElement) {
       const ifResult = renderer.processElement(ifElement);
-      if (ifResult.type !== 'value' || ifResult.valueType !== 'boolean' || ifResult.cardinality !== 'single') {
+      const isBoolean = isBooleanResult(ifResult);
+      if (!isBoolean) {
         console.warn('ResponseCondition: ifResult is not a boolean value', ifResult);
-      } else if (ifResult.value === true) {
+      } else if (isBoolean && (ifResult as ValueElement).value === true) {
         return {
           type: 'empty',
         };
@@ -34,13 +39,10 @@ export class ResponseCondition extends BaseQtiElement {
 
     for (const elseIfElement of elseIfElements) {
       const elseIfResult = renderer.processElement(elseIfElement);
-      if (
-        elseIfResult.type !== 'value' ||
-        elseIfResult.valueType !== 'boolean' ||
-        elseIfResult.cardinality !== 'single'
-      ) {
+      const isBoolean = isBooleanResult(elseIfResult);
+      if (!isBoolean) {
         console.warn('ResponseCondition: elseIfResult is not a boolean value', elseIfResult);
-      } else if (elseIfResult.value === true) {
+      } else if (isBoolean && (elseIfResult as ValueElement).value === true) {
         return {
           type: 'empty',
         };
@@ -50,7 +52,8 @@ export class ResponseCondition extends BaseQtiElement {
     const elseElement = renderer.querySelectorLocal(this.element, 'qti-response-else');
     if (elseElement) {
       const elseResult = renderer.processElement(elseElement);
-      if (elseResult.type !== 'value' || elseResult.valueType !== 'boolean' || elseResult.cardinality !== 'single') {
+      const isBoolean = isBooleanResult(elseResult);
+      if (!isBoolean) {
         console.warn('ResponseCondition: elseResult is not a boolean value', elseResult);
       }
     }

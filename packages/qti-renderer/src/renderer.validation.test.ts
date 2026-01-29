@@ -51,7 +51,7 @@ describe('QtiRenderer Validation Integration', () => {
 </qti-assessment-item>`;
 
   it('should not validate XML in constructor', () => {
-    const renderer = new QtiRenderer(validQtiXml);
+    const renderer = new QtiRenderer({ xml: validQtiXml });
 
     // Validation should not have been performed
     expect(renderer.isXmlValidated()).toBe(false);
@@ -59,7 +59,7 @@ describe('QtiRenderer Validation Integration', () => {
   });
 
   it('should validate XML when validateXml() is called', async () => {
-    const renderer = new QtiRenderer(validQtiXml);
+    const renderer = new QtiRenderer({ xml: validQtiXml });
 
     // Initially not validated
     expect(renderer.isXmlValidated()).toBe(false);
@@ -70,7 +70,7 @@ describe('QtiRenderer Validation Integration', () => {
     // Should now be validated
     expect(renderer.isXmlValidated()).toBe(true);
     expect(validationResult).not.toBeNull();
-    
+
     // Schema may have warnings about external references, but XML structure should be valid
     // Filter out schema loading errors (ErrnoError) which are environmental
     const criticalErrors = validationResult.errors.filter(
@@ -84,7 +84,7 @@ describe('QtiRenderer Validation Integration', () => {
   }, 30000);
 
   it('should detect validation errors for invalid XML', async () => {
-    const renderer = new QtiRenderer(invalidQtiXml);
+    const renderer = new QtiRenderer({ xml: invalidQtiXml });
 
     const validationResult = await renderer.validateXml();
 
@@ -95,9 +95,7 @@ describe('QtiRenderer Validation Integration', () => {
   }, 30000);
 
   it('should validate XML automatically when render() is called with validation enabled', async () => {
-    const renderer = new QtiRenderer(validQtiXml, {
-      validateXml: true,
-    });
+    const renderer = new QtiRenderer({ xml: validQtiXml, options: { validateXml: true } });
 
     expect(renderer.isXmlValidated()).toBe(false);
 
@@ -110,9 +108,7 @@ describe('QtiRenderer Validation Integration', () => {
   }, 30000);
 
   it('should not validate when render() is called with validation disabled', async () => {
-    const renderer = new QtiRenderer(validQtiXml, {
-      validateXml: false,
-    });
+    const renderer = new QtiRenderer({ xml: validQtiXml, options: { validateXml: false } });
 
     const container = document.createElement('div');
     await renderer.render(container);
@@ -125,9 +121,7 @@ describe('QtiRenderer Validation Integration', () => {
   });
 
   it('should not re-validate if already validated when render() is called', async () => {
-    const renderer = new QtiRenderer(validQtiXml, {
-      validateXml: true,
-    });
+    const renderer = new QtiRenderer({ xml: validQtiXml, options: { validateXml: true } });
 
     // Validate first
     await renderer.validateXml();
@@ -145,7 +139,7 @@ describe('QtiRenderer Validation Integration', () => {
   }, 30000);
 
   it('should invalidate validation when invalidateValidation() is called', async () => {
-    const renderer = new QtiRenderer(validQtiXml);
+    const renderer = new QtiRenderer({ xml: validQtiXml });
 
     // Validate
     await renderer.validateXml();
@@ -161,7 +155,7 @@ describe('QtiRenderer Validation Integration', () => {
   });
 
   it('should invalidate validation and re-parse when updateXml() is called', async () => {
-    const renderer = new QtiRenderer(validQtiXml);
+    const renderer = new QtiRenderer({ xml: validQtiXml });
 
     // Validate
     await renderer.validateXml();
@@ -183,9 +177,7 @@ describe('QtiRenderer Validation Integration', () => {
 
   it('should still render even if validation fails', async () => {
     const container = document.createElement('div');
-    const renderer = new QtiRenderer(invalidQtiXml, {
-      validateXml: true,
-    });
+    const renderer = new QtiRenderer({ xml: invalidQtiXml, options: { validateXml: true } });
 
     // Render should complete even if validation fails
     await renderer.render(container);
@@ -199,7 +191,7 @@ describe('QtiRenderer Validation Integration', () => {
   }, 30000);
 
   it('should provide validation result via getValidationResult', async () => {
-    const renderer = new QtiRenderer(validQtiXml);
+    const renderer = new QtiRenderer({ xml: validQtiXml });
 
     // Initially null (not validated)
     let result = renderer.getValidationResult();
@@ -213,13 +205,14 @@ describe('QtiRenderer Validation Integration', () => {
     expect(result).not.toBeNull();
     // Schema may have warnings, but XML structure should be valid
     // Filter out schema loading errors (ErrnoError) which are environmental
-    const criticalErrors = result?.errors.filter(
-      (e) =>
-        !e.message.toLowerCase().includes('does not resolve') &&
-        !e.message.toLowerCase().includes('schemas parser error') &&
-        !e.message.includes('ErrnoError') &&
-        !e.message.toLowerCase().includes('failed to load')
-    ) || [];
+    const criticalErrors =
+      result?.errors.filter(
+        (e) =>
+          !e.message.toLowerCase().includes('does not resolve') &&
+          !e.message.toLowerCase().includes('schemas parser error') &&
+          !e.message.includes('ErrnoError') &&
+          !e.message.toLowerCase().includes('failed to load')
+      ) || [];
     expect(criticalErrors).toHaveLength(0);
   }, 30000);
 });

@@ -9,13 +9,13 @@ import { VisualElement } from '../types';
  */
 export class SimpleChoice extends BaseQtiElement {
   static readonly elementNames = ['qti-simple-choice'];
-  static readonly canBeRoot = false;
 
   maxChoices: number = 1;
   groupName: string = '';
   itemNumber: string = '';
 
   process(renderer: QtiRenderer): VisualElement {
+    const contextIdentifier = renderer.getFullTraversingContext();
     const identifier = this.getIdentifier();
     const li = document.createElement('li');
     li.className = 'qti-simple-choice';
@@ -30,29 +30,31 @@ export class SimpleChoice extends BaseQtiElement {
     input.value = identifier;
     if (this.maxChoices > 1) {
       input.addEventListener('click', (event: MouseEvent) => {
-        const clickingCheckbox = event.target as HTMLInputElement;
-        if (clickingCheckbox.checked) {
-          const fieldset = input.closest('fieldset');
-          const checkboxes = fieldset?.querySelectorAll(
-            'input[type="checkbox"][name="' + this.groupName + '"]'
-          );
-          if (checkboxes && checkboxes.length > 0) {
-            const values = [];
+        renderer.withEventContext(contextIdentifier, () => {
+          const clickingCheckbox = event.target as HTMLInputElement;
+          if (clickingCheckbox.checked) {
+            const fieldset = input.closest('fieldset');
+            const checkboxes = fieldset?.querySelectorAll(
+              'input[type="checkbox"][name="' + this.groupName + '"]'
+            );
+            if (checkboxes && checkboxes.length > 0) {
+              const values = [];
 
-            for (let i = 0; i < checkboxes.length; i++) {
-              const checkboxElement = checkboxes[i] as HTMLInputElement;
+              for (let i = 0; i < checkboxes.length; i++) {
+                const checkboxElement = checkboxes[i] as HTMLInputElement;
 
-              if (checkboxElement.checked) {
-                values.push(checkboxElement.value);
+                if (checkboxElement.checked) {
+                  values.push(checkboxElement.value);
+                }
+              }
+              if (values.length > this.maxChoices) {
+                event.preventDefault();
+                event.stopPropagation();
+                return;
               }
             }
-            if (values.length > this.maxChoices) {
-              event.preventDefault();
-              event.stopPropagation();
-              return false;
-            }
           }
-        }
+        });
       });
     }
 

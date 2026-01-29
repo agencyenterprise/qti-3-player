@@ -23,9 +23,9 @@ function indexToLetter(index: number): string {
  */
 export class ChoiceInteraction extends BaseQtiElement {
   static readonly elementNames = ['qti-choice-interaction'];
-  static readonly canBeRoot = false;
 
   process(renderer: QtiRenderer): VisualElement {
+    const contextIdentifier = renderer.getFullTraversingContext();
     const responseIdentifier = this.getResponseIdentifier();
     const isMultiple = this.getMaxChoices() !== 1;
     const fieldset = document.createElement('fieldset');
@@ -37,28 +37,30 @@ export class ChoiceInteraction extends BaseQtiElement {
     this.processPrompt(renderer, fieldset);
     this.processChoices(renderer, fieldset);
 
-    fieldset.addEventListener('change', (event) => {
-      const checkboxes = document.getElementsByName(responseIdentifier);
+    fieldset.addEventListener('change', () => {
+      renderer.withEventContext(contextIdentifier, () => {
+        const name = renderer.getTraversingContextVariableName(responseIdentifier);
+        const checkboxes = document.getElementsByName(name);
+        const values = [];
 
-      const values = [];
-
-      for (let i = 0; i < checkboxes.length; i++) {
-        const checkboxElement = checkboxes[i] as HTMLInputElement;
-        const closestFieldset = checkboxElement.closest('fieldset[data-response-identifier]');
-        if (
-          closestFieldset &&
-          closestFieldset.getAttribute('data-response-identifier') === responseIdentifier
-        ) {
-          if (checkboxElement.checked) {
-            values.push(checkboxElement.value);
+        for (let i = 0; i < checkboxes.length; i++) {
+          const checkboxElement = checkboxes[i] as HTMLInputElement;
+          const closestFieldset = checkboxElement.closest('fieldset[data-response-identifier]');
+          if (
+            closestFieldset &&
+            closestFieldset.getAttribute('data-response-identifier') === responseIdentifier
+          ) {
+            if (checkboxElement.checked) {
+              values.push(checkboxElement.value);
+            }
           }
         }
-      }
-      renderer.setVariable(responseIdentifier, {
-        type: 'value',
-        value: isMultiple ? values : values[0],
-        valueType: 'identifier',
-        cardinality: isMultiple ? 'multiple' : 'single',
+        renderer.setVariable(responseIdentifier, {
+          type: 'value',
+          value: isMultiple ? values : values[0],
+          valueType: 'identifier',
+          cardinality: isMultiple ? 'multiple' : 'single',
+        });
       });
     });
 
@@ -159,7 +161,9 @@ export class ChoiceInteraction extends BaseQtiElement {
     choices.forEach((choice, index) => {
       const simpleChoiceRenderer = new SimpleChoice(choice);
       simpleChoiceRenderer.setMaxChoices(this.getMaxChoices());
-      simpleChoiceRenderer.setGroupName(this.getResponseIdentifier());
+      simpleChoiceRenderer.setGroupName(
+        renderer.getTraversingContextVariableName(this.getResponseIdentifier())
+      );
       simpleChoiceRenderer.setItemNumber(this.getItemNumber(index));
       const renderedChoice = simpleChoiceRenderer.process(renderer);
       if (renderedChoice.type === 'visual') {
