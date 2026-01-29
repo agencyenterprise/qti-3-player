@@ -192,6 +192,10 @@ let currentItem: VanillaQtiItem | null = null;
 const xmlContentMap = new Map<string, string>();
 let currentSelection = 'main';
 
+const setEditorTitle = () => {
+  editorTitle.textContent = currentSelection === 'main' ? 'Main' : `Item-ref (${currentSelection})`;
+};
+
 // Initialize main
 xmlContentMap.set('main', defaultXml);
 xmlInput.value = defaultXml;
@@ -201,6 +205,10 @@ xmlContentMap.set('item-gas-giants-choice.xml', q3Xml);
 
 const updateSelectorOptions = (refs: Set<string>) => {
   const previousSelection = currentSelection;
+
+  const hasRefs = refs.size > 0;
+  xmlSourceSelector.disabled = !hasRefs;
+  xmlSourceSelector.title = hasRefs ? '' : 'No item-ref hrefs found in the Main XML';
 
   xmlSourceSelector.innerHTML = '';
 
@@ -222,7 +230,7 @@ const updateSelectorOptions = (refs: Set<string>) => {
     xmlSourceSelector.value = 'main';
     currentSelection = 'main';
     xmlInput.value = xmlContentMap.get('main') || '';
-    editorTitle.textContent = 'Main';
+    setEditorTitle();
   }
 };
 
@@ -275,7 +283,7 @@ xmlSourceSelector.addEventListener('change', (e) => {
   currentSelection = target.value;
 
   xmlInput.value = xmlContentMap.get(currentSelection) || '';
-  editorTitle.textContent = currentSelection === 'main' ? 'Main' : currentSelection;
+  setEditorTitle();
 });
 
 const updateNavigationButtons = () => {
@@ -342,6 +350,7 @@ const renderQti = () => {
 
 const initialRefs = scanForRefs(defaultXml);
 updateSelectorOptions(initialRefs);
+setEditorTitle();
 
 const validateQti = async () => {
   const xml = xmlInput.value;

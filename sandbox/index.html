@@ -26,8 +26,11 @@
           <h2>QTI XML Input</h2>
           <h3 id="editor-title">Main</h3>
           <textarea id="xml-input" placeholder="Paste your QTI XML here..."></textarea>
-          <div class="selector-container" style="margin-bottom: 1rem">
-            <select id="xml-source-selector" style="width: 100%; padding: 0.5rem"></select>
+          <div class="selector-container" id="xml-source-selector-container">
+            <label id="xml-source-selector-label" for="xml-source-selector" class="selector-label">
+              Switch XML (Main vs item-ref href)
+            </label>
+            <select id="xml-source-selector"></select>
           </div>
           <div class="controls">
             <button id="validate-btn">Validate XML</button>

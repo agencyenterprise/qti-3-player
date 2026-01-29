@@ -208,6 +208,26 @@ body {
   margin-bottom: 10px;
 }
 
+.selector-container {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selector-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  color: #666;
+  text-align: left;
+}
+
+#xml-source-selector {
+  padding: 0.5rem;
+  flex: 1;
+}
+
 .controls {
   display: flex;
   justify-content: flex-end;
