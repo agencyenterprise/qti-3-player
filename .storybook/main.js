@@ -57,12 +57,9 @@ const config = {
       },
     });
   },
-  // Serve schema files as static assets
+  // Serve built qti-renderer artifacts as static assets (e.g. CSS demo paths).
+  // Schemas are embedded in code now, so we no longer serve `/schemas`.
   staticDirs: [
-    {
-      from: '../packages/qti-renderer/dist/schemas',
-      to: '/schemas',
-    },
     {
       from: '../packages/qti-renderer/dist',
       to: '/dist',
