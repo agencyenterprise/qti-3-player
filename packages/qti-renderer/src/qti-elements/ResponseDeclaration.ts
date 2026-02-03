@@ -2,6 +2,7 @@ import { BaseQtiElement } from './BaseQtiElement';
 import { QtiRenderer } from '../renderer';
 import { CorrectResponse } from './CorrectResponse';
 import { BaseValueType, CardinalityType, EmptyElement } from '../types';
+import { Mapping } from './Mapping';
 
 /**
  * XML Schema type: ResponseDeclarationDType
@@ -22,12 +23,20 @@ export class ResponseDeclaration extends BaseQtiElement {
   static readonly elementNames = ['qti-response-declaration'];
 
   process(renderer: QtiRenderer): EmptyElement {
-    const identifier = this.getIdentifier();
-    const cardinality = this.getCardinality();
-    const baseType = this.getBaseType();
+    this.processCorrectResponse(renderer);
+    this.processMapping(renderer);
+    return {
+      type: 'empty',
+    };
+  }
 
+  processCorrectResponse(renderer: QtiRenderer) {
     const correctResponse = renderer.querySelectorLocal(this.element, 'qti-correct-response');
     if (correctResponse) {
+      const identifier = this.getIdentifier();
+      const cardinality = this.getCardinality();
+      const baseType = this.getBaseType();
+
       const c = new CorrectResponse(correctResponse);
       const correctValue = c.process(renderer);
       // Correct response always return a value with valueType string since it doesn't have extra conversion data
@@ -59,8 +68,24 @@ export class ResponseDeclaration extends BaseQtiElement {
         }
       }
     }
-    return {
-      type: 'empty',
-    };
+  }
+
+  processMapping(renderer: QtiRenderer) {
+    const mapping = renderer.querySelectorLocal(this.element, 'qti-mapping');
+    if (mapping) {
+      const identifier = this.getIdentifier();
+      const cardinality = this.getCardinality();
+      const baseType = this.getBaseType();
+
+      const m = new Mapping(mapping);
+      const mappingValueCustom = m.process(renderer);
+      const mappingValue = mappingValueCustom.element;
+
+      renderer.setMapping(identifier, {
+        cardinality,
+        baseType,
+        mapping: mappingValue,
+      });
+    }
   }
 }

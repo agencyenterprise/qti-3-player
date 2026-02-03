@@ -9,6 +9,7 @@ import {
   unlimitedChoicesQuestion,
   choiceLayout,
   textEntryInteraction,
+  mapResponse,
 } from './shared/examples';
 
 const meta = {
@@ -74,5 +75,11 @@ export const ChoiceLayout: Story = {
 export const TextEntryInteraction: Story = {
   args: {
     xml: textEntryInteraction,
+  },
+};
+
+export const MapResponse: Story = {
+  args: {
+    xml: mapResponse,
   },
 };

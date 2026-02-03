@@ -150,6 +150,11 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
     - Type: `xs:NCName`
     - Use: `required`
 
+  - [x] `href`
+
+    - Type: `anyURI`
+    - Use: `required`
+
   - [ ] `required`
 
     - Type: `boolean`
@@ -166,11 +171,6 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
     - Type: `string`
     - Use: `optional`
-
-  - [ ] `href`
-
-    - Type: `anyURI`
-    - Use: `required`
 
   - [ ] `category`
 
@@ -7083,7 +7083,7 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-is-null`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:** None
 
@@ -7509,24 +7509,25 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-map-entry`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
 
-  - [ ] `case-sensitive`
-
-    - Type: `boolean`
-    - Use: `optional`
-    - Default: `false`
-
-  - [ ] `map-key`
+  - [x] `map-key`
 
     - Type: `normalizedString`
     - Use: `required`
 
-  - [ ] `mapped-value`
+  - [x] `mapped-value`
+
     - Type: `double`
     - Use: `required`
+
+  - [x] `case-sensitive`
+
+    - Type: `boolean`
+    - Use: `optional`
+    - Default: `false`
 
 ---
 
@@ -7534,11 +7535,11 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-map-response`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
 
-  - [ ] `identifier`
+  - [x] `identifier`
     - Type: `xs:NCName`
     - Use: `required`
 
@@ -7562,22 +7563,22 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-mapping`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
 
-  - [ ] `default-value`
+  - [x] `default-value`
 
     - Type: `double`
     - Use: `optional`
     - Default: `0`
 
-  - [ ] `lower-bound`
+  - [x] `lower-bound`
 
     - Type: `double`
     - Use: `optional`
 
-  - [ ] `upper-bound`
+  - [x] `upper-bound`
     - Type: `double`
     - Use: `optional`
 
@@ -8978,22 +8979,22 @@ This document lists all QTI 3.0 elements, their attributes, and child elements b
 
 ### `qti-outcome-declaration`
 
-- [ ] Supported
+- [x] Supported
 
   **Attributes:**
 
-  - [ ] `cardinality`
+  - [x] `cardinality`
 
     - Type: `string`
     - Use: `required`
     - Allowed values: `multiple`, `ordered`, `record`, `single`
 
-  - [ ] `identifier`
+  - [x] `identifier`
 
     - Type: `xs:NCName`
     - Use: `required`
 
-  - [ ] `base-type`
+  - [x] `base-type`
 
     - Type: `string`
     - Use: `optional`

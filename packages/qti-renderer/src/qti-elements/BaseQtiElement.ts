@@ -118,4 +118,9 @@ export abstract class BaseQtiElement {
   getBaseType(): BaseValueType {
     return (this.element.getAttribute('base-type') || 'string') as BaseValueType;
   }
+
+  getBooleanAttribute(element: Element, attributeName: string): boolean {
+    const value = element.getAttribute(attributeName) || 'false';
+    return value === 'true';
+  }
 }
