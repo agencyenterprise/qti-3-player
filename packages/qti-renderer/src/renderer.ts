@@ -4,6 +4,7 @@ import {
   ProcessResult,
   ValueElement,
   QtiRendererParams,
+  Mapping,
 } from './types';
 import { registerAllElements } from './qti-elements/register';
 import { ConcreteQtiElementClass } from './qti-elements/types';
@@ -38,6 +39,7 @@ export class QtiRenderer {
   private outcomeValues: Map<string, ValueElement> = new Map();
   private variables: Map<string, ValueElement> = new Map();
   private correctResponses: Map<string, ValueElement> = new Map();
+  private mappings: Map<string, Mapping> = new Map();
 
   private validationResult: ValidationResult | null = null;
   private validationPromise: Promise<ValidationResult> | null = null;
@@ -362,6 +364,15 @@ export class QtiRenderer {
     }
     return identifier;
   }
+
+  setMapping(identifier: string, mapping: Mapping): void {
+    this.mappings.set(identifier, mapping);
+  }
+
+  getMapping(identifier: string): Mapping | null {
+    return this.mappings.get(identifier) || null;
+  }
+
   setOutcomeValue(identifier: string, value: ValueElement): void {
     const variableName = this.getVariableNameForContext(identifier);
     this.outcomeValues.set(variableName, value);

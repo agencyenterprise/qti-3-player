@@ -79,4 +79,28 @@ export type ValueElement = {
   fieldIdentifier?: string;
 };
 
-export type ProcessResult = VisualElement | ValueElement | EmptyElement;
+export type CustomElement<T> = {
+  type: 'custom';
+  element: T;
+};
+
+export type ProcessResult = VisualElement | ValueElement | EmptyElement | CustomElement<any>;
+
+export type MapEntryTagData = {
+  mapKey: string;
+  mappedValue: number;
+  caseSensitive: boolean;
+};
+
+export type MappingTagData = {
+  lowerBound: number;
+  upperBound: number;
+  defaultValue: number;
+  mapEntries: MapEntryTagData[];
+};
+
+export type Mapping = {
+  cardinality: CardinalityType;
+  baseType: BaseValueType;
+  mapping: MappingTagData;
+};
