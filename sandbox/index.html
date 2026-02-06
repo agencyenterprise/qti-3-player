@@ -14,48 +14,79 @@
   <body>
     <div id="app">
       <header class="app-header">
-        <h1>QTI 3 Player Sandbox</h1>
-        <a
-          href="https://github.com/agencyenterprise/qti-3-player/tree/main/docs/qti_support"
-          target="_blank"
-          >QTI Support Docs</a
-        >
+        <div class="header-left">
+          <div class="app-logo" aria-hidden="true"></div>
+          <div class="app-title">
+            <h1>QTI 3 Player</h1>
+            <span>Sandbox</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle theme">
+            <span
+              class="icon-slot theme-icon theme-icon-sun"
+              data-icon="sun"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="icon-slot theme-icon theme-icon-moon"
+              data-icon="moon"
+              aria-hidden="true"
+            ></span>
+            <span class="theme-label">Dark</span>
+          </button>
+          <a
+            class="link-btn"
+            href="https://github.com/agencyenterprise/qti-3-player/tree/main/docs/qti_support"
+            target="_blank"
+            rel="noreferrer"
+            >Docs</a
+          >
+        </div>
       </header>
       <div class="container">
         <div class="editor-pane">
-          <h2>QTI XML Input</h2>
-          <h3 id="editor-title">Main</h3>
-          <textarea id="xml-input" placeholder="Paste your QTI XML here..."></textarea>
-          <div class="selector-container" id="xml-source-selector-container">
-            <label id="xml-source-selector-label" for="xml-source-selector" class="selector-label">
-              Switch XML (Main vs item-ref href)
-            </label>
-            <select id="xml-source-selector"></select>
+          <div class="pane-header editor-header">
+            <div class="pane-left">
+              <div class="selector-container selector-top" id="xml-source-selector-container">
+                <select id="xml-source-selector" aria-label="XML Source"></select>
+              </div>
+            </div>
+            <div class="pane-actions editor-actions">
+              <button id="validate-btn" class="btn btn-primary">
+                <span class="icon-slot" data-icon="check-circle" aria-hidden="true"></span>
+                Validate
+              </button>
+              <button id="render-btn" class="btn btn-primary">
+                <span class="icon-slot" data-icon="play" aria-hidden="true"></span>
+                Render
+              </button>
+            </div>
           </div>
-          <div class="controls">
-            <button id="validate-btn">Validate XML</button>
-            <button id="render-btn">Render QTI</button>
-            <label class="toggle-control">
-              <input type="checkbox" id="custom-css-toggle" />
-              <span class="toggle-slider"></span>
-              <span class="toggle-label">Custom CSS</span>
-            </label>
-          </div>
+          <div id="xml-editor" class="code-editor" aria-label="QTI XML input"></div>
           <div id="validation-result"></div>
         </div>
         <div class="resizer" id="dragMe"></div>
         <div class="preview-pane">
-          <div class="preview-header">
-            <h2>Preview</h2>
+          <div class="pane-bar pane-bar-top">
+            <div class="pane-actions pane-actions-left pane-actions-stack">
+              <button id="submit-btn" class="btn btn-primary">Submit Answer</button>
+              <span id="submission-count" class="pane-subtitle">Submissions: 0</span>
+            </div>
+            <div class="pane-actions pane-actions-center">
+              <button id="prev-btn" class="btn btn-secondary" disabled>Previous</button>
+              <button id="next-btn" class="btn btn-secondary" disabled>Next</button>
+            </div>
+            <div class="pane-actions pane-actions-right">
+              <label class="toggle-control compact">
+                <input type="checkbox" id="custom-css-toggle" />
+                <span class="toggle-slider"></span>
+                <span class="toggle-label">Custom CSS</span>
+              </label>
+            </div>
           </div>
           <div class="renderer-wrapper">
             <div id="qti-container"></div>
-          </div>
-          <div class="controls preview-controls">
-            <span id="submission-count">Submissions: 0</span>
-            <button id="prev-btn" class="secondary-btn" disabled>Previous</button>
-            <button id="next-btn" class="secondary-btn" disabled>Next</button>
-            <button id="submit-btn" class="primary-btn">Submit Answer</button>
           </div>
         </div>
       </div>
