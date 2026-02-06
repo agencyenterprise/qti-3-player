@@ -180,3 +180,84 @@ li.qti-simple-choice:has(input:checked) label.qti-simple-choice {
 .qti-text-entry-interaction::placeholder {
   color: #9ca3af;
 }
+
+/* Dark mode overrides */
+:root[data-theme='dark'] #qti-container .qti-item-body {
+  color: #e2e8f0;
+}
+
+:root[data-theme='dark'] #qti-container .qti-prompt {
+  color: #f8fafc;
+}
+
+:root[data-theme='dark'] #qti-container li.qti-simple-choice {
+  background-color: #111827;
+  border-color: #243144;
+  color: #e2e8f0;
+}
+
+:root[data-theme='dark'] #qti-container li.qti-simple-choice:hover {
+  background-color: #172030;
+  border-color: #334155;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.45);
+}
+
+:root[data-theme='dark'] #qti-container li.qti-simple-choice input {
+  border-color: #475569;
+}
+
+:root[data-theme='dark'] #qti-container li.qti-simple-choice input:checked {
+  border-color: #7aa2ff;
+  background-color: #7aa2ff;
+}
+
+:root[data-theme='dark'] #qti-container label.qti-simple-choice {
+  color: #e2e8f0;
+}
+
+:root[data-theme='dark'] #qti-container li.qti-simple-choice:has(input:checked) {
+  background-color: rgba(122, 162, 255, 0.18);
+  border-color: rgba(122, 162, 255, 0.55);
+  box-shadow: 0 0 0 1px rgba(122, 162, 255, 0.35);
+}
+
+:root[data-theme='dark']
+  #qti-container
+  li.qti-simple-choice:has(input:checked)
+  label.qti-simple-choice {
+  color: #c7d2fe;
+}
+
+:root[data-theme='dark'] #qti-container .qti-underline {
+  text-decoration-color: #7aa2ff;
+}
+
+:root[data-theme='dark'] #qti-container .qti-modal-feedback {
+  background-color: #0f172a;
+  border-color: #273147;
+  color: #cbd5f5;
+}
+
+:root[data-theme='dark'] #qti-container .qti-feedback-inline {
+  background-color: #101827;
+  color: #cbd5f5;
+}
+
+:root[data-theme='dark'] #qti-container .qti-text-entry-interaction {
+  border-color: #273147;
+  color: #e2e8f0;
+  background-color: #0b1220;
+}
+
+:root[data-theme='dark'] #qti-container .qti-text-entry-interaction:hover {
+  border-color: #334155;
+}
+
+:root[data-theme='dark'] #qti-container .qti-text-entry-interaction:focus {
+  border-color: #7aa2ff;
+  box-shadow: 0 0 0 3px rgba(122, 162, 255, 0.2);
+}
+
+:root[data-theme='dark'] #qti-container .qti-text-entry-interaction::placeholder {
+  color: #94a3b8;
+}
