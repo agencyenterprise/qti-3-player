@@ -1,6 +1,6 @@
 {
   "name": "@ae-studio/qti-renderer",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Framework-agnostic QTI 3.x renderer and validator with WASM-powered client-side XML schema validation",
   "type": "module",
   "main": "dist/index.js",
@@ -19,9 +19,10 @@
     "./dist/qti-custom.css": "./dist/qti-custom.css"
   },
   "scripts": {
-    "build": "tsc && pnpm run build:assets && pnpm run build:css",
+    "generate-schemas": "tsx scripts/generate-schemas.ts",
     "build:assets": "mkdir -p dist && rsync -a --exclude='*.css' assets/ dist/",
     "build:css": "mkdir -p dist && postcss assets/qti-base.css -o dist/qti-base.css && postcss assets/qti-custom.css -o dist/qti-custom.css",
+    "build": "npm run generate-schemas && tsc && pnpm run build:assets && pnpm run build:css",
     "dev": "tsc --watch",
     "test": "vitest",
     "test:run": "vitest run",
