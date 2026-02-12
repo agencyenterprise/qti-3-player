@@ -19,7 +19,7 @@ export class DebugView {
       const style = document.createElement('style');
       style.id = styleId;
       style.textContent = `
-        .qti-debug-btn {
+        .qti-renderer-root .qti-debug-btn {
           position: fixed;
           bottom: 20px;
           right: 20px;
@@ -38,10 +38,10 @@ export class DebugView {
           font-size: 24px;
           transition: transform 0.2s;
         }
-        .qti-debug-btn:hover {
+        .qti-renderer-root .qti-debug-btn:hover {
           transform: scale(1.1);
         }
-        .qti-debug-panel {
+        .qti-renderer-root .qti-debug-panel {
           position: fixed;
           bottom: 80px;
           right: 20px;
@@ -57,10 +57,10 @@ export class DebugView {
           font-family: monospace;
           font-size: 12px;
         }
-        .qti-debug-panel.open {
+        .qti-renderer-root .qti-debug-panel.open {
           display: flex;
         }
-        .qti-debug-header {
+        .qti-renderer-root .qti-debug-header {
           padding: 10px;
           background: #f5f5f5;
           border-bottom: 1px solid #ddd;
@@ -69,50 +69,50 @@ export class DebugView {
           justify-content: space-between;
           align-items: center;
         }
-        .qti-debug-close {
+        .qti-renderer-root .qti-debug-close {
           border: none;
           background: none;
           cursor: pointer;
           font-size: 16px;
           color: #666;
         }
-        .qti-debug-content {
+        .qti-renderer-root .qti-debug-content {
           padding: 10px;
           overflow-y: auto;
         }
-        .qti-debug-section {
+        .qti-renderer-root .qti-debug-section {
           margin-bottom: 15px;
         }
-        .qti-debug-section-title {
+        .qti-renderer-root .qti-debug-section-title {
           font-weight: bold;
           color: #666;
           margin-bottom: 5px;
           border-bottom: 1px solid #eee;
           padding-bottom: 2px;
         }
-        .qti-debug-item {
+        .qti-renderer-root .qti-debug-item {
           margin-left: 10px;
           margin-bottom: 4px;
           display: flex;
           align-items: flex-start;
           flex-wrap: wrap;
         }
-        .qti-debug-key {
+        .qti-renderer-root .qti-debug-key {
           color: #d63384;
           margin-right: 5px;
           white-space: nowrap;
           font-weight: bold;
         }
-        .qti-debug-val-container {
+        .qti-renderer-root .qti-debug-val-container {
           display: flex;
           flex-direction: column;
           flex: 1;
         }
-        .qti-debug-val {
+        .qti-renderer-root .qti-debug-val {
           color: #0d6efd;
           word-break: break-all;
         }
-        .qti-debug-meta {
+        .qti-renderer-root .qti-debug-meta {
           color: #888;
           font-size: 0.85em;
           margin-top: 2px;
