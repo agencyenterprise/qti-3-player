@@ -19,7 +19,9 @@
     "./dist/qti-custom.css": "./dist/qti-custom.css"
   },
   "scripts": {
-    "build": "tsc && cp -r assets/* dist/",
+    "build": "tsc && pnpm run build:assets && pnpm run build:css",
+    "build:assets": "mkdir -p dist && rsync -a --exclude='*.css' assets/ dist/",
+    "build:css": "mkdir -p dist && postcss assets/qti-base.css -o dist/qti-base.css && postcss assets/qti-custom.css -o dist/qti-custom.css",
     "dev": "tsc --watch",
     "test": "vitest",
     "test:run": "vitest run",
@@ -58,6 +60,9 @@
     "access": "public"
   },
   "devDependencies": {
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-nested": "^7.0.2",
     "@vitest/ui": "^4.0.17",
     "@xmldom/xmldom": "^0.8.10",
     "jsdom": "^27.4.0",

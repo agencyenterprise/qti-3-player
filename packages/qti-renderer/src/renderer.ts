@@ -292,15 +292,19 @@ export class QtiRenderer {
     const rootRender = new RootClass(rootElement);
     this.rootRenderedElement = rootRender.process(this);
 
+    const wrapper = document.createElement('div');
+    wrapper.className = 'qti-renderer-root';
+    container.append(wrapper);
+
     if (this.rootRenderedElement.type === 'visual') {
-      container.appendChild(this.rootRenderedElement.element);
+      wrapper.appendChild(this.rootRenderedElement.element);
       this.showByRules();
     }
 
     // Initialize Debug View if debug mode is enabled
     if (this.options.debug) {
       this.debugView = new DebugView(this);
-      this.debugView.mount(container);
+      this.debugView.mount(wrapper);
     }
   }
 
